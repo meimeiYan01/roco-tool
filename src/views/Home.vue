@@ -1,106 +1,109 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import SearchBar from '@/components/SearchBar.vue'
-import PokemonCard from '@/components/PokemonCard.vue'
-import { getPopularForms } from '@/services/pokemonService'
+import { getPopularForms } from '../services/pokemonService'
+import { getAllPlans, getGroupsByPlanId, getAllEggRecordsByPlanId, getHatchingEggsByPlanId } from '../services/breedingService'
+import PokemonAvatar from '../components/PokemonAvatar.vue'
 
 const router = useRouter()
 const popular = getPopularForms(6)
 
-function onSearch(keyword: string) {
-  router.push({ path: '/list', query: { q: keyword } })
-}
+// 培育计划摘要
+const plans = getAllPlans()
+const currentPlan = plans[0]
+const planGroups = currentPlan ? getGroupsByPlanId(currentPlan.id) : []
+const planEggs = currentPlan ? getAllEggRecordsByPlanId(currentPlan.id) : []
+const hatchingEggs = currentPlan ? getHatchingEggsByPlanId(currentPlan.id).filter(s => s.egg) : []
 </script>
 
 <template>
-  <div class="home">
-    <section class="hero">
-      <h1>🥚 大块头蛋查询与培育辅助</h1>
-      <p class="subtitle">
-        查精灵、看阈值、测蛋尺寸——一眼知道你这颗蛋离「大块头」还差多少。
-      </p>
-      <div class="search-wrap">
-        <SearchBar @search="onSearch" />
+  <div>
+    <!-- Header -->
+    <header class="px-4 pt-6 pb-4">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-2xl">🥚</span>
+        <h1 class="text-xl font-bold text-slate-100">洛克王国蛋助手</h1>
       </div>
-      <div class="quick-links">
-        <el-button @click="router.push('/list')">浏览全部精灵</el-button>
-        <el-button type="primary" @click="router.push('/check')">
-          去测一颗蛋
-        </el-button>
+      <p class="text-sm text-slate-400">查精灵 · 测大块头 · 管培育</p>
+    </header>
+
+    <!-- 搜索框 -->
+    <div class="px-4 mb-6">
+      <div
+        @click="router.push('/list')"
+        class="flex items-center gap-3 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 active:bg-slate-700 transition-colors cursor-pointer"
+      >
+        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <span class="text-slate-400 text-sm">搜索精灵名称、系别...</span>
+      </div>
+    </div>
+
+    <!-- 当前培育计划 -->
+    <section v-if="currentPlan" class="px-4 mb-6">
+      <h2 class="section-title">当前培育计划</h2>
+      <div
+        class="card active:bg-slate-700/50 transition-colors cursor-pointer"
+        @click="router.push(`/breeding/${currentPlan.id}`)"
+      >
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-semibold text-slate-100">{{ currentPlan.name }}</span>
+          <span class="badge badge-info">{{ currentPlan.accountName }}</span>
+        </div>
+        <div class="flex gap-4 text-sm text-slate-400">
+          <span>{{ planGroups.length }}组</span>
+          <span>{{ planEggs.length }}蛋</span>
+          <span class="text-amber-400">{{ hatchingEggs.length }}孵蛋中</span>
+        </div>
       </div>
     </section>
 
-    <section class="intro">
-      <el-alert type="info" :closable="false" show-icon>
-        <template #title>什么是「大块头」？</template>
-        当精灵蛋的 <b>身高</b> 与 <b>体重</b> 同时达到该物种的阈值上限（体重取前
-        2%），即可获得「大块头」奖牌。单项达标不算，两项都要够才行。
-      </el-alert>
+    <!-- 快捷操作 -->
+    <section class="px-4 mb-6">
+      <h2 class="section-title">快捷操作</h2>
+      <div class="grid grid-cols-2 gap-3">
+        <button
+          class="card flex flex-col items-center gap-2 active:bg-slate-700/50 transition-colors"
+          @click="router.push('/list')"
+        >
+          <span class="text-2xl">🔍</span>
+          <span class="text-sm font-medium text-slate-200">精灵查询</span>
+        </button>
+        <button
+          class="card flex flex-col items-center gap-2 active:bg-slate-700/50 transition-colors"
+          @click="router.push('/check')"
+        >
+          <span class="text-2xl">📏</span>
+          <span class="text-sm font-medium text-slate-200">大块头检测</span>
+        </button>
+      </div>
     </section>
 
-    <section class="popular">
-      <div class="section-title">
-        <span>🔥 热门精灵</span>
-        <el-button text type="primary" @click="router.push('/list')">
-          查看全部 →
-        </el-button>
+    <!-- 热门精灵 -->
+    <section class="px-4 mb-6">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="section-title mb-0">热门精灵</h2>
+        <button @click="router.push('/list')" class="text-xs text-violet-400">查看全部 →</button>
       </div>
-      <el-row :gutter="16">
-        <el-col
+      <div class="grid grid-cols-2 gap-3">
+        <div
           v-for="p in popular"
           :key="p.form.formId"
-          :xs="12"
-          :sm="8"
-          :md="8"
-          :lg="6"
-          :xl="6"
+          class="card flex items-center gap-3 active:bg-slate-700/50 transition-colors cursor-pointer"
+          @click="router.push(`/detail/${p.form.formId}`)"
         >
-          <PokemonCard :item="p" class="card-item" />
-        </el-col>
-      </el-row>
+          <PokemonAvatar :name="p.form.name" :size="40" />
+          <div class="min-w-0 flex-1">
+            <div class="font-medium text-sm text-slate-100 truncate">{{ p.form.name }}</div>
+            <div class="text-xs text-slate-400">{{ p.family.types[0] }}</div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- 底部声明 -->
+    <footer class="px-4 py-6 text-center">
+      <p class="text-xs text-slate-500">数据仅供参考 · 阈值以游戏实际为准</p>
+    </footer>
   </div>
 </template>
-
-<style scoped>
-.hero {
-  text-align: center;
-  padding: 32px 0 16px;
-}
-.hero h1 {
-  font-size: 28px;
-  margin: 0 0 8px;
-}
-.subtitle {
-  color: var(--el-text-color-secondary);
-  margin: 0 0 24px;
-}
-.search-wrap {
-  display: flex;
-  justify-content: center;
-}
-.quick-links {
-  margin-top: 16px;
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-.intro {
-  margin: 24px auto;
-  max-width: 760px;
-}
-.popular {
-  margin-top: 32px;
-}
-.section-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  font-size: 18px;
-  font-weight: 600;
-}
-.card-item {
-  margin-bottom: 16px;
-}
-</style>

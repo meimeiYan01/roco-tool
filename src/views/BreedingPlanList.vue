@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessageBox, ElMessage } from 'element-plus'
-import { getAllPlans, createPlan, updatePlan, deletePlan } from '../services/breedingService'
+import { ElMessage } from 'element-plus'
+import { getAllPlans, createPlan, deletePlan } from '../services/breedingService'
 import type { BreedingPlan } from '../types'
+import PageHeader from '../components/PageHeader.vue'
 
 const router = useRouter()
 const plans = getAllPlans()
 
-// ── 新建/编辑计划弹窗 ──
 const dialogVisible = ref(false)
-const editingId = ref<number | null>(null) // null=新建，有值=编辑
-const form = reactive({
-  name: '',
-  accountName: '',
-})
+const editingId = ref<number | null>(null)
+const form = reactive({ name: '', accountName: '' })
 
 function openCreate() {
   editingId.value = null
@@ -23,145 +20,75 @@ function openCreate() {
   dialogVisible.value = true
 }
 
-function openEdit(plan: BreedingPlan) {
-  editingId.value = plan.id
-  form.name = plan.name
-  form.accountName = plan.accountName
-  dialogVisible.value = true
-}
-
-const canSave = () => form.name.trim() && form.accountName.trim()
-
 function onSave() {
-  if (!canSave()) return
-
-  if (editingId.value !== null) {
-    updatePlan(editingId.value, {
-      name: form.name,
-      accountName: form.accountName,
-    })
-    ElMessage.success('计划已更新')
-  } else {
-    const plan = createPlan({
-      name: form.name,
-      accountName: form.accountName,
-    })
-    ElMessage.success('计划已创建')
-    dialogVisible.value = false
-    router.push(`/breeding/${plan.id}`)
-    return
-  }
+  if (!form.name.trim() || !form.accountName.trim()) return
+  const plan = createPlan({ name: form.name, accountName: form.accountName })
+  ElMessage.success('计划已创建')
   dialogVisible.value = false
+  router.push(`/breeding/${plan.id}`)
 }
 
 function onDelete(plan: BreedingPlan) {
-  ElMessageBox.confirm(
-    `确定删除「${plan.name}」吗？该计划下的所有方向、小组、蛋记录和关联个体都会被删除。`,
-    '删除确认',
-    { type: 'warning', confirmButtonText: '删除', cancelButtonText: '取消' },
-  )
-    .then(() => {
-      deletePlan(plan.id)
-      ElMessage.success('计划已删除')
-    })
-    .catch(() => {})
-}
-
-function goToDetail(id: number) {
-  router.push(`/breeding/${id}`)
+  if (confirm(`确定删除「${plan.name}」吗？`)) {
+    deletePlan(plan.id)
+    ElMessage.success('已删除')
+  }
 }
 </script>
 
 <template>
-  <div class="breeding-list">
-    <div class="page-header">
-      <div>
-        <h2>培育计划</h2>
-        <p class="subtitle">选择一个计划查看培育详情</p>
-      </div>
-      <el-button type="primary" @click="openCreate">新建计划</el-button>
-    </div>
-    <el-row :gutter="20">
-      <el-col v-for="plan in plans" :key="plan.id" :xs="24" :sm="12" :md="8">
-        <el-card class="plan-card" shadow="hover">
-          <div class="plan-card-body" @click="goToDetail(plan.id)">
-            <h3>{{ plan.name }}</h3>
-            <div class="plan-info">
-              <span>账号：{{ plan.accountName }}</span>
-            </div>
-          </div>
-          <div class="plan-card-actions">
-            <el-button text size="small" @click="openEdit(plan)">编辑</el-button>
-            <el-button text size="small" type="danger" @click="onDelete(plan)">删除</el-button>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-empty v-if="plans.length === 0" description="暂无培育计划，点击右上角新建" />
+  <div>
+    <PageHeader title="培育计划">
+      <template #actions>
+        <button @click="openCreate" class="text-xs text-violet-400 font-medium">＋ 新建</button>
+      </template>
+    </PageHeader>
 
-    <!-- 新建/编辑计划弹窗 -->
-    <el-dialog
-      v-model="dialogVisible"
-      :title="editingId !== null ? '编辑计划' : '新建计划'"
-      width="480px"
-    >
-      <el-form :model="form" label-width="80px">
-        <el-form-item label="计划名" required>
-          <el-input v-model="form.name" placeholder="如：罗隐奖牌培育计划" />
-        </el-form-item>
-        <el-form-item label="账号" required>
-          <el-input v-model="form.accountName" placeholder="如：账号1" />
-        </el-form-item>
-      </el-form>
+    <div class="px-4 py-4 space-y-3">
+      <div
+        v-for="plan in plans"
+        :key="plan.id"
+        class="card active:bg-slate-700/50 transition-colors cursor-pointer"
+        @click="router.push(`/breeding/${plan.id}`)"
+      >
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="font-semibold text-slate-100">{{ plan.name }}</div>
+            <div class="text-xs text-slate-400 mt-0.5">{{ plan.accountName }}</div>
+          </div>
+          <button
+            @click.stop="onDelete(plan)"
+            class="text-xs text-red-400 px-2 py-1 rounded-lg active:bg-red-500/10"
+          >
+            删除
+          </button>
+        </div>
+      </div>
+
+      <div v-if="plans.length === 0" class="text-center py-16">
+        <p class="text-slate-400 mb-4">还没有培育计划</p>
+        <button class="btn btn-primary w-auto px-8" @click="openCreate">创建计划</button>
+      </div>
+    </div>
+
+    <!-- 新建弹窗 -->
+    <el-dialog v-model="dialogVisible" title="新建培育计划" width="90%" :close-on-click-modal="false">
+      <div class="space-y-4">
+        <div>
+          <label class="text-sm text-slate-400 mb-1.5 block">计划名</label>
+          <input v-model="form.name" class="input-field" placeholder="如：罗隐奖牌培育计划" />
+        </div>
+        <div>
+          <label class="text-sm text-slate-400 mb-1.5 block">账号</label>
+          <input v-model="form.accountName" class="input-field" placeholder="如：账号1" />
+        </div>
+      </div>
       <template #footer>
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" :disabled="!canSave()" @click="onSave">保存</el-button>
+        <div class="flex gap-3">
+          <button class="btn btn-secondary flex-1" @click="dialogVisible = false">取消</button>
+          <button class="btn btn-primary flex-1" @click="onSave" :disabled="!form.name.trim() || !form.accountName.trim()">创建</button>
+        </div>
       </template>
     </el-dialog>
   </div>
 </template>
-
-<style scoped>
-.page-header {
-  margin-bottom: 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.page-header h2 {
-  margin: 0 0 4px 0;
-}
-.subtitle {
-  color: var(--el-text-color-secondary);
-  font-size: 14px;
-  margin: 0;
-}
-.plan-card {
-  margin-bottom: 20px;
-  transition: transform 0.2s;
-}
-.plan-card-body {
-  cursor: pointer;
-}
-.plan-card-body:hover {
-  color: var(--el-color-primary);
-}
-.plan-card-body h3 {
-  margin: 0 0 12px 0;
-}
-.plan-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  color: var(--el-text-color-secondary);
-  font-size: 14px;
-}
-.plan-card-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 4px;
-  margin-top: 8px;
-  border-top: 1px solid var(--el-border-color-lighter);
-  padding-top: 8px;
-}
-</style>

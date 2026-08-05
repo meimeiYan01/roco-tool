@@ -1,70 +1,84 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import SearchBar from '@/components/SearchBar.vue'
-import PokemonCard from '@/components/PokemonCard.vue'
-import { searchForms, getAllFormsWithFamily } from '@/services/pokemonService'
+import { searchForms, getAllFormsWithFamily } from '../services/pokemonService'
+import PageHeader from '../components/PageHeader.vue'
+import PokemonAvatar from '../components/PokemonAvatar.vue'
 
 const route = useRoute()
 const router = useRouter()
 
-const keyword = computed(() => (route.query.q as string) ?? '')
+const keyword = computed(() => (route.query.q as string) || '')
 const list = computed(() =>
-  keyword.value ? searchForms(keyword.value) : getAllFormsWithFamily()
+  keyword.value ? searchForms(keyword.value) : getAllFormsWithFamily(),
 )
 
-function onSearch(kw: string) {
-  router.push({ path: '/list', query: { q: kw } })
+function onSearch(e: Event) {
+  const input = e.target as HTMLInputElement
+  router.replace({ query: input.value ? { q: input.value } : {} })
+}
+
+function rarityClass(rarity: string) {
+  switch (rarity) {
+    case '传说': return 'badge-danger'
+    case '史诗': return 'badge-warning'
+    case '稀有': return 'badge-success'
+    default: return 'badge-neutral'
+  }
 }
 </script>
 
 <template>
-  <div class="list-page">
-    <div class="list-header">
-      <h2>
-        {{ keyword ? `搜索：“${keyword}”` : '全部精灵' }}
-        <small>（共 {{ list.length }} 只）</small>
-      </h2>
-      <SearchBar @search="onSearch" />
+  <div>
+    <PageHeader title="精灵查询" />
+
+    <!-- 搜索框 -->
+    <div class="px-4 py-3 sticky top-12 z-30 bg-slate-900">
+      <input
+        type="text"
+        class="input-field"
+        placeholder="搜索精灵名称、系别..."
+        :value="keyword"
+        @input="onSearch"
+      />
     </div>
 
-    <el-empty v-if="list.length === 0" description="没有匹配的精灵，换个关键词试试" />
+    <!-- 结果计数 -->
+    <div class="px-4 mb-2">
+      <span class="text-xs text-slate-400">
+        {{ keyword ? `搜索："${keyword}"` : '全部精灵' }}（共 {{ list.length }} 只）
+      </span>
+    </div>
 
-    <el-row v-else :gutter="16">
-      <el-col
+    <!-- 精灵列表 -->
+    <div class="px-4 space-y-3 pb-4">
+      <div
         v-for="p in list"
         :key="p.form.formId"
-        :xs="12"
-        :sm="8"
-        :md="8"
-        :lg="6"
-        :xl="6"
+        class="card flex items-center gap-4 active:bg-slate-700/50 transition-colors cursor-pointer"
+        @click="router.push(`/detail/${p.form.formId}`)"
       >
-        <PokemonCard :item="p" class="card-item" />
-      </el-col>
-    </el-row>
+        <PokemonAvatar :name="p.form.name" :size="48" />
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="font-semibold text-slate-100">{{ p.form.name }}</span>
+            <span class="badge" :class="rarityClass(p.family.rarity)">{{ p.family.rarity }}</span>
+          </div>
+          <div class="text-xs text-slate-400">
+            {{ p.family.familyName }} · {{ p.family.types.join('·') }}
+          </div>
+          <div class="text-xs text-slate-500 mt-0.5">
+            阶段{{ p.form.stage }}
+          </div>
+        </div>
+        <svg class="w-4 h-4 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+
+      <div v-if="list.length === 0" class="text-center py-12">
+        <p class="text-slate-400">没有找到匹配的精灵</p>
+      </div>
+    </div>
   </div>
 </template>
-
-<style scoped>
-.list-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.list-header h2 {
-  font-size: 20px;
-  margin: 0;
-}
-.list-header small {
-  color: var(--el-text-color-secondary);
-  font-weight: 400;
-  font-size: 14px;
-}
-.card-item {
-  margin-bottom: 16px;
-}
-</style>

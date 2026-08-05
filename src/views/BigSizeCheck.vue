@@ -1,263 +1,193 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { getAllFormsWithFamily, getFamilyOfForm } from '@/services/pokemonService'
-import { getEggSizeRuleByFamilyId } from '@/services/eggSizeService'
-import { calculateEggSize } from '@/utils/bigSizeCalculator'
-import type { EggSizeResult } from '@/types'
+import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { getAllFormsWithFamily, getFamilyOfForm } from '../services/pokemonService'
+import { getEggSizeRuleByFamilyId } from '../services/eggSizeService'
+import { calculateEggSize } from '../utils/bigSizeCalculator'
+import type { EggSizeResult } from '../types'
+import PageHeader from '../components/PageHeader.vue'
 
 const route = useRoute()
-const router = useRouter()
 
-const forms = getAllFormsWithFamily()
-const selectedFormId = ref<number | undefined>(undefined)
-const height = ref<number | undefined>(undefined)
-const weight = ref<number | undefined>(undefined)
+const formOptions = getAllFormsWithFamily()
+const selectedFormId = ref<number | undefined>()
+const height = ref(0)
+const weight = ref(0)
 const result = ref<EggSizeResult | null>(null)
 
 const rule = computed(() => {
-  if (selectedFormId.value === undefined) return undefined
+  if (!selectedFormId.value) return undefined
   const family = getFamilyOfForm(selectedFormId.value)
   return family ? getEggSizeRuleByFamilyId(family.familyId) : undefined
 })
 
-// 从详情页带入 formId 预填
 onMounted(() => {
-  const qid = route.query.formId
-  if (qid) selectedFormId.value = Number(qid)
+  const q = route.query.formId
+  if (q) selectedFormId.value = Number(q)
 })
 
 function detect() {
-  if (selectedFormId.value === undefined || height.value == null || weight.value == null) {
-    return
-  }
-  const r = rule.value
-  if (!r) {
-    result.value = null
-    return
-  }
-  result.value = calculateEggSize(height.value, weight.value, r)
+  if (!rule.value || height.value <= 0 || weight.value <= 0) return
+  result.value = calculateEggSize(height.value, weight.value, rule.value)
 }
 
-function reset() {
+function clearResult() {
   result.value = null
 }
 
-function ratePercent(rate: number): number {
-  return Math.min(rate, 1) * 100
+function verdictLabel(v: string) {
+  if (v === 'big') return '大块头！'
+  if (v === 'small') return '小不点！'
+  return '普通体型'
 }
 
-// 三态结论展示
-const verdictMeta = computed(() => {
-  if (!result.value) return null
-  switch (result.value.verdict) {
-    case 'big':
-      return { icon: 'success' as const, title: '✅ 是大块头！', sub: '身高与体重均达大块头准入线，恭喜获得大块头奖牌' }
-    case 'small':
-      return { icon: 'info' as const, title: '🟢 是小不点！', sub: '身高与体重均在小不点准入线内，恭喜获得小不点奖牌' }
-    default:
-      return { icon: 'warning' as const, title: '⚪ 普通体型', sub: '既未达大块头也未达小不点，属于普通蛋体型' }
-  }
-})
+function verdictColor(v: string) {
+  if (v === 'big') return 'text-emerald-400'
+  if (v === 'small') return 'text-amber-400'
+  return 'text-slate-400'
+}
 
-const formOptions = forms.map(({ form, family }) => ({
-  label: `${form.name}（${family.familyName}·阶段${form.stage}）`,
-  value: form.formId,
-}))
+function verdictBg(v: string) {
+  if (v === 'big') return 'bg-emerald-500/20'
+  if (v === 'small') return 'bg-amber-500/20'
+  return 'bg-slate-600/30'
+}
 </script>
 
 <template>
-  <div class="check-page">
-    <h2>📐 蛋体型检测</h2>
-    <p class="hint">填入精灵、蛋的实测身高与体重，立即判断是大块头、小不点还是普通体型。</p>
+  <div>
+    <PageHeader title="大块头检测" :back="true" />
 
-    <el-card>
-      <el-form label-width="96px" label-position="right">
-        <el-form-item label="选择精灵">
-          <el-select
-            v-model="selectedFormId"
-            placeholder="请选择精灵（家族·阶段）"
-            filterable
-            style="width: 100%"
-            @change="reset"
-          >
-            <el-option
-              v-for="opt in formOptions"
-              :key="opt.value"
-              :label="opt.label"
-              :value="opt.value"
-            />
-          </el-select>
-        </el-form-item>
-
-        <el-alert
-          v-if="rule"
-          type="info"
-          :closable="false"
-          class="rule-tip"
-        >
-          大块头准入：身高 ≥ <b>{{ rule.bigSizeRule.heightMin }} m</b> 且 体重 ≥
-          <b>{{ rule.bigSizeRule.weightMin }} kg</b>；小不点准入：身高 ≤
-          <b>{{ rule.smallSizeRule.heightMax }} m</b> 且 体重 ≤
-          <b>{{ rule.smallSizeRule.weightMax }} kg</b>
-        </el-alert>
-
-        <el-form-item label="蛋身高 (m)">
-          <el-input-number
-            v-model="height"
-            :min="0"
-            :step="0.01"
-            :precision="2"
-            controls-position="right"
-            style="width: 100%"
-            @change="reset"
-          />
-        </el-form-item>
-        <el-form-item label="蛋体重 (kg)">
-          <el-input-number
-            v-model="weight"
-            :min="0"
-            :step="0.1"
-            :precision="2"
-            controls-position="right"
-            style="width: 100%"
-            @change="reset"
-          />
-        </el-form-item>
-
-        <el-form-item>
-          <el-button
-            type="primary"
-            :disabled="!selectedFormId || height == null || weight == null"
-            @click="detect"
-          >
-            检测
-          </el-button>
-          <el-button @click="reset">清空结果</el-button>
-        </el-form-item>
-      </el-form>
-    </el-card>
-
-    <el-card v-if="result && verdictMeta" class="result-card">
-      <el-result
-        :icon="verdictMeta.icon"
-        :title="verdictMeta.title"
-        :sub-title="verdictMeta.sub"
-      />
-
-      <div class="metrics">
-        <div class="metric">
-          <div class="metric-label">大块头完成度</div>
-          <el-progress
-            type="dashboard"
-            :percentage="Math.round(result.score * 100)"
-            :color="result.isBigSize ? '#67c23a' : '#e6a23c'"
-          />
+    <div class="px-4 py-6 space-y-6">
+      <!-- 输入卡片 -->
+      <div class="card space-y-4">
+        <div>
+          <label class="text-sm text-slate-400 mb-1.5 block">选择精灵</label>
+          <select v-model="selectedFormId" class="input-field">
+            <option :value="undefined" disabled>请选择精灵</option>
+            <option
+              v-for="f in formOptions"
+              :key="f.form.formId"
+              :value="f.form.formId"
+            >
+              {{ f.form.name }}（{{ f.family.familyName }}·阶段{{ f.form.stage }}）
+            </option>
+          </select>
         </div>
 
-        <div class="metric bars">
-          <div class="bar-item">
-            <div class="bar-label">
-              身高达标率（大块头方向）
-              <span class="bar-rate">{{ result.heightRate.toFixed(2) }}×</span>
-            </div>
-            <el-progress
-              :percentage="ratePercent(result.heightRate)"
-              :status="result.heightRate >= 1 ? 'success' : ''"
-              :text-inside="true"
-              :stroke-width="18"
-            />
-            <div
-              class="diff"
-              :class="result.heightDiff >= 0 ? 'ok' : 'fail'"
-            >
-              距大块头准入线 {{ result.heightDiff >= 0 ? '超出' : '还差' }}
-              {{ Math.abs(result.heightDiff) }} m
+        <!-- 规则提示 -->
+        <div v-if="rule" class="bg-slate-700/50 rounded-xl p-3 text-xs text-slate-400 space-y-1">
+          <div>大块头：身高 ≥ {{ rule.bigSizeRule.heightMin }}m 且 体重 ≥ {{ rule.bigSizeRule.weightMin }}kg</div>
+          <div>小不点：身高 ≤ {{ rule.smallSizeRule.heightMax }}m 且 体重 ≤ {{ rule.smallSizeRule.weightMax }}kg</div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-sm text-slate-400 mb-1.5 block">身高 (m)</label>
+            <input v-model.number="height" type="number" step="0.01" min="0" class="input-field" placeholder="0.00" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400 mb-1.5 block">体重 (kg)</label>
+            <input v-model.number="weight" type="number" step="0.1" min="0" class="input-field" placeholder="0.0" />
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button class="btn btn-primary flex-1" @click="detect" :disabled="!rule || height <= 0 || weight <= 0">
+            检测
+          </button>
+          <button v-if="result" class="btn btn-secondary w-24" @click="clearResult">
+            清空
+          </button>
+        </div>
+      </div>
+
+      <!-- 结果卡片 -->
+      <div v-if="result" class="card space-y-4">
+        <!-- 判定结果 -->
+        <div class="text-center py-4" :class="verdictBg(result.verdict)">
+          <div class="text-2xl font-bold" :class="verdictColor(result.verdict)">
+            {{ verdictLabel(result.verdict) }}
+          </div>
+        </div>
+
+        <!-- 完成度 -->
+        <div v-if="result.verdict !== 'small'" class="text-center">
+          <div class="text-xs text-slate-400 mb-2">大块头完成度</div>
+          <div class="relative w-24 h-24 mx-auto">
+            <svg class="w-24 h-24 -rotate-90" viewBox="0 0 36 36">
+              <path
+                class="text-slate-700"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="3"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <path
+                class="text-violet-500 transition-all duration-500"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="3"
+                :stroke-dasharray="`${Math.min(result.score * 100, 100)}, 100`"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="text-xl font-bold text-slate-100">{{ Math.round(result.score * 100) }}%</span>
             </div>
           </div>
+        </div>
 
-          <div class="bar-item">
-            <div class="bar-label">
-              体重达标率（大块头方向）
-              <span class="bar-rate">{{ result.weightRate.toFixed(2) }}×</span>
+        <!-- 达标率 -->
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">身高达标率</span>
+              <span :class="result.heightRate >= 1 ? 'text-emerald-400' : 'text-red-400'">
+                {{ Math.round(result.heightRate * 100) }}%
+              </span>
             </div>
-            <el-progress
-              :percentage="ratePercent(result.weightRate)"
-              :status="result.weightRate >= 1 ? 'success' : ''"
-              :text-inside="true"
-              :stroke-width="18"
-            />
-            <div
-              class="diff"
-              :class="result.weightDiff >= 0 ? 'ok' : 'fail'"
-            >
-              距大块头准入线 {{ result.weightDiff >= 0 ? '超出' : '还差' }}
-              {{ Math.abs(result.weightDiff) }} kg
+            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+              <div
+                class="h-full rounded-full transition-all duration-500"
+                :class="result.heightRate >= 1 ? 'bg-emerald-500' : 'bg-violet-500'"
+                :style="{ width: `${Math.min(result.heightRate * 100, 100)}%` }"
+              />
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">体重达标率</span>
+              <span :class="result.weightRate >= 1 ? 'text-emerald-400' : 'text-red-400'">
+                {{ Math.round(result.weightRate * 100) }}%
+              </span>
+            </div>
+            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+              <div
+                class="h-full rounded-full transition-all duration-500"
+                :class="result.weightRate >= 1 ? 'bg-emerald-500' : 'bg-violet-500'"
+                :style="{ width: `${Math.min(result.weightRate * 100, 100)}%` }"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- 差值 -->
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <div class="bg-slate-700/50 rounded-xl p-3 text-center">
+            <div class="text-xs text-slate-400 mb-1">身高差值</div>
+            <div class="text-lg font-semibold" :class="result.heightDiff >= 0 ? 'text-emerald-400' : 'text-red-400'">
+              {{ result.heightDiff >= 0 ? '+' : '' }}{{ result.heightDiff }}m
+            </div>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-3 text-center">
+            <div class="text-xs text-slate-400 mb-1">体重差值</div>
+            <div class="text-lg font-semibold" :class="result.weightDiff >= 0 ? 'text-emerald-400' : 'text-red-400'">
+              {{ result.weightDiff >= 0 ? '+' : '' }}{{ result.weightDiff }}kg
             </div>
           </div>
         </div>
       </div>
-    </el-card>
+    </div>
   </div>
 </template>
-
-<style scoped>
-.check-page {
-  max-width: 720px;
-  margin: 0 auto;
-}
-.check-page h2 {
-  margin: 0 0 4px;
-}
-.hint {
-  color: var(--el-text-color-secondary);
-  margin: 0 0 16px;
-}
-.rule-tip {
-  margin-bottom: 16px;
-}
-.result-card {
-  margin-top: 20px;
-}
-.metrics {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding-top: 8px;
-}
-.metric-label {
-  text-align: center;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-.bars {
-  flex: 1;
-  min-width: 280px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.bar-item {
-  width: 100%;
-}
-.bar-label {
-  margin-bottom: 6px;
-  font-size: 13px;
-}
-.bar-rate {
-  color: var(--el-text-color-secondary);
-  margin-left: 6px;
-}
-.diff {
-  margin-top: 6px;
-  font-size: 13px;
-}
-.diff.ok {
-  color: #67c23a;
-}
-.diff.fail {
-  color: #f56c6c;
-}
-</style>
