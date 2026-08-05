@@ -11,7 +11,6 @@ const route = useRoute()
 
 const formOptions = getAllFormsWithFamily()
 const selectedFormId = ref<number | undefined>()
-const height = ref(0)
 const weight = ref(0)
 const result = ref<EggSizeResult | null>(null)
 
@@ -27,8 +26,8 @@ onMounted(() => {
 })
 
 function detect() {
-  if (!rule.value || height.value <= 0 || weight.value <= 0) return
-  result.value = calculateEggSize(height.value, weight.value, rule.value)
+  if (!rule.value || weight.value <= 0) return
+  result.value = calculateEggSize(0, weight.value, rule.value)
 }
 
 function clearResult() {
@@ -77,23 +76,17 @@ function verdictBg(v: string) {
 
         <!-- 规则提示 -->
         <div v-if="rule" class="bg-slate-700/50 rounded-xl p-3 text-xs text-slate-400 space-y-1">
-          <div>大块头：身高 ≥ {{ rule.bigSizeRule.heightMin }}m 且 体重 ≥ {{ rule.bigSizeRule.weightMin }}kg</div>
-          <div>小不点：身高 ≤ {{ rule.smallSizeRule.heightMax }}m 且 体重 ≤ {{ rule.smallSizeRule.weightMax }}kg</div>
+          <div>大块头：体重 ≥ {{ rule.bigSize.weightMin }}kg</div>
+          <div>小不点：体重 ≤ {{ rule.smallSize.weightMax }}kg</div>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="text-sm text-slate-400 mb-1.5 block">身高 (m)</label>
-            <input v-model.number="height" type="number" step="0.01" min="0" class="input-field" placeholder="0.00" />
-          </div>
-          <div>
-            <label class="text-sm text-slate-400 mb-1.5 block">体重 (kg)</label>
-            <input v-model.number="weight" type="number" step="0.1" min="0" class="input-field" placeholder="0.0" />
-          </div>
+        <div>
+          <label class="text-sm text-slate-400 mb-1.5 block">体重 (kg)</label>
+          <input v-model.number="weight" type="number" step="0.1" min="0" class="input-field" placeholder="输入蛋的体重" />
         </div>
 
         <div class="flex gap-3">
-          <button class="btn btn-primary flex-1" @click="detect" :disabled="!rule || height <= 0 || weight <= 0">
+          <button class="btn btn-primary flex-1" @click="detect" :disabled="!rule || weight <= 0">
             检测
           </button>
           <button v-if="result" class="btn btn-secondary w-24" @click="clearResult">
@@ -138,53 +131,28 @@ function verdictBg(v: string) {
           </div>
         </div>
 
-        <!-- 达标率 -->
-        <div class="space-y-3">
-          <div>
-            <div class="flex justify-between text-xs mb-1">
-              <span class="text-slate-400">身高达标率</span>
-              <span :class="result.heightRate >= 1 ? 'text-emerald-400' : 'text-red-400'">
-                {{ Math.round(result.heightRate * 100) }}%
-              </span>
-            </div>
-            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div
-                class="h-full rounded-full transition-all duration-500"
-                :class="result.heightRate >= 1 ? 'bg-emerald-500' : 'bg-violet-500'"
-                :style="{ width: `${Math.min(result.heightRate * 100, 100)}%` }"
-              />
-            </div>
+        <!-- 体重达标率 -->
+        <div>
+          <div class="flex justify-between text-xs mb-1">
+            <span class="text-slate-400">体重达标率</span>
+            <span :class="result.weightRate >= 1 ? 'text-emerald-400' : 'text-red-400'">
+              {{ Math.round(result.weightRate * 100) }}%
+            </span>
           </div>
-          <div>
-            <div class="flex justify-between text-xs mb-1">
-              <span class="text-slate-400">体重达标率</span>
-              <span :class="result.weightRate >= 1 ? 'text-emerald-400' : 'text-red-400'">
-                {{ Math.round(result.weightRate * 100) }}%
-              </span>
-            </div>
-            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div
-                class="h-full rounded-full transition-all duration-500"
-                :class="result.weightRate >= 1 ? 'bg-emerald-500' : 'bg-violet-500'"
-                :style="{ width: `${Math.min(result.weightRate * 100, 100)}%` }"
-              />
-            </div>
+          <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+            <div
+              class="h-full rounded-full transition-all duration-500"
+              :class="result.weightRate >= 1 ? 'bg-emerald-500' : 'bg-violet-500'"
+              :style="{ width: `${Math.min(result.weightRate * 100, 100)}%` }"
+            />
           </div>
         </div>
 
         <!-- 差值 -->
-        <div class="grid grid-cols-2 gap-3 pt-2">
-          <div class="bg-slate-700/50 rounded-xl p-3 text-center">
-            <div class="text-xs text-slate-400 mb-1">身高差值</div>
-            <div class="text-lg font-semibold" :class="result.heightDiff >= 0 ? 'text-emerald-400' : 'text-red-400'">
-              {{ result.heightDiff >= 0 ? '+' : '' }}{{ result.heightDiff }}m
-            </div>
-          </div>
-          <div class="bg-slate-700/50 rounded-xl p-3 text-center">
-            <div class="text-xs text-slate-400 mb-1">体重差值</div>
-            <div class="text-lg font-semibold" :class="result.weightDiff >= 0 ? 'text-emerald-400' : 'text-red-400'">
-              {{ result.weightDiff >= 0 ? '+' : '' }}{{ result.weightDiff }}kg
-            </div>
+        <div class="bg-slate-700/50 rounded-xl p-3 text-center">
+          <div class="text-xs text-slate-400 mb-1">距大块头准入线</div>
+          <div class="text-lg font-semibold" :class="result.weightDiff >= 0 ? 'text-emerald-400' : 'text-red-400'">
+            {{ result.weightDiff >= 0 ? '+' : '' }}{{ result.weightDiff }}kg
           </div>
         </div>
       </div>

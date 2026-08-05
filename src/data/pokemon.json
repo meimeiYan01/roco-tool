@@ -1,26 +1,3848 @@
 [
   {
-    "familyId": 580,
-    "familyName": "阿米亚特家族",
-    "types": ["恶魔系"],
-    "rarity": "稀有",
-    "eggImage": "",
-    "description": "",
-    "forms": [
-      { "formId": 5801, "name": "阿米亚特", "stage": 1, "avatar": "" },
-      { "formId": 5802, "name": "阿米樱", "stage": 2, "avatar": "" },
-      { "formId": 5803, "name": "罗隐", "stage": 3, "avatar": "" }
-    ]
-  },
-  {
-    "familyId": 581,
-    "familyName": "火神家族",
-    "types": ["火系"],
+    "familyId": 1,
+    "familyName": "雅丹暴",
+    "types": [
+      "火系"
+    ],
     "rarity": "普通",
     "eggImage": "",
     "description": "",
+    "eggShell": "火焰蛋",
+    "hasVariant": true,
     "forms": [
-      { "formId": 5811, "name": "火神", "stage": 1, "avatar": "" }
+      {
+        "formId": 11,
+        "name": "火红尾",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 12,
+        "name": "雅丹暴",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 2,
+    "familyName": "蒲公英娃娃",
+    "types": [
+      "草系",
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "蒲公英蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 21,
+        "name": "蒲公英",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 22,
+        "name": "蒲公英娃娃",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 3,
+    "familyName": "星光狮（星光）",
+    "types": [
+      "电系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小星光（星光）",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 31,
+        "name": "小星光（星光）",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 32,
+        "name": "星光狮（星光）",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 4,
+    "familyName": "星光狮（月光）",
+    "types": [
+      "电系",
+      "光系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小星光（月光）",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 41,
+        "name": "小星光（月光）",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 42,
+        "name": "星光狮（月光）",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 5,
+    "familyName": "小皮球",
+    "types": [
+      "电系",
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "粉粉星",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 51,
+        "name": "小皮球",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 6,
+    "familyName": "公平鸽",
+    "types": [
+      "普通系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "公平鸽",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 61,
+        "name": "公平鸽",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 7,
+    "familyName": "嘟嘟锅",
+    "types": [
+      "毒系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "嘟嘟蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 71,
+        "name": "嘟嘟保",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 72,
+        "name": "嘟嘟锅",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 8,
+    "familyName": "獠牙猪",
+    "types": [
+      "冰系",
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "呼呼猪",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 81,
+        "name": "獠牙猪",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 9,
+    "familyName": "立方人",
+    "types": [
+      "机械系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "机械方方",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 91,
+        "name": "机械方方",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 92,
+        "name": "立方人",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 10,
+    "familyName": "锐光蚊",
+    "types": [
+      "恶系",
+      "光系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "啼光鸦鸦",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 101,
+        "name": "锐光蚊",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 11,
+    "familyName": "燃薪虫",
+    "types": [
+      "火系",
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "柴道虫",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 111,
+        "name": "燃薪虫",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 12,
+    "familyName": "夜寂",
+    "types": [
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "空空颅",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 121,
+        "name": "夜寂",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 13,
+    "familyName": "利灯鱼",
+    "types": [
+      "水系",
+      "电系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "双灯鱼",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 131,
+        "name": "利灯鱼",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 14,
+    "familyName": "爵士鹿",
+    "types": [
+      "电系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "电动长颈鹿",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 141,
+        "name": "爵士鹿",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 15,
+    "familyName": "绒光优优",
+    "types": [
+      "地系",
+      "光系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "优优",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 151,
+        "name": "绒光优优",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 16,
+    "familyName": "未显示",
+    "types": [
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "果冻",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 161,
+        "name": "抹茶布丁/烤岩布丁",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 162,
+        "name": "未显示",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 17,
+    "familyName": "怒目小猫",
+    "types": [
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小心猫蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 171,
+        "name": "小心猫",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 172,
+        "name": "怒目小猫",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 18,
+    "familyName": "花衣蝶",
+    "types": [
+      "草系",
+      "虫系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小草虫",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 181,
+        "name": "小草虫",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 182,
+        "name": "花衣蝶",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 19,
+    "familyName": "高脚鸽",
+    "types": [
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小鸽",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 191,
+        "name": "小鸽",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 192,
+        "name": "高脚鸽",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 20,
+    "familyName": "龙鱼",
+    "types": [
+      "水系",
+      "龙系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "豆丁鱼",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 201,
+        "name": "豆丁鱼",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 202,
+        "name": "龙鱼",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 21,
+    "familyName": "斑泉",
+    "types": [
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "斑斑",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 211,
+        "name": "斑斑",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 212,
+        "name": "斑泉",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 22,
+    "familyName": "逾地鼠",
+    "types": [
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "地鼠（枯水期）",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 221,
+        "name": "地鼠（枯水期）",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 222,
+        "name": "逾地鼠",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 23,
+    "familyName": "逾地鼠",
+    "types": [
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "地鼠（储水期）",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 231,
+        "name": "地鼠（储水期）",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 232,
+        "name": "逾地鼠",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 24,
+    "familyName": "炮米花",
+    "types": [
+      "草系",
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "苞米籽",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 241,
+        "name": "苞米籽",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 242,
+        "name": "炮米花",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 25,
+    "familyName": "流明坎德拉",
+    "types": [
+      "火系",
+      "光系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "守夜虫",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 251,
+        "name": "守夜虫",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 252,
+        "name": "流明坎德拉",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 26,
+    "familyName": "深渊蛙",
+    "types": [
+      "水系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "十字蝌蚪",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 261,
+        "name": "十字蝌蚪",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 262,
+        "name": "深渊蛙",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 27,
+    "familyName": "半朽蜜果灵",
+    "types": [
+      "幽系",
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "蜜果骇",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 271,
+        "name": "蜜果骇",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 272,
+        "name": "半朽蜜果灵",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 28,
+    "familyName": "稻草守护者",
+    "types": [
+      "萌系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "稻草人",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 281,
+        "name": "稻草人",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 282,
+        "name": "稻草守护者",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 29,
+    "familyName": "卡拉波斯",
+    "types": [
+      "恶系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "卡波",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 291,
+        "name": "卡波",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 292,
+        "name": "卡拉波斯",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 30,
+    "familyName": "徘徊爪爪",
+    "types": [
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "蝴蝶陶陶",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 301,
+        "name": "蝴蝶陶陶",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 302,
+        "name": "徘徊爪爪",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 31,
+    "familyName": "壳栗丝鼠",
+    "types": [
+      "毒系",
+      "普通系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "栗鼠",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 311,
+        "name": "栗鼠",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 312,
+        "name": "壳栗丝鼠",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 32,
+    "familyName": "火羽",
+    "types": [
+      "火系",
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "烈钻鸟",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 321,
+        "name": "烈钻鸟",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 322,
+        "name": "火羽",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 33,
+    "familyName": "飞飞鼠",
+    "types": [
+      "机械系",
+      "虫系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "叮叮卵",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 331,
+        "name": "叮叮卵",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 332,
+        "name": "飞飞鼠",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 34,
+    "familyName": "蜗子王",
+    "types": [
+      "恶系",
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "碎晶蜗",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 341,
+        "name": "碎晶蜗",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 342,
+        "name": "蜗子王",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 35,
+    "familyName": "森巨人",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "森豆丁",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 351,
+        "name": "森豆丁",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 352,
+        "name": "森巨人",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 36,
+    "familyName": "火巨人",
+    "types": [
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "火豆丁",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 361,
+        "name": "火豆丁",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 362,
+        "name": "火巨人",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 37,
+    "familyName": "雷神之子",
+    "types": [
+      "电系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "露露宝宝",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 371,
+        "name": "露露宝宝",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 372,
+        "name": "雷神之子",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 38,
+    "familyName": "饮雪狂兽",
+    "types": [
+      "冰系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "雪灵兽",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 381,
+        "name": "雪灵兽",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 382,
+        "name": "饮雪狂兽",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 39,
+    "familyName": "友爱星飞",
+    "types": [
+      "普通系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "友爱天天",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 391,
+        "name": "友爱天天",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 392,
+        "name": "友爱星飞",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 40,
+    "familyName": "克莱因龙",
+    "types": [
+      "龙系",
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "莫比乌乌",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 401,
+        "name": "莫比乌乌",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 402,
+        "name": "克莱因龙",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 41,
+    "familyName": "邪眼巨魔",
+    "types": [
+      "恶系",
+      "虫系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "瑰眼仔",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 411,
+        "name": "瑰眼仔",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 412,
+        "name": "邪眼巨魔",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 42,
+    "familyName": "夜游魔",
+    "types": [
+      "翼系",
+      "恶系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "觅觅蝠",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 421,
+        "name": "觅觅蝠",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 422,
+        "name": "夜游魔",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 43,
+    "familyName": "障眼魔",
+    "types": [
+      "恶系",
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "芽眼魔",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 431,
+        "name": "芽眼魔",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 432,
+        "name": "障眼魔",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 44,
+    "familyName": "星云旅者",
+    "types": [
+      "幻系",
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "星云旅者",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 441,
+        "name": "星云旅者",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 45,
+    "familyName": "珀尔蝴",
+    "types": [
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "点点",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 451,
+        "name": "点点",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 452,
+        "name": "珀尔蝴",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 46,
+    "familyName": "溯源钟",
+    "types": [
+      "机械系",
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "不啡钟",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 461,
+        "name": "不啡钟",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 462,
+        "name": "溯源钟",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 47,
+    "familyName": "魔草巫灵",
+    "types": [
+      "草系",
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "绿草精灵",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 471,
+        "name": "绿草精灵",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 472,
+        "name": "魔草巫灵",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 48,
+    "familyName": "月牙雪熊",
+    "types": [
+      "冰系",
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "月牙雪熊",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 481,
+        "name": "月牙雪熊",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 49,
+    "familyName": "古卷执政官",
+    "types": [
+      "普通系",
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "书鹿虫",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 491,
+        "name": "书鹿虫",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 492,
+        "name": "古卷执政官",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 50,
+    "familyName": "古卷匡衡像",
+    "types": [
+      "普通系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "书鹿虫",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 501,
+        "name": "书鹿虫",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 502,
+        "name": "古卷匡衡像",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 51,
+    "familyName": "捕尘长绒",
+    "types": [
+      "虫系",
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "毛头小蛛",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 511,
+        "name": "毛头小蛛",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 512,
+        "name": "捕尘长绒",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 52,
+    "familyName": "食尘短绒",
+    "types": [
+      "虫系",
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "毛头小蛛",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 521,
+        "name": "毛头小蛛",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 522,
+        "name": "食尘短绒",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 53,
+    "familyName": "贝古斯",
+    "types": [
+      "机械系",
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "贝瑟",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 531,
+        "name": "贝瑟",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 532,
+        "name": "贝古斯",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 54,
+    "familyName": "粉耳星兔",
+    "types": [
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "粉星仔",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 541,
+        "name": "粉星仔",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 542,
+        "name": "粉耳星兔",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 55,
+    "familyName": "落阴星兔",
+    "types": [
+      "幻系",
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "粉星仔",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 551,
+        "name": "粉星仔",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 552,
+        "name": "落阴星兔",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 56,
+    "familyName": "卷毛鸭",
+    "types": [
+      "草系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "草头鸭",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 561,
+        "name": "草头鸭",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 562,
+        "name": "卷毛鸭",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 57,
+    "familyName": "铠甲虫",
+    "types": [
+      "虫系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小甲虫",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 571,
+        "name": "小甲虫",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 572,
+        "name": "铠甲虫",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 58,
+    "familyName": "幽影树",
+    "types": [
+      "幽系",
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "幽影树",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 581,
+        "name": "幽影树",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 59,
+    "familyName": "幽冥眼",
+    "types": [
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小灵面",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 591,
+        "name": "小灵面",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 592,
+        "name": "幽冥眼",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 60,
+    "familyName": "幻影灵菇",
+    "types": [
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小灵菇",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 601,
+        "name": "小灵菇",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 602,
+        "name": "幻影灵菇",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 61,
+    "familyName": "波多西",
+    "types": [
+      "机械系",
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "多西",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 611,
+        "name": "多西",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 612,
+        "name": "波多西",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 62,
+    "familyName": "罗隐",
+    "types": [
+      "地系",
+      "恶系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "阿米亚特蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 621,
+        "name": "阿米亚特",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 622,
+        "name": "罗隐",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 63,
+    "familyName": "圣剑-X",
+    "types": [
+      "机械系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "圣剑侍从蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 631,
+        "name": "圣剑侍从",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 632,
+        "name": "圣剑-X",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 64,
+    "familyName": "寂灭古龙",
+    "types": [
+      "龙系",
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "大头骨龙蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 641,
+        "name": "大头骨龙",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 642,
+        "name": "寂灭古龙",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 65,
+    "familyName": "火神",
+    "types": [
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "火花蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 651,
+        "name": "火花",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 652,
+        "name": "火神",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 66,
+    "familyName": "魔力猫",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "喵喵蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 661,
+        "name": "喵喵",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 662,
+        "name": "魔力猫",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 67,
+    "familyName": "海豹船长",
+    "types": [
+      "武系",
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "海豹战士蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 671,
+        "name": "海豹战士",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 672,
+        "name": "海豹船长",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 68,
+    "familyName": "烈火守护",
+    "types": [
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "火尾瓦特蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 681,
+        "name": "火尾瓦特",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 682,
+        "name": "烈火守护",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 69,
+    "familyName": "梦想三三",
+    "types": [
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "逗逗蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 691,
+        "name": "逗逗",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 692,
+        "name": "梦想三三",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 70,
+    "familyName": "冰钻布鲁斯",
+    "types": [
+      "冰系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "布鲁斯蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 701,
+        "name": "布鲁斯",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 702,
+        "name": "冰钻布鲁斯",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 71,
+    "familyName": "黑猫巫师",
+    "types": [
+      "普通系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小黑猫蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 711,
+        "name": "小黑猫",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 712,
+        "name": "黑猫巫师",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 72,
+    "familyName": "万毒修萝",
+    "types": [
+      "毒系",
+      "恶系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "万毒小萝蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 721,
+        "name": "万毒小萝",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 722,
+        "name": "万毒修萝",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 73,
+    "familyName": "化蝶",
+    "types": [
+      "虫系",
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "毛毛蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 731,
+        "name": "毛毛",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 732,
+        "name": "化蝶",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 74,
+    "familyName": "瞌睡王",
+    "types": [
+      "普通系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "白发懒人蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 741,
+        "name": "白发懒人",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 742,
+        "name": "瞌睡王",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 75,
+    "familyName": "火焰猿",
+    "types": [
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "可爱猿蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 751,
+        "name": "可爱猿",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 752,
+        "name": "火焰猿",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 76,
+    "familyName": "针叶巡林",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "松仔蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 761,
+        "name": "松仔",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 762,
+        "name": "针叶巡林",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 77,
+    "familyName": "画间法师手/画间沉铁兽",
+    "types": [
+      "普通系",
+      "幻系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "画精灵",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 771,
+        "name": "画精灵",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 772,
+        "name": "画间法师手/画间沉铁兽",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 78,
+    "familyName": "音速犬",
+    "types": [
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "护主犬",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 781,
+        "name": "护主犬",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 782,
+        "name": "音速犬",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 79,
+    "familyName": "岚鸟",
+    "types": [
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "雪绒鸟",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 791,
+        "name": "雪绒鸟",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 792,
+        "name": "岚鸟",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 80,
+    "familyName": "岚鸟",
+    "types": [
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "雪绒鸟",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 801,
+        "name": "雪绒鸟",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 802,
+        "name": "岚鸟",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 81,
+    "familyName": "岚鸟",
+    "types": [
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "雪绒鸟",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 811,
+        "name": "雪绒鸟",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 812,
+        "name": "岚鸟",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 82,
+    "familyName": "岚鸟",
+    "types": [
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "雪绒鸟",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 821,
+        "name": "雪绒鸟",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 822,
+        "name": "岚鸟",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 83,
+    "familyName": "翠顶夫人",
+    "types": [
+      "翼系",
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "乖乖鸽",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 831,
+        "name": "乖乖鸽",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 832,
+        "name": "翠顶夫人",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 84,
+    "familyName": "尖嘴狐仙",
+    "types": [
+      "冰系",
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "灵狐",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 841,
+        "name": "灵狐",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 842,
+        "name": "尖嘴狐仙",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 85,
+    "familyName": "独角兽",
+    "types": [
+      "光系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小独角兽",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 851,
+        "name": "小独角兽",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 852,
+        "name": "独角兽",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 86,
+    "familyName": "声波缇塔",
+    "types": [
+      "机械系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "缇塔",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 861,
+        "name": "缇塔",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 862,
+        "name": "声波缇塔",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 87,
+    "familyName": "水灵",
+    "types": [
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "水蓝蓝",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 871,
+        "name": "水蓝蓝",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 872,
+        "name": "水灵",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 88,
+    "familyName": "叮叮恶魔",
+    "types": [
+      "恶系",
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "恶魔丁",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 881,
+        "name": "恶魔丁",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 882,
+        "name": "叮叮恶魔",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 89,
+    "familyName": "恶魔狼",
+    "types": [
+      "恶系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "恶魔狼",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 891,
+        "name": "恶魔狼",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 90,
+    "familyName": "鸭吉吉",
+    "types": [
+      "普通系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "鸭吉吉（蓬松）",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 901,
+        "name": "鸭吉吉（蓬松）",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 902,
+        "name": "鸭吉吉",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 91,
+    "familyName": "鸭吉吉",
+    "types": [
+      "普通系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "鸭吉吉（紧实）",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 911,
+        "name": "鸭吉吉（紧实）",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 912,
+        "name": "鸭吉吉",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 92,
+    "familyName": "蹦蹦花",
+    "types": [
+      "草系",
+      "毒系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "蹦蹦种子蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 921,
+        "name": "蹦蹦种子",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 922,
+        "name": "蹦蹦花",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 93,
+    "familyName": "蹦蹦花",
+    "types": [
+      "草系",
+      "毒系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "蹦蹦种子蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 931,
+        "name": "蹦蹦种子",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 932,
+        "name": "蹦蹦花",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 94,
+    "familyName": "蹦蹦花",
+    "types": [
+      "草系",
+      "毒系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "蹦蹦种子蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 941,
+        "name": "蹦蹦种子",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 942,
+        "name": "蹦蹦花",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 95,
+    "familyName": "蹦蹦花",
+    "types": [
+      "草系",
+      "毒系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "蹦蹦种子蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 951,
+        "name": "蹦蹦种子",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 952,
+        "name": "蹦蹦花",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 96,
+    "familyName": "奇丽花",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "奇丽草",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 961,
+        "name": "奇丽草",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 962,
+        "name": "奇丽花",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 97,
+    "familyName": "白发路路",
+    "types": [
+      "萌系",
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "呆小路",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 971,
+        "name": "呆小路",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 972,
+        "name": "白发路路",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 98,
+    "familyName": "酷拉",
+    "types": [
+      "电系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "拉特",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 981,
+        "name": "拉特",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 982,
+        "name": "酷拉",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 99,
+    "familyName": "红领十字",
+    "types": [
+      "火系",
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "治愈兔",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 991,
+        "name": "治愈兔",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 992,
+        "name": "红领十字",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 100,
+    "familyName": "咔咔鸟",
+    "types": [
+      "翼系",
+      "普通系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "咔咔羽毛蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1001,
+        "name": "咔咔羽毛",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1002,
+        "name": "咔咔鸟",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 101,
+    "familyName": "雪影娃娃",
+    "types": [
+      "冰系",
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "大耳帽兜",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1011,
+        "name": "大耳帽兜",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1012,
+        "name": "雪影娃娃",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 102,
+    "familyName": "朔夜伊芙",
+    "types": [
+      "恶系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小夜蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1021,
+        "name": "小夜",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1022,
+        "name": "朔夜伊芙",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 103,
+    "familyName": "皇家狮鹫",
+    "types": [
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小狮鹫（崖门）",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1031,
+        "name": "小狮鹫（崖门）",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1032,
+        "name": "皇家狮鹫",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 104,
+    "familyName": "皇家狮鹫",
+    "types": [
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小狮鹫（高山）",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1041,
+        "name": "小狮鹫（高山）",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1042,
+        "name": "皇家狮鹫",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 105,
+    "familyName": "翼龙",
+    "types": [
+      "翼系",
+      "龙系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小翼龙",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1051,
+        "name": "小翼龙",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1052,
+        "name": "翼龙",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 106,
+    "familyName": "深蓝鲸",
+    "types": [
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "深蓝鲸",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1061,
+        "name": "深蓝鲸",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 107,
+    "familyName": "梦悠悠",
+    "types": [
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "梦游",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1071,
+        "name": "梦游",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1072,
+        "name": "梦悠悠",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 108,
+    "familyName": "海枝枝",
+    "types": [
+      "水系",
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "海枝枝",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1081,
+        "name": "海枝枝",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 109,
+    "familyName": "海枝枝",
+    "types": [
+      "水系",
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "海枝枝",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1091,
+        "name": "海枝枝",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 110,
+    "familyName": "海枝枝",
+    "types": [
+      "水系",
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "海枝枝",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1101,
+        "name": "海枝枝",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 111,
+    "familyName": "海枝枝",
+    "types": [
+      "水系",
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "海枝枝",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1111,
+        "name": "海枝枝",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 112,
+    "familyName": "锤头鹳",
+    "types": [
+      "水系",
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "锤头鹳",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1121,
+        "name": "锤头鹳",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 113,
+    "familyName": "炽心勇狮",
+    "types": [
+      "火系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小勇狮",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1131,
+        "name": "小勇狮",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1132,
+        "name": "炽心勇狮",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 114,
+    "familyName": "菊花梨",
+    "types": [
+      "萌系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "菊花梨",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1141,
+        "name": "菊花梨",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 115,
+    "familyName": "太多了不想写",
+    "types": [
+      "武系",
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "棋棋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1151,
+        "name": "棋棋",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1152,
+        "name": "太多了不想写",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 116,
+    "familyName": "太多了不想写",
+    "types": [
+      "武系",
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "棋棋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1161,
+        "name": "棋棋",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1162,
+        "name": "太多了不想写",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 117,
+    "familyName": "雪灵",
+    "types": [
+      "冰系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "雪娃娃",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1171,
+        "name": "雪娃娃",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1172,
+        "name": "雪灵",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 118,
+    "familyName": "卡洛儿",
+    "types": [
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "甜甜螺",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1181,
+        "name": "甜甜螺",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1182,
+        "name": "卡洛儿",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 119,
+    "familyName": "千棘蓝",
+    "types": [
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "海蛎虫",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1191,
+        "name": "海蛎虫",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1192,
+        "name": "千棘蓝",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 120,
+    "familyName": "兽花蕾",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "兽花蕾",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1201,
+        "name": "兽花蕾",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 121,
+    "familyName": "卡瓦重",
+    "types": [
+      "草系",
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "丢丢沙地蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1211,
+        "name": "丢丢沙地",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1212,
+        "name": "卡瓦重",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 122,
+    "familyName": "卡瓦重",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "丢丢草地蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1221,
+        "name": "丢丢草地",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1222,
+        "name": "卡瓦重",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 123,
+    "familyName": "卡瓦重",
+    "types": [
+      "草系",
+      "冰系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "丢丢雪地蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1231,
+        "name": "丢丢雪地",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1232,
+        "name": "卡瓦重",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 124,
+    "familyName": "黄蜂后",
+    "types": [
+      "虫系",
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "一窝蜂蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1241,
+        "name": "一窝蜂",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1242,
+        "name": "黄蜂后",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 125,
+    "familyName": "怖哭菇",
+    "types": [
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "呆呆菇蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1251,
+        "name": "呆呆菇",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1252,
+        "name": "怖哭菇",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 126,
+    "familyName": "春花兔",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "春团蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1261,
+        "name": "春团",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1262,
+        "name": "春花兔",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 127,
+    "familyName": "裘卡",
+    "types": [
+      "毒系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "裘洛蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1271,
+        "name": "裘洛",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1272,
+        "name": "裘卡",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 128,
+    "familyName": "记忆石",
+    "types": [
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "记忆石蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1281,
+        "name": "记忆石",
+        "stage": 1,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 129,
+    "familyName": "影狸",
+    "types": [
+      "毒系",
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "怂幽狸蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1291,
+        "name": "怂幽狸",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1292,
+        "name": "影狸",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 130,
+    "familyName": "绅士鸡",
+    "types": [
+      "火系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "可立鸡蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1301,
+        "name": "可立鸡",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1302,
+        "name": "绅士鸡",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 131,
+    "familyName": "武者鸡",
+    "types": [
+      "火系",
+      "武系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "可立鸡蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1311,
+        "name": "可立鸡",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1312,
+        "name": "武者鸡",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 132,
+    "familyName": "仪式巨像",
+    "types": [
+      "地系",
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "仪使者蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1321,
+        "name": "仪使者",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1322,
+        "name": "仪式巨像",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 133,
+    "familyName": "伊贝粉粉",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "伊贝儿蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1331,
+        "name": "伊贝儿",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1332,
+        "name": "伊贝粉粉",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 134,
+    "familyName": "彩蝶鲨",
+    "types": [
+      "水系",
+      "翼系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "风铃雀蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1341,
+        "name": "风铃雀",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1342,
+        "name": "彩蝶鲨",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 135,
+    "familyName": "圣代甜甜",
+    "types": [
+      "冰系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "脆筒甜甜蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1351,
+        "name": "脆筒甜甜",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1352,
+        "name": "圣代甜甜",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 136,
+    "familyName": "格兰球",
+    "types": [
+      "草系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "格兰种子蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1361,
+        "name": "格兰种子",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1362,
+        "name": "格兰球",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 137,
+    "familyName": "帕帕斯卡",
+    "types": [
+      "机械系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "螺旋帕帕蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1371,
+        "name": "螺旋帕帕",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1372,
+        "name": "帕帕斯卡",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 138,
+    "familyName": "雪巨人",
+    "types": [
+      "冰系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "雪豆丁蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1381,
+        "name": "雪豆丁",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1382,
+        "name": "雪巨人",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 139,
+    "familyName": "球哞哞",
+    "types": [
+      "电系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "电哞哞蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1391,
+        "name": "电哞哞",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1392,
+        "name": "球哞哞",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 140,
+    "familyName": "露霁迪迪",
+    "types": [
+      "电系",
+      "光系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "炫光迪迪蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1401,
+        "name": "炫光迪迪",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1402,
+        "name": "露霁迪迪",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 141,
+    "familyName": "巨鼓象",
+    "types": [
+      "机械系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小鼓象蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1411,
+        "name": "小鼓象",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1412,
+        "name": "巨鼓象",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 142,
+    "familyName": "小丑公爵",
+    "types": [
+      "恶系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "小丑豆豆蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1421,
+        "name": "小丑豆豆",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1422,
+        "name": "小丑公爵",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 143,
+    "familyName": "烟花伯爵",
+    "types": [
+      "火系",
+      "毒系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "烟花团蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1431,
+        "name": "烟花团",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1432,
+        "name": "烟花伯爵",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 144,
+    "familyName": "加油蟹",
+    "types": [
+      "萌系",
+      "水系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "加油海葵蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1441,
+        "name": "加油海葵",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1442,
+        "name": "加油蟹",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 145,
+    "familyName": "咕德帽帽",
+    "types": [
+      "幽系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "咕咕帽蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1451,
+        "name": "咕咕帽",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1452,
+        "name": "咕德帽帽",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 146,
+    "familyName": "帅帅魔偶",
+    "types": [
+      "幻系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "牵线木偶蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1461,
+        "name": "牵线木偶",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1462,
+        "name": "帅帅魔偶",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 147,
+    "familyName": "音碟吼",
+    "types": [
+      "普通系",
+      "机械系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "猴麦仔蛋",
+    "hasVariant": true,
+    "forms": [
+      {
+        "formId": 1471,
+        "name": "猴麦仔",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1472,
+        "name": "音碟吼",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 148,
+    "familyName": "乌拉塔（火）",
+    "types": [
+      "恶系",
+      "火系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "乌达蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1481,
+        "name": "乌达",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1482,
+        "name": "乌拉塔（火）",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 149,
+    "familyName": "乌拉塔（冰）",
+    "types": [
+      "恶系",
+      "冰系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "乌达蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1491,
+        "name": "乌达",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1492,
+        "name": "乌拉塔（冰）",
+        "stage": 2,
+        "avatar": ""
+      }
+    ]
+  },
+  {
+    "familyId": 150,
+    "familyName": "流浪鼠",
+    "types": [
+      "地系"
+    ],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "奔波鼠蛋",
+    "hasVariant": false,
+    "forms": [
+      {
+        "formId": 1501,
+        "name": "奔波鼠",
+        "stage": 1,
+        "avatar": ""
+      },
+      {
+        "formId": 1502,
+        "name": "流浪鼠",
+        "stage": 2,
+        "avatar": ""
+      }
     ]
   }
 ]

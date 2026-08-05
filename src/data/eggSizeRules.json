@@ -1,4 +1,1952 @@
 [
-  { "familyId": 580, "maxEggHeight": 2.08, "maxEggWeight": 19.55, "bigSizeRule": { "heightMin": 2.05, "weightMin": 19.2 }, "smallSizeRule": { "heightMax": 1.5, "weightMax": 10 } },
-  { "familyId": 581, "maxEggHeight": 1.2, "maxEggWeight": 3.3, "bigSizeRule": { "heightMin": 1.18, "weightMin": 3.2 }, "smallSizeRule": { "heightMax": 0.85, "weightMax": 2.0 } }
+  {
+    "familyId": 1,
+    "bigSize": {
+      "maxHeight": 0.61,
+      "maxWeight": 15.92,
+      "weightMin": 15.762
+    },
+    "smallSize": {
+      "maxHeight": 0.4,
+      "maxWeight": 8.016,
+      "weightMax": 8.411
+    }
+  },
+  {
+    "familyId": 2,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 0.12,
+      "weightMin": 0.118
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 0.035,
+      "weightMax": 0.039
+    }
+  },
+  {
+    "familyId": 3,
+    "bigSize": {
+      "maxHeight": 0.46,
+      "maxWeight": 14.48,
+      "weightMin": 14.383
+    },
+    "smallSize": {
+      "maxHeight": 0.33,
+      "maxWeight": 9.625,
+      "weightMax": 9.868
+    }
+  },
+  {
+    "familyId": 4,
+    "bigSize": {
+      "maxHeight": 0.46,
+      "maxWeight": 14.48,
+      "weightMin": 14.383
+    },
+    "smallSize": {
+      "maxHeight": 0.33,
+      "maxWeight": 9.625,
+      "weightMax": 9.868
+    }
+  },
+  {
+    "familyId": 5,
+    "bigSize": {
+      "maxHeight": 0.32,
+      "maxWeight": 1.2,
+      "weightMin": 1.191
+    },
+    "smallSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 0.735,
+      "weightMax": 0.758
+    }
+  },
+  {
+    "familyId": 6,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 1.576,
+      "weightMin": 1.562
+    },
+    "smallSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 0.875,
+      "weightMax": 0.91
+    }
+  },
+  {
+    "familyId": 7,
+    "bigSize": {
+      "maxHeight": 0.33,
+      "maxWeight": 22.4,
+      "weightMin": 22.929
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 16.975,
+      "weightMax": 17.246
+    }
+  },
+  {
+    "familyId": 8,
+    "bigSize": {
+      "maxHeight": 0.31,
+      "maxWeight": 3.56,
+      "weightMin": 3.536
+    },
+    "smallSize": {
+      "maxHeight": 0.22,
+      "maxWeight": 2.38,
+      "weightMax": 2.439
+    }
+  },
+  {
+    "familyId": 9,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 4.4,
+      "weightMin": 4.368
+    },
+    "smallSize": {
+      "maxHeight": 0.18,
+      "maxWeight": 2.8,
+      "weightMax": 2.88
+    }
+  },
+  {
+    "familyId": 10,
+    "bigSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 1.22,
+      "weightMin": 1.206
+    },
+    "smallSize": {
+      "maxHeight": 0.1,
+      "maxWeight": 0.511,
+      "weightMax": 0.546
+    }
+  },
+  {
+    "familyId": 11,
+    "bigSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 7.44,
+      "weightMin": 7.393
+    },
+    "smallSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 5.075,
+      "weightMax": 5.193
+    }
+  },
+  {
+    "familyId": 12,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 3.48,
+      "weightMin": 3.45
+    },
+    "smallSize": {
+      "maxHeight": 0.18,
+      "maxWeight": 1.96,
+      "weightMax": 2.036
+    }
+  },
+  {
+    "familyId": 13,
+    "bigSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 7.12,
+      "weightMin": 7.082
+    },
+    "smallSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 5.215,
+      "weightMax": 5.31
+    }
+  },
+  {
+    "familyId": 14,
+    "bigSize": {
+      "maxHeight": 0.42,
+      "maxWeight": 14.72,
+      "weightMin": 14.634
+    },
+    "smallSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 10.43,
+      "weightMax": 10.644
+    }
+  },
+  {
+    "familyId": 15,
+    "bigSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 1.64,
+      "weightMin": 1.628
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 1.061,
+      "weightMax": 1.09
+    }
+  },
+  {
+    "familyId": 16,
+    "bigSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 2.24,
+      "weightMin": 2.226
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 1.523,
+      "weightMax": 1.559
+    }
+  },
+  {
+    "familyId": 17,
+    "bigSize": {
+      "maxHeight": 0.35,
+      "maxWeight": 9,
+      "weightMin": 8.957
+    },
+    "smallSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 6.86,
+      "weightMax": 6.967
+    }
+  },
+  {
+    "familyId": 18,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 1.36,
+      "weightMin": 1.348
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 0.735,
+      "weightMax": 0.766
+    }
+  },
+  {
+    "familyId": 19,
+    "bigSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 0.88,
+      "weightMin": 0.872
+    },
+    "smallSize": {
+      "maxHeight": 0.11,
+      "maxWeight": 0.49,
+      "weightMax": 0.509
+    }
+  },
+  {
+    "familyId": 20,
+    "bigSize": {
+      "maxHeight": 0.18,
+      "maxWeight": 0.6,
+      "weightMin": 0.596
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 0.42,
+      "weightMax": 0.429
+    }
+  },
+  {
+    "familyId": 21,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 2.468,
+      "weightMin": 2.452
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.677,
+      "weightMax": 1.717
+    }
+  },
+  {
+    "familyId": 22,
+    "bigSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 0.96,
+      "weightMin": 0.953
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 0.63,
+      "weightMax": 0.647
+    }
+  },
+  {
+    "familyId": 23,
+    "bigSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 2.052,
+      "weightMin": 2.038
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.33,
+      "weightMax": 1.366
+    }
+  },
+  {
+    "familyId": 24,
+    "bigSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 5.2,
+      "weightMin": 5.158
+    },
+    "smallSize": {
+      "maxHeight": 0.22,
+      "maxWeight": 3.115,
+      "weightMax": 3.219
+    }
+  },
+  {
+    "familyId": 25,
+    "bigSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 7.32,
+      "weightMin": 7.258
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 4.225,
+      "weightMax": 4.38
+    }
+  },
+  {
+    "familyId": 26,
+    "bigSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 0.38,
+      "weightMin": 0.375
+    },
+    "smallSize": {
+      "maxHeight": 0.09,
+      "maxWeight": 0.123,
+      "weightMax": 0.136
+    }
+  },
+  {
+    "familyId": 27,
+    "bigSize": {
+      "maxHeight": 0.18,
+      "maxWeight": 0.356,
+      "weightMin": 0.35
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 0.074,
+      "weightMax": 0.088
+    }
+  },
+  {
+    "familyId": 28,
+    "bigSize": {
+      "maxHeight": 0.44,
+      "maxWeight": 15.84,
+      "weightMin": 15.65
+    },
+    "smallSize": {
+      "maxHeight": 0.31,
+      "maxWeight": 6.335,
+      "weightMax": 6.81
+    }
+  },
+  {
+    "familyId": 29,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 1.508,
+      "weightMin": 1.496
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 0.91,
+      "weightMax": 0.94
+    }
+  },
+  {
+    "familyId": 30,
+    "bigSize": {
+      "maxHeight": 0.33,
+      "maxWeight": 2.452,
+      "weightMin": 2.431
+    },
+    "smallSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 1.4,
+      "weightMax": 1.453
+    }
+  },
+  {
+    "familyId": 31,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 3.04,
+      "weightMin": 3.019
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 2.013,
+      "weightMax": 2.064
+    }
+  },
+  {
+    "familyId": 32,
+    "bigSize": {
+      "maxHeight": 0.39,
+      "maxWeight": 2.32,
+      "weightMin": 2.307
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 1.645,
+      "weightMax": 1.679
+    }
+  },
+  {
+    "familyId": 33,
+    "bigSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 0.36,
+      "weightMin": 0.355
+    },
+    "smallSize": {
+      "maxHeight": 0.06,
+      "maxWeight": 0.105,
+      "weightMax": 0.118
+    }
+  },
+  {
+    "familyId": 34,
+    "bigSize": {
+      "maxHeight": 0.22,
+      "maxWeight": 5.8,
+      "weightMin": 5.749
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 3.262,
+      "weightMax": 3.389
+    }
+  },
+  {
+    "familyId": 35,
+    "bigSize": {
+      "maxHeight": 0.46,
+      "maxWeight": 11.08,
+      "weightMin": 10.97
+    },
+    "smallSize": {
+      "maxHeight": 0.31,
+      "maxWeight": 5.6,
+      "weightMax": 5.874
+    }
+  },
+  {
+    "familyId": 36,
+    "bigSize": {
+      "maxHeight": 0.52,
+      "maxWeight": 4.4,
+      "weightMin": 4.365
+    },
+    "smallSize": {
+      "maxHeight": 0.37,
+      "maxWeight": 2.625,
+      "weightMax": 2.714
+    }
+  },
+  {
+    "familyId": 37,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 4.32,
+      "weightMin": 4.28
+    },
+    "smallSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 2.338,
+      "weightMax": 2.437
+    }
+  },
+  {
+    "familyId": 38,
+    "bigSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 2.76,
+      "weightMin": 2.74
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.75,
+      "weightMax": 1.801
+    }
+  },
+  {
+    "familyId": 39,
+    "bigSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.676,
+      "weightMin": 1.663
+    },
+    "smallSize": {
+      "maxHeight": 0.12,
+      "maxWeight": 1.04,
+      "weightMax": 1.072
+    }
+  },
+  {
+    "familyId": 40,
+    "bigSize": {
+      "maxHeight": 0.32,
+      "maxWeight": 1.92,
+      "weightMin": 1.901
+    },
+    "smallSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 0.98,
+      "weightMax": 1.027
+    }
+  },
+  {
+    "familyId": 41,
+    "bigSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 2.2,
+      "weightMin": 2.184
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.397,
+      "weightMax": 1.437
+    }
+  },
+  {
+    "familyId": 42,
+    "bigSize": {
+      "maxHeight": 0.33,
+      "maxWeight": 3.748,
+      "weightMin": 3.719
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 2.321,
+      "weightMax": 2.392
+    }
+  },
+  {
+    "familyId": 43,
+    "bigSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 1.36,
+      "weightMin": 1.353
+    },
+    "smallSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 1.033,
+      "weightMax": 1.049
+    }
+  },
+  {
+    "familyId": 44,
+    "bigSize": {
+      "maxHeight": 0.95,
+      "maxWeight": 32,
+      "weightMin": 31.77
+    },
+    "smallSize": {
+      "maxHeight": 0.79,
+      "maxWeight": 20.475,
+      "weightMax": 21.051
+    }
+  },
+  {
+    "familyId": 45,
+    "bigSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 1.556,
+      "weightMin": 1.545
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.019,
+      "weightMax": 1.046
+    }
+  },
+  {
+    "familyId": 46,
+    "bigSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 1.216,
+      "weightMin": 1.202
+    },
+    "smallSize": {
+      "maxHeight": 0.1,
+      "maxWeight": 0.536,
+      "weightMax": 0.57
+    }
+  },
+  {
+    "familyId": 47,
+    "bigSize": {
+      "maxHeight": 0.42,
+      "maxWeight": 4.12,
+      "weightMin": 4.103
+    },
+    "smallSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 3.255,
+      "weightMax": 3.298
+    }
+  },
+  {
+    "familyId": 48,
+    "bigSize": {
+      "maxHeight": 0.6,
+      "maxWeight": 37,
+      "weightMin": 36.796
+    },
+    "smallSize": {
+      "maxHeight": 0.53,
+      "maxWeight": 26.775,
+      "weightMax": 27.286
+    }
+  },
+  {
+    "familyId": 49,
+    "bigSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.544,
+      "weightMin": 1.529
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 0.798,
+      "weightMax": 0.835
+    }
+  },
+  {
+    "familyId": 50,
+    "bigSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.544,
+      "weightMin": 1.529
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 0.798,
+      "weightMax": 0.835
+    }
+  },
+  {
+    "familyId": 51,
+    "bigSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 0.62,
+      "weightMin": 0.615
+    },
+    "smallSize": {
+      "maxHeight": 0,
+      "maxWeight": 0,
+      "weightMax": 0
+    }
+  },
+  {
+    "familyId": 52,
+    "bigSize": {
+      "maxHeight": 0,
+      "maxWeight": 0,
+      "weightMin": 0
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 0.333,
+      "weightMax": 0.347
+    }
+  },
+  {
+    "familyId": 53,
+    "bigSize": {
+      "maxHeight": 0.34,
+      "maxWeight": 13.84,
+      "weightMin": 13.735
+    },
+    "smallSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 8.575,
+      "weightMax": 8.838
+    }
+  },
+  {
+    "familyId": 54,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 5.12,
+      "weightMin": 5.086
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 3.43,
+      "weightMax": 3.515
+    }
+  },
+  {
+    "familyId": 55,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 5.12,
+      "weightMin": 5.086
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 3.43,
+      "weightMax": 3.515
+    }
+  },
+  {
+    "familyId": 56,
+    "bigSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 2.628,
+      "weightMin": 3.61
+    },
+    "smallSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 1.715,
+      "weightMax": 1.761
+    }
+  },
+  {
+    "familyId": 57,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 3.36,
+      "weightMin": 3.338
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 2.275,
+      "weightMax": 2.329
+    }
+  },
+  {
+    "familyId": 58,
+    "bigSize": {
+      "maxHeight": 0.38,
+      "maxWeight": 15,
+      "weightMin": 14.907
+    },
+    "smallSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 10.325,
+      "weightMax": 10.559
+    }
+  },
+  {
+    "familyId": 59,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 0.06,
+      "weightMin": 0.06
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 0.035,
+      "weightMax": 0.036
+    }
+  },
+  {
+    "familyId": 60,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 2.89,
+      "weightMin": 2.87
+    },
+    "smallSize": {
+      "maxHeight": 0.18,
+      "maxWeight": 1.89,
+      "weightMax": 1.94
+    }
+  },
+  {
+    "familyId": 61,
+    "bigSize": {
+      "maxHeight": 0.39,
+      "maxWeight": 2.84,
+      "weightMin": 2.823
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 1.995,
+      "weightMax": 2.037
+    }
+  },
+  {
+    "familyId": 62,
+    "bigSize": {
+      "maxHeight": 0.33,
+      "maxWeight": 19.68,
+      "weightMin": 19.556
+    },
+    "smallSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 13.475,
+      "weightMax": 13.785
+    }
+  },
+  {
+    "familyId": 63,
+    "bigSize": {
+      "maxHeight": 0.49,
+      "maxWeight": 69.44,
+      "weightMin": 68.84
+    },
+    "smallSize": {
+      "maxHeight": 0.4,
+      "maxWeight": 40.495,
+      "weightMax": 41.942
+    }
+  },
+  {
+    "familyId": 64,
+    "bigSize": {
+      "maxHeight": 0.42,
+      "maxWeight": 13.4,
+      "weightMin": 13.263
+    },
+    "smallSize": {
+      "maxHeight": 0.36,
+      "maxWeight": 6.51,
+      "weightMax": 6.855
+    }
+  },
+  {
+    "familyId": 65,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 3.4,
+      "weightMin": 3.386
+    },
+    "smallSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 2.66,
+      "weightMax": 2.697
+    }
+  },
+  {
+    "familyId": 66,
+    "bigSize": {
+      "maxHeight": 0.31,
+      "maxWeight": 1.84,
+      "weightMin": 1.829
+    },
+    "smallSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 1.267,
+      "weightMax": 1.296
+    }
+  },
+  {
+    "familyId": 67,
+    "bigSize": {
+      "maxHeight": 0.38,
+      "maxWeight": 35.04,
+      "weightMin": 34.826
+    },
+    "smallSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 24.325,
+      "weightMax": 24.861
+    }
+  },
+  {
+    "familyId": 68,
+    "bigSize": {
+      "maxHeight": 0.38,
+      "maxWeight": 8.48,
+      "weightMin": 8.441
+    },
+    "smallSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 6.475,
+      "weightMax": 6.575
+    }
+  },
+  {
+    "familyId": 69,
+    "bigSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 0.32,
+      "weightMin": 0.318
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 0.21,
+      "weightMax": 0.216
+    }
+  },
+  {
+    "familyId": 70,
+    "bigSize": {
+      "maxHeight": 0.32,
+      "maxWeight": 1.84,
+      "weightMin": 1.82
+    },
+    "smallSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 0.84,
+      "weightMax": 0.89
+    }
+  },
+  {
+    "familyId": 71,
+    "bigSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 1.8,
+      "weightMin": 1.786
+    },
+    "smallSize": {
+      "maxHeight": 0.22,
+      "maxWeight": 1.085,
+      "weightMax": 1.121
+    }
+  },
+  {
+    "familyId": 72,
+    "bigSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 5.968,
+      "weightMin": 5.91
+    },
+    "smallSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 3.056,
+      "weightMax": 3.202
+    }
+  },
+  {
+    "familyId": 73,
+    "bigSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 1.8,
+      "weightMin": 1.785
+    },
+    "smallSize": {
+      "maxHeight": 0.13,
+      "maxWeight": 1.05,
+      "weightMax": 1.088
+    }
+  },
+  {
+    "familyId": 74,
+    "bigSize": {
+      "maxHeight": 0.43,
+      "maxWeight": 9.4,
+      "weightMin": 9.349
+    },
+    "smallSize": {
+      "maxHeight": 0.31,
+      "maxWeight": 6.825,
+      "weightMax": 6.954
+    }
+  },
+  {
+    "familyId": 75,
+    "bigSize": {
+      "maxHeight": 0.41,
+      "maxWeight": 12.6,
+      "weightMin": 12.495
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 7.35,
+      "weightMax": 0.297
+    }
+  },
+  {
+    "familyId": 76,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 3.14,
+      "weightMin": 0.283
+    },
+    "smallSize": {
+      "maxHeight": 0.22,
+      "maxWeight": 2.188,
+      "weightMax": 2.236
+    }
+  },
+  {
+    "familyId": 77,
+    "bigSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 0.608,
+      "weightMin": 0.603
+    },
+    "smallSize": {
+      "maxHeight": 0.12,
+      "maxWeight": 0.347,
+      "weightMax": 0.36
+    }
+  },
+  {
+    "familyId": 78,
+    "bigSize": {
+      "maxHeight": 0.38,
+      "maxWeight": 7,
+      "weightMin": 6.955
+    },
+    "smallSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 4.76,
+      "weightMax": 4.872
+    }
+  },
+  {
+    "familyId": 79,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 1.8,
+      "weightMin": 1.783
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 0.97,
+      "weightMax": 0.976
+    }
+  },
+  {
+    "familyId": 80,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 1.8,
+      "weightMin": 1.783
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 0.97,
+      "weightMax": 0.976
+    }
+  },
+  {
+    "familyId": 81,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 1.8,
+      "weightMin": 1.783
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 0.97,
+      "weightMax": 0.976
+    }
+  },
+  {
+    "familyId": 82,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 1.8,
+      "weightMin": 1.783
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 0.97,
+      "weightMax": 0.976
+    }
+  },
+  {
+    "familyId": 83,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 2.2,
+      "weightMin": 0.282
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.47,
+      "weightMax": 1.507
+    }
+  },
+  {
+    "familyId": 84,
+    "bigSize": {
+      "maxHeight": 0.33,
+      "maxWeight": 3.56,
+      "weightMin": 3.541
+    },
+    "smallSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 2.59,
+      "weightMax": 2.639
+    }
+  },
+  {
+    "familyId": 85,
+    "bigSize": {
+      "maxHeight": 0.59,
+      "maxWeight": 22.24,
+      "weightMin": 22.086
+    },
+    "smallSize": {
+      "maxHeight": 0.42,
+      "maxWeight": 14.525,
+      "weightMax": 14.911
+    }
+  },
+  {
+    "familyId": 86,
+    "bigSize": {
+      "maxHeight": 0.31,
+      "maxWeight": 18.08,
+      "weightMin": 17.986
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 13.37,
+      "weightMax": 13.606
+    }
+  },
+  {
+    "familyId": 87,
+    "bigSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 1.36,
+      "weightMin": 1.353
+    },
+    "smallSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 0.998,
+      "weightMax": 1.016
+    }
+  },
+  {
+    "familyId": 88,
+    "bigSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 1.64,
+      "weightMin": 1.632
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.26,
+      "weightMax": 1.279
+    }
+  },
+  {
+    "familyId": 89,
+    "bigSize": {
+      "maxHeight": 0.73,
+      "maxWeight": 36.8,
+      "weightMin": 36.582
+    },
+    "smallSize": {
+      "maxHeight": 0.52,
+      "maxWeight": 25.9,
+      "weightMax": 26.445
+    }
+  },
+  {
+    "familyId": 90,
+    "bigSize": {
+      "maxHeight": 0.39,
+      "maxWeight": 7.04,
+      "weightMin": 7.001
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 5.11,
+      "weightMax": 5.207
+    }
+  },
+  {
+    "familyId": 91,
+    "bigSize": {
+      "maxHeight": 0.39,
+      "maxWeight": 3.28,
+      "weightMin": 3.254
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 1.96,
+      "weightMax": 2.026
+    }
+  },
+  {
+    "familyId": 92,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 2.24,
+      "weightMin": 2.225
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.505,
+      "weightMax": 1.542
+    }
+  },
+  {
+    "familyId": 93,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 2.24,
+      "weightMin": 2.225
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.505,
+      "weightMax": 1.542
+    }
+  },
+  {
+    "familyId": 94,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 2.24,
+      "weightMin": 2.225
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.505,
+      "weightMax": 1.542
+    }
+  },
+  {
+    "familyId": 95,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 2.24,
+      "weightMin": 2.225
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.505,
+      "weightMax": 1.542
+    }
+  },
+  {
+    "familyId": 96,
+    "bigSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 2.28,
+      "weightMin": 2.263
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 1.435,
+      "weightMax": 1.477
+    }
+  },
+  {
+    "familyId": 97,
+    "bigSize": {
+      "maxHeight": 0.34,
+      "maxWeight": 2.32,
+      "weightMin": 2.305
+    },
+    "smallSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 1.575,
+      "weightMax": 1.612
+    }
+  },
+  {
+    "familyId": 98,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 3.44,
+      "weightMin": 3.425
+    },
+    "smallSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 2.695,
+      "weightMax": 2.732
+    }
+  },
+  {
+    "familyId": 99,
+    "bigSize": {
+      "maxHeight": 0.34,
+      "maxWeight": 5.768,
+      "weightMin": 5.737
+    },
+    "smallSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 4.211,
+      "weightMax": 4.242
+    }
+  },
+  {
+    "familyId": 100,
+    "bigSize": {
+      "maxHeight": 0.37,
+      "maxWeight": 1.56,
+      "weightMin": 1.547
+    },
+    "smallSize": {
+      "maxHeight": 0.26,
+      "maxWeight": 0.917,
+      "weightMax": 0.93
+    }
+  },
+  {
+    "familyId": 101,
+    "bigSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 4.28,
+      "weightMin": 4.253
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 2.937,
+      "weightMax": 3.004
+    }
+  },
+  {
+    "familyId": 102,
+    "bigSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 3.04,
+      "weightMin": 3.011
+    },
+    "smallSize": {
+      "maxHeight": 0.22,
+      "maxWeight": 1.575,
+      "weightMax": 1.648
+    }
+  },
+  {
+    "familyId": 103,
+    "bigSize": {
+      "maxHeight": 0.42,
+      "maxWeight": 7,
+      "weightMin": 6.941
+    },
+    "smallSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 4.025,
+      "weightMax": 4.174
+    }
+  },
+  {
+    "familyId": 104,
+    "bigSize": {
+      "maxHeight": 0.42,
+      "maxWeight": 7,
+      "weightMin": 6.941
+    },
+    "smallSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 4.025,
+      "weightMax": 4.174
+    }
+  },
+  {
+    "familyId": 105,
+    "bigSize": {
+      "maxHeight": 0.36,
+      "maxWeight": 14.6,
+      "weightMin": 14.484
+    },
+    "smallSize": {
+      "maxHeight": 0.26,
+      "maxWeight": 8.785,
+      "weightMax": 9.076
+    }
+  },
+  {
+    "familyId": 106,
+    "bigSize": {
+      "maxHeight": 1.11,
+      "maxWeight": 280,
+      "weightMin": 278.915
+    },
+    "smallSize": {
+      "maxHeight": 0.85,
+      "maxWeight": 225.75,
+      "weightMax": 228.463
+    }
+  },
+  {
+    "familyId": 107,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 0.42,
+      "weightMin": 0.418
+    },
+    "smallSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 0.298,
+      "weightMax": 0.304
+    }
+  },
+  {
+    "familyId": 108,
+    "bigSize": {
+      "maxHeight": 0.35,
+      "maxWeight": 2.728,
+      "weightMin": 2.697
+    },
+    "smallSize": {
+      "maxHeight": 0.32,
+      "maxWeight": 1.191,
+      "weightMax": 1.268
+    }
+  },
+  {
+    "familyId": 109,
+    "bigSize": {
+      "maxHeight": 0.35,
+      "maxWeight": 2.728,
+      "weightMin": 2.697
+    },
+    "smallSize": {
+      "maxHeight": 0.32,
+      "maxWeight": 1.191,
+      "weightMax": 1.268
+    }
+  },
+  {
+    "familyId": 110,
+    "bigSize": {
+      "maxHeight": 0.35,
+      "maxWeight": 2.728,
+      "weightMin": 2.697
+    },
+    "smallSize": {
+      "maxHeight": 0.32,
+      "maxWeight": 1.191,
+      "weightMax": 1.268
+    }
+  },
+  {
+    "familyId": 111,
+    "bigSize": {
+      "maxHeight": 0.35,
+      "maxWeight": 2.728,
+      "weightMin": 2.697
+    },
+    "smallSize": {
+      "maxHeight": 0.32,
+      "maxWeight": 1.191,
+      "weightMax": 1.268
+    }
+  },
+  {
+    "familyId": 112,
+    "bigSize": {
+      "maxHeight": 0.65,
+      "maxWeight": 26.32,
+      "weightMin": 26.153
+    },
+    "smallSize": {
+      "maxHeight": 0.46,
+      "maxWeight": 17.955,
+      "weightMax": 18.373
+    }
+  },
+  {
+    "familyId": 113,
+    "bigSize": {
+      "maxHeight": 0.34,
+      "maxWeight": 4.82,
+      "weightMin": 4.783
+    },
+    "smallSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 2.975,
+      "weightMax": 3.067
+    }
+  },
+  {
+    "familyId": 114,
+    "bigSize": {
+      "maxHeight": 0.37,
+      "maxWeight": 2.32,
+      "weightMin": 2.303
+    },
+    "smallSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 1.47,
+      "weightMax": 1.513
+    }
+  },
+  {
+    "familyId": 115,
+    "bigSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 5.8,
+      "weightMin": 5.759
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 3.745,
+      "weightMax": 3.848
+    }
+  },
+  {
+    "familyId": 116,
+    "bigSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 5.8,
+      "weightMin": 5.759
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 3.745,
+      "weightMax": 3.848
+    }
+  },
+  {
+    "familyId": 117,
+    "bigSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 3.264,
+      "weightMin": 3.246
+    },
+    "smallSize": {
+      "maxHeight": 0.12,
+      "maxWeight": 2.38,
+      "weightMax": 2.424
+    }
+  },
+  {
+    "familyId": 118,
+    "bigSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 3.76,
+      "weightMin": 3.737
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 2.625,
+      "weightMax": 2.682
+    }
+  },
+  {
+    "familyId": 119,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 3.44,
+      "weightMin": 3.423
+    },
+    "smallSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 2.59,
+      "weightMax": 2.633
+    }
+  },
+  {
+    "familyId": 120,
+    "bigSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 2.6,
+      "weightMin": 2.578
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 1.488,
+      "weightMax": 1.544
+    }
+  },
+  {
+    "familyId": 121,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 2.44,
+      "weightMin": 2.421
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 1.505,
+      "weightMax": 1.552
+    }
+  },
+  {
+    "familyId": 122,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 2.44,
+      "weightMin": 2.421
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 1.505,
+      "weightMax": 1.552
+    }
+  },
+  {
+    "familyId": 123,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 2.44,
+      "weightMin": 2.421
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 1.505,
+      "weightMax": 1.552
+    }
+  },
+  {
+    "familyId": 124,
+    "bigSize": {
+      "maxHeight": 0.22,
+      "maxWeight": 2.2,
+      "weightMin": 2.184
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 1.4,
+      "weightMax": 1.44
+    }
+  },
+  {
+    "familyId": 125,
+    "bigSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.28,
+      "weightMin": 1.267
+    },
+    "smallSize": {
+      "maxHeight": 0.14,
+      "maxWeight": 0.619,
+      "weightMax": 0.652
+    }
+  },
+  {
+    "familyId": 126,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 1.44,
+      "weightMin": 1.426
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 0.735,
+      "weightMax": 0.77
+    }
+  },
+  {
+    "familyId": 127,
+    "bigSize": {
+      "maxHeight": 0.42,
+      "maxWeight": 5,
+      "weightMin": 4.953
+    },
+    "smallSize": {
+      "maxHeight": 0.3,
+      "maxWeight": 2.625,
+      "weightMax": 2.744
+    }
+  },
+  {
+    "familyId": 128,
+    "bigSize": {
+      "maxHeight": 0.58,
+      "maxWeight": 44.8,
+      "weightMin": 44.535
+    },
+    "smallSize": {
+      "maxHeight": 0.41,
+      "maxWeight": 31.57,
+      "weightMax": 32.231
+    }
+  },
+  {
+    "familyId": 129,
+    "bigSize": {
+      "maxHeight": 0.45,
+      "maxWeight": 3.92,
+      "weightMin": 3.9
+    },
+    "smallSize": {
+      "maxHeight": 0.32,
+      "maxWeight": 2.905,
+      "weightMax": 2.956
+    }
+  },
+  {
+    "familyId": 130,
+    "bigSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 2.96,
+      "weightMin": 2.933
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.61,
+      "weightMax": 1.678
+    }
+  },
+  {
+    "familyId": 131,
+    "bigSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 2.96,
+      "weightMin": 2.933
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.61,
+      "weightMax": 1.678
+    }
+  },
+  {
+    "familyId": 132,
+    "bigSize": {
+      "maxHeight": 0.28,
+      "maxWeight": 14.02,
+      "weightMin": 0.27213
+    },
+    "smallSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 6.668,
+      "weightMax": 7.036
+    }
+  },
+  {
+    "familyId": 133,
+    "bigSize": {
+      "maxHeight": 0.26,
+      "maxWeight": 1.68,
+      "weightMin": 1.67
+    },
+    "smallSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 1.155,
+      "weightMax": 1.181
+    }
+  },
+  {
+    "familyId": 134,
+    "bigSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 6.72,
+      "weightMin": 6.677
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 4.575,
+      "weightMax": 4.682
+    }
+  },
+  {
+    "familyId": 135,
+    "bigSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.52,
+      "weightMin": 1.502
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 0.63,
+      "weightMax": 0.675
+    }
+  },
+  {
+    "familyId": 136,
+    "bigSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 2.16,
+      "weightMin": 2.141
+    },
+    "smallSize": {
+      "maxHeight": 0.17,
+      "maxWeight": 1.225,
+      "weightMax": 1.272
+    }
+  },
+  {
+    "familyId": 137,
+    "bigSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 1.74,
+      "weightMin": 1.72
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 0.728,
+      "weightMax": 0.779
+    }
+  },
+  {
+    "familyId": 138,
+    "bigSize": {
+      "maxHeight": 0.51,
+      "maxWeight": 5,
+      "weightMin": 4.967
+    },
+    "smallSize": {
+      "maxHeight": 0.37,
+      "maxWeight": 3.325,
+      "weightMax": 3.409
+    }
+  },
+  {
+    "familyId": 139,
+    "bigSize": {
+      "maxHeight": 0.34,
+      "maxWeight": 3.64,
+      "weightMin": 3.617
+    },
+    "smallSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 2.51,
+      "weightMax": 2.567
+    }
+  },
+  {
+    "familyId": 140,
+    "bigSize": {
+      "maxHeight": 0.29,
+      "maxWeight": 14.84,
+      "weightMin": 14.725
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 9.1,
+      "weightMax": 9.387
+    }
+  },
+  {
+    "familyId": 141,
+    "bigSize": {
+      "maxHeight": 0.34,
+      "maxWeight": 3.32,
+      "weightMin": 3.29
+    },
+    "smallSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 1.806,
+      "weightMax": 1.882
+    }
+  },
+  {
+    "familyId": 142,
+    "bigSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 2.54,
+      "weightMin": 2.523
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.698,
+      "weightMax": 1.74
+    }
+  },
+  {
+    "familyId": 143,
+    "bigSize": {
+      "maxHeight": 0.21,
+      "maxWeight": 2.528,
+      "weightMin": 2.513
+    },
+    "smallSize": {
+      "maxHeight": 0.14,
+      "maxWeight": 1.768,
+      "weightMax": 1.806
+    }
+  },
+  {
+    "familyId": 144,
+    "bigSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.66,
+      "weightMin": 1.647
+    },
+    "smallSize": {
+      "maxHeight": 0.15,
+      "maxWeight": 1.015,
+      "weightMax": 1.047
+    }
+  },
+  {
+    "familyId": 145,
+    "bigSize": {
+      "maxHeight": 0.23,
+      "maxWeight": 2.304,
+      "weightMin": 2.273
+    },
+    "smallSize": {
+      "maxHeight": 0.16,
+      "maxWeight": 0.763,
+      "weightMax": 0.84
+    }
+  },
+  {
+    "familyId": 146,
+    "bigSize": {
+      "maxHeight": 0.38,
+      "maxWeight": 3.48,
+      "weightMin": 3.452
+    },
+    "smallSize": {
+      "maxHeight": 0.27,
+      "maxWeight": 2.09,
+      "weightMax": 2.16
+    }
+  },
+  {
+    "familyId": 147,
+    "bigSize": {
+      "maxHeight": 0.33,
+      "maxWeight": 7.04,
+      "weightMin": 6.958
+    },
+    "smallSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 2.94,
+      "weightMax": 3.145
+    }
+  },
+  {
+    "familyId": 148,
+    "bigSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 2.44,
+      "weightMin": 2.423
+    },
+    "smallSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 1.61,
+      "weightMax": 1.652
+    }
+  },
+  {
+    "familyId": 149,
+    "bigSize": {
+      "maxHeight": 0.24,
+      "maxWeight": 2.44,
+      "weightMin": 2.423
+    },
+    "smallSize": {
+      "maxHeight": 0.19,
+      "maxWeight": 1.61,
+      "weightMax": 1.652
+    }
+  },
+  {
+    "familyId": 150,
+    "bigSize": {
+      "maxHeight": 0.25,
+      "maxWeight": 2.56,
+      "weightMin": 2.535
+    },
+    "smallSize": {
+      "maxHeight": 0.2,
+      "maxWeight": 1.299,
+      "weightMax": 1.362
+    }
+  }
 ]

@@ -33,33 +33,33 @@ export interface PokemonForm {
   avatar: string
 }
 
-/** 大块头准入线（蛋体型上限方向） */
-export interface BigSizeRule {
-  /** 身高准入下限（m），蛋身高 >= 此值才计入大块头 */
-  heightMin: number
-  /** 体重准入下限（kg），蛋体重 >= 此值才计入大块头 */
+/** 大块头蛋数据 */
+export interface BigSizeData {
+  /** 大块头蛋极限身高（m），参考值 */
+  maxHeight: number
+  /** 大块头蛋极限体重（kg），参考值 */
+  maxWeight: number
+  /** 大块头体重准入线（kg），蛋体重 >= 此值即为大块头 */
   weightMin: number
 }
 
-/** 小不点准入线（蛋体型下限方向） */
-export interface SmallSizeRule {
-  /** 身高准入上限（m），蛋身高 <= 此值才计入小不点 */
-  heightMax: number
-  /** 体重准入上限（kg），蛋体重 <= 此值才计入小不点 */
+/** 小不点蛋数据 */
+export interface SmallSizeData {
+  /** 小不点蛋极限身高（m），参考值 */
+  maxHeight: number
+  /** 小不点蛋极限体重（kg），参考值 */
+  maxWeight: number
+  /** 小不点体重准入线（kg），蛋体重 <= 此值即为小不点 */
   weightMax: number
 }
 
 /** 精灵蛋体型规则（按 familyId 关联家族，无独立 id） */
 export interface EggSizeRule {
   familyId: number
-  /** 该家族蛋可能达到的极限身高（m） */
-  maxEggHeight: number
-  /** 该家族蛋可能达到的极限体重（kg） */
-  maxEggWeight: number
-  /** 大块头准入线 */
-  bigSizeRule: BigSizeRule
-  /** 小不点准入线 */
-  smallSizeRule: SmallSizeRule
+  /** 大块头蛋数据 */
+  bigSize: BigSizeData
+  /** 小不点蛋数据 */
+  smallSize: SmallSizeData
 }
 
 /** 蛋体型判定结论：大块头 / 小不点 / 普通 */

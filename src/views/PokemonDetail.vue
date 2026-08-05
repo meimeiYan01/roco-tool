@@ -88,34 +88,34 @@ function stageText(stage: number) {
       <div v-if="rule">
         <h3 class="section-title">蛋体型规则</h3>
         <div class="card space-y-3">
-          <div class="data-row">
-            <span class="data-label">极限身高</span>
-            <span class="data-value">{{ rule.maxEggHeight }}m</span>
-          </div>
-          <div class="data-row">
-            <span class="data-label">极限体重</span>
-            <span class="data-value">{{ rule.maxEggWeight }}kg</span>
-          </div>
-          <div class="border-t border-slate-700 pt-3">
-            <div class="text-xs font-medium text-emerald-400 mb-2">大块头准入线</div>
+          <div class="border-b border-slate-700 pb-3">
+            <div class="text-xs font-medium text-emerald-400 mb-2">大块头蛋</div>
             <div class="data-row">
-              <span class="data-label">身高 ≥</span>
-              <span class="data-value">{{ rule.bigSizeRule.heightMin }}m</span>
+              <span class="data-label">极限身高</span>
+              <span class="data-value">{{ rule.bigSize.maxHeight }}m</span>
             </div>
             <div class="data-row">
-              <span class="data-label">体重 ≥</span>
-              <span class="data-value">{{ rule.bigSizeRule.weightMin }}kg</span>
+              <span class="data-label">极限体重</span>
+              <span class="data-value">{{ rule.bigSize.maxWeight }}kg</span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">体重准入线</span>
+              <span class="data-value text-emerald-400">≥ {{ rule.bigSize.weightMin }}kg</span>
             </div>
           </div>
-          <div class="border-t border-slate-700 pt-3">
-            <div class="text-xs font-medium text-amber-400 mb-2">小不点准入线</div>
+          <div>
+            <div class="text-xs font-medium text-amber-400 mb-2">小不点蛋</div>
             <div class="data-row">
-              <span class="data-label">身高 ≤</span>
-              <span class="data-value">{{ rule.smallSizeRule.heightMax }}m</span>
+              <span class="data-label">极限身高</span>
+              <span class="data-value">{{ rule.smallSize.maxHeight }}m</span>
             </div>
             <div class="data-row">
-              <span class="data-label">体重 ≤</span>
-              <span class="data-value">{{ rule.smallSizeRule.weightMax }}kg</span>
+              <span class="data-label">极限体重</span>
+              <span class="data-value">{{ rule.smallSize.maxWeight }}kg</span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">体重准入线</span>
+              <span class="data-value text-amber-400">≤ {{ rule.smallSize.weightMax }}kg</span>
             </div>
           </div>
         </div>

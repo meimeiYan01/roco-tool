@@ -8,8 +8,8 @@
     "voiceMedal": "婉转声",
     "personality": "",
     "specialty": "",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1002,
@@ -20,8 +20,8 @@
     "voiceMedal": "婉转声",
     "personality": "",
     "specialty": "",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1003,
@@ -32,8 +32,8 @@
     "voiceMedal": "婉转声",
     "personality": "",
     "specialty": "",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1004,
@@ -45,8 +45,8 @@
     "personality": "",
     "specialty": "",
     "location": "home",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1005,
@@ -57,8 +57,8 @@
     "voiceMedal": "婉转声",
     "personality": "",
     "specialty": "",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1006,
@@ -69,8 +69,8 @@
     "voiceMedal": "婉转声",
     "personality": "",
     "specialty": "",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1007,
@@ -81,8 +81,8 @@
     "voiceMedal": "粗嗓门",
     "personality": "",
     "specialty": "",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1008,
@@ -93,8 +93,8 @@
     "voiceMedal": "粗嗓门",
     "personality": "",
     "specialty": "",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1009,
@@ -106,8 +106,8 @@
     "personality": "",
     "specialty": "",
     "location": "home",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 1010,
@@ -118,8 +118,8 @@
     "voiceMedal": "粗嗓门",
     "personality": "",
     "specialty": "",
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   },
   {
     "id": 2001,
@@ -131,7 +131,7 @@
     "personality": "",
     "specialty": "",
     "hatchedFromEggId": 3001,
-    "familyId": 580,
-    "currentFormId": 5803
+    "familyId": 1,
+    "currentFormId": 12
   }
 ]

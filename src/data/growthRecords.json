@@ -2,25 +2,61 @@
   {
     "individualId": 2001,
     "records": [
-      { "formId": 5801, "level": 1, "weight": 6.2 },
-      { "formId": 5802, "level": 30, "weight": 18.5 },
-      { "formId": 5803, "level": 40, "weight": 41 }
+      {
+        "formId": 11,
+        "level": 1,
+        "weight": 6.2
+      },
+      {
+        "formId": 12,
+        "level": 30,
+        "weight": 18.5
+      },
+      {
+        "formId": 12,
+        "level": 40,
+        "weight": 41
+      }
     ]
   },
   {
     "individualId": 1003,
     "records": [
-      { "formId": 5801, "level": 1, "weight": 5.8 },
-      { "formId": 5802, "level": 28, "weight": 17.2 },
-      { "formId": 5803, "level": 42, "weight": 40 }
+      {
+        "formId": 11,
+        "level": 1,
+        "weight": 5.8
+      },
+      {
+        "formId": 12,
+        "level": 28,
+        "weight": 17.2
+      },
+      {
+        "formId": 12,
+        "level": 42,
+        "weight": 40
+      }
     ]
   },
   {
     "individualId": 1007,
     "records": [
-      { "formId": 5801, "level": 1, "weight": 6.8 },
-      { "formId": 5802, "level": 32, "weight": 19.6 },
-      { "formId": 5803, "level": 45, "weight": 41.5 }
+      {
+        "formId": 11,
+        "level": 1,
+        "weight": 6.8
+      },
+      {
+        "formId": 12,
+        "level": 32,
+        "weight": 19.6
+      },
+      {
+        "formId": 12,
+        "level": 45,
+        "weight": 41.5
+      }
     ]
   }
 ]
