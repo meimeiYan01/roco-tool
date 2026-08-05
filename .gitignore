@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Dev tool caches
+.workbuddy/
+.mimocode/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Resources (原始资料图片/表格，非代码)
+resources/
+
+# Docs (项目文档，不上传)
+docs/
+
+# Excel temp files
+~$*.xlsx

@@ -1,0 +1,6 @@
+[
+  { "id": 1, "planId": 1, "name": "大婉蛋", "sizeMedal": "大块头", "voiceMedal": "婉转声" },
+  { "id": 2, "planId": 1, "name": "大粗蛋", "sizeMedal": "大块头", "voiceMedal": "粗嗓门" },
+  { "id": 3, "planId": 1, "name": "小婉蛋", "sizeMedal": "小不点", "voiceMedal": "婉转声" },
+  { "id": 4, "planId": 1, "name": "小粗蛋", "sizeMedal": "小不点", "voiceMedal": "粗嗓门" }
+]

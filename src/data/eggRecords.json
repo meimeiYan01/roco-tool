@@ -1,0 +1,58 @@
+[
+  {
+    "id": 3001,
+    "taskId": 1,
+    "sourceGroupId": 1,
+    "height": 2.09,
+    "weight": 40,
+    "status": "已孵化",
+    "acquiredAt": "2026-08-02T10:24:00.000Z",
+    "fatherSnapshot": { "individualId": 1001, "pokemonName": "罗隐", "weight": 42 },
+    "motherSnapshot": { "individualId": 1002, "pokemonName": "罗隐", "weight": 39 }
+  },
+  {
+    "id": 3002,
+    "taskId": 1,
+    "sourceGroupId": 2,
+    "height": 2.06,
+    "weight": 36,
+    "status": "孵蛋中",
+    "acquiredAt": "2026-08-03T18:12:00.000Z",
+    "hatchStartTime": "2026-08-04T15:00:00.000Z",
+    "fatherSnapshot": { "individualId": 1003, "pokemonName": "罗隐", "weight": 40 },
+    "motherSnapshot": { "individualId": 1004, "pokemonName": "罗隐", "weight": 37 }
+  },
+  {
+    "id": 3003,
+    "taskId": 2,
+    "sourceGroupId": 4,
+    "height": 2.08,
+    "weight": 39,
+    "status": "淘汰",
+    "acquiredAt": "2026-08-03T20:45:00.000Z",
+    "fatherSnapshot": { "individualId": 1007, "pokemonName": "罗隐", "weight": 41 },
+    "motherSnapshot": { "individualId": 1008, "pokemonName": "罗隐", "weight": 38 }
+  },
+  {
+    "id": 3004,
+    "taskId": 1,
+    "sourceGroupId": 3,
+    "height": 2.03,
+    "weight": 34,
+    "status": "未处理",
+    "acquiredAt": "2026-08-04T09:30:00.000Z",
+    "fatherSnapshot": { "individualId": 1005, "pokemonName": "罗隐", "weight": 38 },
+    "motherSnapshot": { "individualId": 1006, "pokemonName": "罗隐", "weight": 35 }
+  },
+  {
+    "id": 3005,
+    "taskId": 1,
+    "sourceGroupId": 2,
+    "height": 2.1,
+    "weight": 41,
+    "status": "未处理",
+    "acquiredAt": "2026-08-04T15:30:00.000Z",
+    "fatherSnapshot": { "individualId": 1003, "pokemonName": "罗隐", "weight": 40 },
+    "motherSnapshot": { "individualId": 1008, "pokemonName": "罗隐", "weight": 38 }
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "familyId": 580,
+    "familyName": "阿米亚特家族",
+    "types": ["恶魔系"],
+    "rarity": "稀有",
+    "eggImage": "",
+    "description": "",
+    "forms": [
+      { "formId": 5801, "name": "阿米亚特", "stage": 1, "avatar": "" },
+      { "formId": 5802, "name": "阿米樱", "stage": 2, "avatar": "" },
+      { "formId": 5803, "name": "罗隐", "stage": 3, "avatar": "" }
+    ]
+  },
+  {
+    "familyId": 581,
+    "familyName": "火神家族",
+    "types": ["火系"],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "forms": [
+      { "formId": 5811, "name": "火神", "stage": 1, "avatar": "" }
+    ]
+  }
+]

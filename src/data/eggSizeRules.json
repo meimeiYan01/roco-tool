@@ -1,0 +1,4 @@
+[
+  { "familyId": 580, "maxEggHeight": 2.08, "maxEggWeight": 19.55, "bigSizeRule": { "heightMin": 2.05, "weightMin": 19.2 }, "smallSizeRule": { "heightMax": 1.5, "weightMax": 10 } },
+  { "familyId": 581, "maxEggHeight": 1.2, "maxEggWeight": 3.3, "bigSizeRule": { "heightMin": 1.18, "weightMin": 3.2 }, "smallSizeRule": { "heightMax": 0.85, "weightMax": 2.0 } }
+]

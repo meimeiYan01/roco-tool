@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "planId": 1,
+    "taskId": 1,
+    "groupId": 2,
+    "groupNo": 2,
+    "role": "mother",
+    "oldIndividualId": 1004,
+    "newIndividualId": 1008,
+    "oldWeight": 37,
+    "newWeight": 38,
+    "replacedAt": "2026-08-03T20:00:00.000Z"
+  }
+]

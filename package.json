@@ -1,0 +1,23 @@
+{
+  "name": "roco-bigsize-tool",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "type-check": "vue-tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "element-plus": "^2.13.0",
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.3",
+    "typescript": "^5.4.5",
+    "vite": "^7.3.0",
+    "vue-tsc": "^2.0.26"
+  }
+}

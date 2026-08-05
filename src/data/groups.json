@@ -1,0 +1,7 @@
+[
+  { "id": 1, "planId": 1, "taskId": 1, "groupNo": 1, "fatherId": 1001, "motherId": 1002 },
+  { "id": 2, "planId": 1, "taskId": 1, "groupNo": 2, "fatherId": 1003, "motherId": 1008 },
+  { "id": 3, "planId": 1, "taskId": 1, "groupNo": 3, "fatherId": 1005, "motherId": 1006 },
+  { "id": 4, "planId": 1, "taskId": 2, "groupNo": 4, "fatherId": 1007, "motherId": 1008 },
+  { "id": 5, "planId": 1, "taskId": 2, "groupNo": 5, "fatherId": 1009, "motherId": 1010 }
+]
