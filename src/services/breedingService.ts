@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
 import type { BreedingPlan, MedalTask, BreedingGroup, Individual, EggRecord, ReplacementRecord, GrowthRecord, GrowthStageRecord, PokemonForm, ParentPool } from '../types'
 import plansJson from '../data/breedingPlans.json'
 import tasksJson from '../data/medalTasks.json'
@@ -9,28 +9,202 @@ import replacementRecordsJson from '../data/replacementRecords.json'
 import growthRecordsJson from '../data/growthRecords.json'
 import parentPoolsJson from '../data/parentPools.json'
 import { getFormName, getFamilyById } from './pokemonService'
+import { hasData, getAll, saveSnapshot, STORES } from './storage'
 
 /**
- * 响应式存储：初始化自 JSON，运行时可增删。
- * 刷新后回到 mock 初始状态（V1 纯前端，无持久化）。
+ * 响应式存储
+ *
+ * V2：首次加载从 JSON 初始化并写入 IndexedDB；后续从 IndexedDB 读取。
+ * 每次 mutation 后自动防抖保存（200ms）。
+ * 刷新页面数据不丢失。
  */
 const store = reactive({
-  plans: [...(plansJson as unknown as BreedingPlan[])],
-  tasks: [...(tasksJson as unknown as MedalTask[])],
-  groups: [...(groupsJson as unknown as BreedingGroup[])],
-  individuals: [...(individualsJson as unknown as Individual[])],
-  eggRecords: [...(eggRecordsJson as unknown as EggRecord[])],
-  replacementRecords: [...(replacementRecordsJson as unknown as ReplacementRecord[])],
-  growthRecords: [...(growthRecordsJson as unknown as GrowthRecord[])],
-  parentPools: [...(parentPoolsJson as unknown as ParentPool[])],
+  plans: [] as BreedingPlan[],
+  tasks: [] as MedalTask[],
+  groups: [] as BreedingGroup[],
+  individuals: [] as Individual[],
+  eggRecords: [] as EggRecord[],
+  replacementRecords: [] as ReplacementRecord[],
+  growthRecords: [] as GrowthRecord[],
+  parentPools: [] as ParentPool[],
 })
 
-let nextPlanId = 2
-let nextTaskId = 5
-let nextGroupId = 6
-let nextIndividualId = 2002
-let nextEggRecordId = 3005
-let nextReplacementRecordId = 1
+/** 自增计数器（从 IDB meta 表恢复，或从 JSON mock 推算） */
+let nextPlanId = 0
+let nextTaskId = 0
+let nextGroupId = 0
+let nextIndividualId = 0
+let nextEggRecordId = 0
+let nextReplacementRecordId = 0
+
+/** 是否正在从 IDB 加载（加载期间不触发自动保存） */
+let isLoading = false
+
+/** 初始化标志 */
+let initialized = false
+
+// ── 初始化 ──
+
+/**
+ * 初始化存储：优先从 IndexedDB 恢复；无数据时从 JSON mock 初始化并持久化。
+ * 必须在 Vue app mount 前调用（await initStore()）。
+ */
+export async function initStore(): Promise<void> {
+  if (initialized) return
+  isLoading = true
+
+  try {
+    const exists = await hasData()
+    console.log('[breedingService] initStore: IDB has data =', exists)
+
+    if (exists) {
+      // ── 从 IndexedDB 恢复 ──
+      store.plans = await getAll<BreedingPlan>(STORES.plans)
+      store.tasks = await getAll<MedalTask>(STORES.tasks)
+      store.groups = await getAll<BreedingGroup>(STORES.groups)
+      store.individuals = await getAll<Individual>(STORES.individuals)
+      store.eggRecords = await getAll<EggRecord>(STORES.eggRecords)
+      store.replacementRecords = await getAll<ReplacementRecord>(STORES.replacementRecords)
+      store.growthRecords = await getAll<GrowthRecord>(STORES.growthRecords)
+      store.parentPools = await getAll<ParentPool>(STORES.parentPools)
+
+      // 从现有数据推算自增 ID（取最大值 + 1）
+      nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
+      nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
+      nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
+      nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
+      nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
+      nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
+    } else {
+      // ── 首次：从 JSON mock 初始化 ──
+      store.plans = [...(plansJson as unknown as BreedingPlan[])]
+      store.tasks = [...(tasksJson as unknown as MedalTask[])]
+      store.groups = [...(groupsJson as unknown as BreedingGroup[])]
+      store.individuals = [...(individualsJson as unknown as Individual[])]
+      store.eggRecords = [...(eggRecordsJson as unknown as EggRecord[])]
+      store.replacementRecords = [...(replacementRecordsJson as unknown as ReplacementRecord[])]
+      store.growthRecords = [...(growthRecordsJson as unknown as GrowthRecord[])]
+      store.parentPools = [...(parentPoolsJson as unknown as ParentPool[])]
+
+      // 从 JSON mock 推算自增 ID
+      nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
+      nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
+      nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
+      nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
+      nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
+      nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
+
+      // 持久化初始数据
+      await persistToIDB()
+    }
+  } catch (e) {
+    console.error('[breedingService] initStore failed, falling back to JSON:', e)
+    // 降级：即使 IDB 不可用，也要加载 JSON mock
+    if (store.plans.length === 0) {
+      store.plans = [...(plansJson as unknown as BreedingPlan[])]
+      store.tasks = [...(tasksJson as unknown as MedalTask[])]
+      store.groups = [...(groupsJson as unknown as BreedingGroup[])]
+      store.individuals = [...(individualsJson as unknown as Individual[])]
+      store.eggRecords = [...(eggRecordsJson as unknown as EggRecord[])]
+      store.replacementRecords = [...(replacementRecordsJson as unknown as ReplacementRecord[])]
+      store.growthRecords = [...(growthRecordsJson as unknown as GrowthRecord[])]
+      store.parentPools = [...(parentPoolsJson as unknown as ParentPool[])]
+      nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
+      nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
+      nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
+      nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
+      nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
+      nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
+      // 降级后也要尝试持久化，这样下次刷新至少能恢复 JSON 数据
+      try { await persistToIDB() } catch (_) { /* IDB 完全不可用时忽略 */ }
+    }
+  } finally {
+    isLoading = false
+    initialized = true
+  }
+}
+
+// ── 自动保存（防抖 200ms）──
+
+let saveTimer: ReturnType<typeof setTimeout> | null = null
+
+/** 将当前 store 全量写入 IndexedDB */
+async function persistToIDB(): Promise<void> {
+  try {
+    // JSON 序列化彻底去除 Vue 响应式 Proxy，确保 IndexedDB 结构化克隆不报错
+    const plain = JSON.parse(JSON.stringify({
+      plans: store.plans,
+      tasks: store.tasks,
+      groups: store.groups,
+      individuals: store.individuals,
+      eggRecords: store.eggRecords,
+      replacementRecords: store.replacementRecords,
+      growthRecords: store.growthRecords,
+      parentPools: store.parentPools,
+    }))
+    await saveSnapshot({
+      ...plain,
+      meta: {
+        nextPlanId,
+        nextTaskId,
+        nextGroupId,
+        nextIndividualId,
+        nextEggRecordId,
+        nextReplacementRecordId,
+      },
+    })
+  } catch (e) {
+    console.error('[breedingService] persistToIDB failed:', e)
+  }
+}
+
+function scheduleSave(): void {
+  if (isLoading) return
+  if (saveTimer) clearTimeout(saveTimer)
+  saveTimer = setTimeout(() => {
+    persistToIDB().catch(e => {
+      console.error('[breedingService] auto-save failed:', e)
+    })
+  }, 200)
+}
+
+// 深度监听 store 的所有字段
+watch(
+  () => [
+    store.plans,
+    store.tasks,
+    store.groups,
+    store.individuals,
+    store.eggRecords,
+    store.replacementRecords,
+    store.growthRecords,
+    store.parentPools,
+  ],
+  () => { scheduleSave() },
+  { deep: true },
+)
+
+// ── 重置为默认数据（调试用）──
+
+export async function resetToDefaults(): Promise<void> {
+  isLoading = true
+  store.plans = [...(plansJson as unknown as BreedingPlan[])]
+  store.tasks = [...(tasksJson as unknown as MedalTask[])]
+  store.groups = [...(groupsJson as unknown as BreedingGroup[])]
+  store.individuals = [...(individualsJson as unknown as Individual[])]
+  store.eggRecords = [...(eggRecordsJson as unknown as EggRecord[])]
+  store.replacementRecords = [...(replacementRecordsJson as unknown as ReplacementRecord[])]
+  store.growthRecords = [...(growthRecordsJson as unknown as GrowthRecord[])]
+  store.parentPools = [...(parentPoolsJson as unknown as ParentPool[])]
+  nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
+  nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
+  nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
+  nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
+  nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
+  nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
+  isLoading = false
+  await persistToIDB()
+}
 
 // ── Plan ──
 
@@ -88,7 +262,6 @@ export function updatePlan(
 /** 删除计划：级联删除其方向、组、蛋记录、关联个体 */
 export function deletePlan(id: number): void {
   const taskIds = store.tasks.filter(t => t.planId === id).map(t => t.id)
-  const groupIds = store.groups.filter(g => g.planId === id).map(g => g.id)
   const eggRecordIds = store.eggRecords.filter(e => taskIds.includes(e.taskId)).map(e => e.id)
 
   // 删除由这些蛋孵化出的个体

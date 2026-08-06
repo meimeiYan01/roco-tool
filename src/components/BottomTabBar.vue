@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { getAllPlans } from '../services/breedingService'
 
 const route = useRoute()
 const router = useRouter()
@@ -12,16 +13,23 @@ interface Tab {
   matchPaths: string[]
 }
 
-const tabs: Tab[] = [
+const currentPlanId = computed(() => {
+  const id = route.params.id
+  if (id) return Number(id)
+  const plans = getAllPlans()
+  return plans[0]?.id ?? 1
+})
+
+const tabs = computed<Tab[]>(() => [
   { path: '/', label: '首页', icon: '🏠', matchPaths: ['/'] },
   { path: '/list', label: '查询', icon: '🔍', matchPaths: ['/list', '/detail', '/check'] },
   { path: '/breeding', label: '培育', icon: '🥚', matchPaths: ['/breeding'] },
-  { path: '/breeding/1/stats', label: '统计', icon: '📊', matchPaths: ['/breeding/1/stats'] },
-]
+  { path: `/breeding/${currentPlanId.value}/stats`, label: '统计', icon: '📊', matchPaths: ['/breeding/'] },
+])
 
 const activeTab = computed(() => {
   const path = route.path
-  for (const tab of tabs) {
+  for (const tab of tabs.value) {
     if (tab.matchPaths.some(p => path.startsWith(p) && (p === '/' ? path === '/' : true))) {
       return tab.path
     }
