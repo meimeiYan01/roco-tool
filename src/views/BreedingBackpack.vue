@@ -11,6 +11,7 @@ import {
 } from '../services/breedingService'
 import { getAllFormsWithFamily, getFormName, getFamilyOfForm, getInitialFormId, getFamilyById } from '../services/pokemonService'
 import { generateReplacementSuggestions } from '../utils/replacementAdvisor'
+import { exportIndividuals, importIndividuals } from '../utils/excelIO'
 import type { Individual, BreedingGroup, EggRecord } from '../types'
 import PageHeader from '../components/PageHeader.vue'
 import PokemonAvatar from '../components/PokemonAvatar.vue'
@@ -37,6 +38,37 @@ const tabOptions = [
 
 function refreshGroups() { allGroups.value = getGroupsByPlanId(planId) }
 function formNameOf(i?: Individual) { return i ? getFormName(i.currentFormId) : '' }
+
+// ── 导入导出 ──
+const fileInputRef = ref<HTMLInputElement | null>(null)
+
+function onExport() {
+  exportIndividuals()
+  ElMessage.success('导出成功')
+}
+
+function onImportClick() {
+  fileInputRef.value?.click()
+}
+
+async function onImportFile(e: Event) {
+  const input = e.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+  input.value = '' // 清空，允许重复选同一文件
+  try {
+    const result = await importIndividuals(file)
+    if (result.success > 0) {
+      ElMessage.success(`成功导入 ${result.success} 只精灵`)
+    }
+    if (result.errors.length > 0) {
+      console.warn('[import] errors:', result.errors)
+      ElMessage.warning(`${result.errors.length} 行导入失败，详见控制台`)
+    }
+  } catch (err) {
+    ElMessage.error(err instanceof Error ? err.message : '导入失败')
+  }
+}
 
 // ── 个体详情 ──
 const detailId = ref<number | null>(null)
@@ -151,6 +183,14 @@ function onStartHatch(eggId: number) {
 
     <!-- 精灵 Tab -->
     <div v-if="activeTab === 'individuals'" class="px-4 space-y-3 pb-4">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">共 {{ individuals.length }} 只</span>
+        <div class="flex gap-2">
+          <button @click="onExport" class="text-xs text-emerald-400 px-2 py-1 rounded-lg active:bg-emerald-500/10">导出</button>
+          <button @click="onImportClick" class="text-xs text-violet-400 px-2 py-1 rounded-lg active:bg-violet-500/10">导入</button>
+        </div>
+      </div>
+      <input ref="fileInputRef" type="file" accept=".xlsx,.xls" class="hidden" @change="onImportFile" />
       <div
         v-for="ind in individuals"
         :key="ind.id"
