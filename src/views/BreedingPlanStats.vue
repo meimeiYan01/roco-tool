@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
-  getPlanById, getTasksByPlanId, getGroupsByPlanId, getAllIndividuals,
+  getPlanById, getTasksByPlanId, getGroupsByPlanId, getIndividualsByPlanId,
   getIndividualById, getIndividualDisplayName, getGrowthRecordsByIndividualId,
   getGroupById, getAllEggRecordsByPlanId, getReplacementRecordsByPlanId,
 } from '../services/breedingService'
@@ -46,7 +46,7 @@ function buildGroupLine(g: BreedingGroup, role: 'father' | 'mother') {
 
 // ── 个体体重对比 ──
 const growthMatrixRows = computed(() => {
-  const rows = getAllIndividuals().map(ind => {
+  const rows = getIndividualsByPlanId(planId).map(ind => {
     const records = getGrowthRecordsByIndividualId(ind.id)
     if (records.length === 0) return null
     const byStage: Record<number, GrowthStageRecord> = {}
@@ -65,7 +65,7 @@ const pedigreeDialogVisible = ref(false)
 const pedigree = ref<EggPedigree | null>(null)
 function showPedigree(egg: EggRecord) {
   const g = getGroupById(egg.sourceGroupId)
-  pedigree.value = buildEggPedigree(egg, getAllIndividuals(), getReplacementRecordsByPlanId(planId), g?.groupNo ?? 0, getIndividualDisplayName)
+  pedigree.value = buildEggPedigree(egg, getIndividualsByPlanId(planId), getReplacementRecordsByPlanId(planId), g?.groupNo ?? 0, getIndividualDisplayName)
   pedigreeDialogVisible.value = true
 }
 </script>

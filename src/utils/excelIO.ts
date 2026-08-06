@@ -1,13 +1,13 @@
 import * as XLSX from 'xlsx'
 import type { Individual } from '../types'
-import { getAllIndividuals, addIndividual } from '../services/breedingService'
+import { getIndividualsByPlanId, addIndividual } from '../services/breedingService'
 import { getFormName, getFamilyName, getFamilyOfForm, searchForms } from '../services/pokemonService'
 
 // ── 导出 ──
 
-/** 导出全部个体为 xlsx 文件 */
-export function exportIndividuals(): void {
-  const individuals = getAllIndividuals()
+/** 导出指定计划的个体为 xlsx 文件 */
+export function exportIndividuals(planId: number): void {
+  const individuals = getIndividualsByPlanId(planId)
   const rows = individuals.map(ind => ({
     'ID': ind.id,
     '名称': getFormName(ind.currentFormId),
@@ -38,8 +38,8 @@ export interface ImportResult {
   errors: string[]
 }
 
-/** 从 xlsx 文件导入个体 */
-export function importIndividuals(file: File): Promise<ImportResult> {
+/** 从 xlsx 文件导入个体到指定计划 */
+export function importIndividuals(file: File, planId: number): Promise<ImportResult> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
     reader.onload = (e) => {
@@ -107,6 +107,7 @@ export function importIndividuals(file: File): Promise<ImportResult> {
 
           // 写入
           addIndividual({
+            planId,
             familyId: match.family.familyId,
             currentFormId: match.form.formId,
             gender,

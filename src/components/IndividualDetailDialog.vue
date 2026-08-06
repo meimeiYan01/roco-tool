@@ -2,7 +2,7 @@
 import { computed, reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import {
-  getIndividualById, getAllGroups, getAllIndividuals,
+  getIndividualById, getGroupsByPlanId, getIndividualsByPlanId,
   evolveIndividual, getGrowthRecordsByIndividualId, getAllGrowthRecords,
 } from '../services/breedingService'
 import { getFormName, getFamilyById } from '../services/pokemonService'
@@ -21,10 +21,10 @@ const nextForm = computed(() => currentForm.value && family.value ? family.value
 const growthRecords = computed(() => individual.value ? getGrowthRecordsByIndividualId(individual.value.id) : [])
 const evaluation = computed<StageEvaluation | null>(() => {
   if (!individual.value) return null
-  return evaluateStage(individual.value, getAllIndividuals(), getAllGrowthRecords())
+  return evaluateStage(individual.value, getIndividualsByPlanId(individual.value.planId), getAllGrowthRecords())
 })
 
-const groups = computed(() => individual.value ? getAllGroups().filter(g => g.fatherId === individual.value!.id || g.motherId === individual.value!.id) : [])
+const groups = computed(() => individual.value ? getGroupsByPlanId(individual.value.planId).filter(g => g.fatherId === individual.value!.id || g.motherId === individual.value!.id) : [])
 
 // 进化
 const evolveDialogVisible = ref(false)

@@ -3,7 +3,7 @@ import { ref, reactive, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import {
-  getPlanById, getTasksByPlanId, getGroupsByPlanId, getAllIndividuals,
+  getPlanById, getTasksByPlanId, getGroupsByPlanId, getIndividualsByPlanId,
   getIndividualById, getGroupById, getAllEggRecordsByPlanId, getHatchingEggsByPlanId,
   getParentPoolByPlanId, addIndividual, startHatch, hatchEgg, addEggRecord,
   applyReplacement, getReplacementRecordsByPlanId, switchIndividualLocation,
@@ -24,7 +24,7 @@ const router = useRouter()
 const planId = Number(route.params.id)
 const plan = computed(() => getPlanById(planId))
 const tasks = getTasksByPlanId(planId)
-const individuals = getAllIndividuals()
+const individuals = getIndividualsByPlanId(planId)
 const allGroups = ref<BreedingGroup[]>(getGroupsByPlanId(planId))
 const parentPool = computed(() => getParentPoolByPlanId(planId))
 const formOptions = getAllFormsWithFamily()
@@ -43,7 +43,7 @@ function formNameOf(i?: Individual) { return i ? getFormName(i.currentFormId) : 
 const fileInputRef = ref<HTMLInputElement | null>(null)
 
 function onExport() {
-  exportIndividuals()
+  exportIndividuals(planId)
   ElMessage.success('导出成功')
 }
 
@@ -57,7 +57,7 @@ async function onImportFile(e: Event) {
   if (!file) return
   input.value = '' // 清空，允许重复选同一文件
   try {
-    const result = await importIndividuals(file)
+    const result = await importIndividuals(file, planId)
     if (result.success > 0) {
       ElMessage.success(`成功导入 ${result.success} 只精灵`)
     }

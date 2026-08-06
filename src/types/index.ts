@@ -17,6 +17,10 @@ export interface PokemonFamily {
   eggImage: string
   /** 精灵描述（预留，当前为空字符串） */
   description: string
+  /** 蛋壳名，如 "火焰蛋" */
+  eggShell?: string
+  /** 是否有变体 */
+  hasVariant?: boolean
   /** 形态列表（按 stage 升序） */
   forms: PokemonForm[]
 }
@@ -132,6 +136,8 @@ export type IndividualLocation = 'bag' | 'home'
 /** 精灵个体：玩家拥有的一只具体精灵（只引用静态数据，不重复保存名称/头像） */
 export interface Individual {
   id: number
+  /** 所属培育计划（账号隔离） */
+  planId: number
   /** 所属家族（静态数据 PokemonFamily.familyId） */
   familyId: number
   /** 当前形态（静态数据 PokemonForm.formId，页面显示名称/头像靠它查） */

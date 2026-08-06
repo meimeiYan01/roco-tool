@@ -3,7 +3,7 @@ import { ref, reactive, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import {
-  getPlanById, getTasksByPlanId, getGroupsByPlanId, getAllIndividuals,
+  getPlanById, getTasksByPlanId, getGroupsByPlanId, getIndividualsByPlanId,
   getIndividualById, getGroupById, getUnhatchedEggsByPlanId, getHatchingEggsByPlanId,
   getParentPoolByPlanId, updatePlan, addGroup, updateGroup, removeGroup,
   addIndividual, startHatch, hatchEgg, addEggRecord, evolveIndividual, addGrowthRecord,
@@ -21,7 +21,7 @@ const router = useRouter()
 const planId = Number(route.params.id)
 const plan = getPlanById(planId)
 const tasks = getTasksByPlanId(planId)
-const individuals = getAllIndividuals()
+const individuals = getIndividualsByPlanId(planId)
 const allGroups = ref<BreedingGroup[]>(getGroupsByPlanId(planId))
 const parentPool = computed(() => getParentPoolByPlanId(planId))
 
@@ -31,12 +31,71 @@ function formNameOf(i?: Individual) { return i ? getFormName(i.currentFormId) : 
 // ── 个体详情 ──
 const detailId = ref<number | null>(null)
 
+// ── 添加精灵 ──
+const addIndividualVisible = ref(false)
+const addIndividualForm = reactive({
+  formId: undefined as number | undefined,
+  gender: 'male' as string,
+  height: 0,
+  weight: 0,
+  sizeMedal: '' as string,
+  voiceMedal: '' as string,
+  personality: '',
+  specialty: '',
+})
+const addFormOptions = getAllFormsWithFamily()
+const addSearchKeyword = ref('')
+const filteredFormOptions = computed(() => {
+  const kw = addSearchKeyword.value.trim().toLowerCase()
+  if (!kw) return addFormOptions
+  return addFormOptions.filter(f =>
+    f.form.name.toLowerCase().includes(kw) ||
+    f.family.familyName.toLowerCase().includes(kw) ||
+    f.family.types.some(t => t.toLowerCase().includes(kw))
+  )
+})
+function selectAddForm(formId: number) {
+  addIndividualForm.formId = formId
+}
+function openAddIndividual() {
+  addIndividualForm.formId = undefined
+  addIndividualForm.gender = 'male'
+  addIndividualForm.height = 0
+  addIndividualForm.weight = 0
+  addIndividualForm.sizeMedal = ''
+  addIndividualForm.voiceMedal = ''
+  addIndividualForm.personality = ''
+  addIndividualForm.specialty = ''
+  addSearchKeyword.value = ''
+  addIndividualVisible.value = true
+}
+function onAddIndividual() {
+  const f = addIndividualForm
+  if (!f.formId || f.height <= 0 || f.weight <= 0 || !f.sizeMedal || !f.voiceMedal) return
+  const family = getFamilyOfForm(f.formId)
+  if (!family) return
+  addIndividual({
+    planId,
+    familyId: family.familyId,
+    currentFormId: f.formId,
+    gender: f.gender,
+    height: f.height,
+    weight: f.weight,
+    sizeMedal: f.sizeMedal,
+    voiceMedal: f.voiceMedal,
+    personality: f.personality,
+    specialty: f.specialty,
+  })
+  ElMessage.success('精灵已添加')
+  addIndividualVisible.value = false
+}
+
 // ── 小组编辑 ──
 const groupDialogVisible = ref(false)
 const editingGroupId = ref<number | null>(null)
 const groupForm = reactive({ taskId: null as number | null, fatherId: null as number | null, motherId: null as number | null })
-const maleIndividuals = computed(() => getAllIndividuals().filter(i => i.gender === 'male'))
-const femaleIndividuals = computed(() => getAllIndividuals().filter(i => i.gender === 'female'))
+const maleIndividuals = computed(() => getIndividualsByPlanId(planId).filter(i => i.gender === 'male'))
+const femaleIndividuals = computed(() => getIndividualsByPlanId(planId).filter(i => i.gender === 'female'))
 
 function openGroupCreate() {
   editingGroupId.value = null
@@ -159,6 +218,7 @@ function onStartHatch() {
   <div>
     <PageHeader :title="plan?.name ?? '培育详情'" :back="true">
       <template #actions>
+        <button @click="openAddIndividual" class="text-xs text-amber-400 font-medium">添加精灵</button>
         <button @click="router.push(`/breeding/${planId}/backpack`)" class="text-xs text-violet-400 font-medium">背包</button>
         <button @click="router.push(`/breeding/${planId}/stats`)" class="text-xs text-emerald-400 font-medium">统计</button>
       </template>
@@ -415,6 +475,87 @@ function onStartHatch() {
         <div class="flex gap-3">
           <button class="btn btn-secondary flex-1" @click="hatchDialogVisible = false">取消</button>
           <button class="btn btn-primary flex-1" @click="onHatchConfirm" :disabled="!canHatch">确认孵化</button>
+        </div>
+      </template>
+    </el-dialog>
+
+    <!-- 添加精灵弹窗 -->
+    <el-dialog v-model="addIndividualVisible" title="添加精灵" width="90%" :close-on-click-modal="false">
+      <div class="space-y-4">
+        <div>
+          <label class="text-sm text-slate-400 mb-1.5 block">选择精灵</label>
+          <div v-if="addIndividualForm.formId" class="flex items-center gap-2 mb-2 p-2 bg-slate-700/50 rounded-lg">
+            <span class="text-sm text-slate-200">{{ getFormName(addIndividualForm.formId) }}</span>
+            <button @click="addIndividualForm.formId = undefined" class="text-xs text-slate-400 ml-auto">更换</button>
+          </div>
+          <template v-else>
+            <input v-model="addSearchKeyword" type="text" class="input-field mb-2" placeholder="搜索精灵名称、系别..." />
+            <div class="max-h-48 overflow-y-auto space-y-1 rounded-lg border border-slate-700">
+              <div v-for="f in filteredFormOptions" :key="f.form.formId"
+                @click="selectAddForm(f.form.formId)"
+                class="flex items-center justify-between px-3 py-2 text-sm cursor-pointer active:bg-slate-700 transition-colors"
+                :class="addIndividualForm.formId === f.form.formId ? 'bg-violet-600/20 text-violet-300' : 'text-slate-300 hover:bg-slate-700/50'"
+              >
+                <span>{{ f.form.name }}</span>
+                <span class="text-xs text-slate-500">{{ f.family.familyName }}·阶段{{ f.form.stage }}</span>
+              </div>
+              <div v-if="filteredFormOptions.length === 0" class="px-3 py-4 text-center text-xs text-slate-500">
+                未找到匹配精灵
+              </div>
+            </div>
+          </template>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-sm text-slate-400 mb-1.5 block">性别</label>
+            <div class="flex gap-2">
+              <button @click="addIndividualForm.gender = 'male'" :class="addIndividualForm.gender === 'male' ? 'bg-violet-600 text-white' : 'bg-slate-700 text-slate-300'" class="flex-1 py-2 rounded-lg text-sm">♂ 雄性</button>
+              <button @click="addIndividualForm.gender = 'female'" :class="addIndividualForm.gender === 'female' ? 'bg-violet-600 text-white' : 'bg-slate-700 text-slate-300'" class="flex-1 py-2 rounded-lg text-sm">♀ 雌性</button>
+            </div>
+          </div>
+          <div>
+            <label class="text-sm text-slate-400 mb-1.5 block">体型奖牌</label>
+            <select v-model="addIndividualForm.sizeMedal" class="input-field">
+              <option value="" disabled>选择</option>
+              <option value="大块头">大块头</option>
+              <option value="小不点">小不点</option>
+              <option value="普通">普通</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-sm text-slate-400 mb-1.5 block">身高 (m)</label>
+            <input v-model.number="addIndividualForm.height" type="number" step="0.01" min="0" class="input-field" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400 mb-1.5 block">体重 (kg)</label>
+            <input v-model.number="addIndividualForm.weight" type="number" step="0.1" min="0" class="input-field" />
+          </div>
+        </div>
+        <div>
+          <label class="text-sm text-slate-400 mb-1.5 block">声音奖牌</label>
+          <select v-model="addIndividualForm.voiceMedal" class="input-field">
+            <option value="" disabled>选择</option>
+            <option value="婉转声">婉转声</option>
+            <option value="粗嗓门">粗嗓门</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-sm text-slate-400 mb-1.5 block">性格</label>
+            <input v-model="addIndividualForm.personality" class="input-field" placeholder="可选" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400 mb-1.5 block">特长</label>
+            <input v-model="addIndividualForm.specialty" class="input-field" placeholder="可选" />
+          </div>
+        </div>
+      </div>
+      <template #footer>
+        <div class="flex gap-3">
+          <button class="btn btn-secondary flex-1" @click="addIndividualVisible = false">取消</button>
+          <button class="btn btn-primary flex-1" @click="onAddIndividual" :disabled="!addIndividualForm.formId || addIndividualForm.height <= 0 || addIndividualForm.weight <= 0 || !addIndividualForm.sizeMedal || !addIndividualForm.voiceMedal">添加</button>
         </div>
       </template>
     </el-dialog>

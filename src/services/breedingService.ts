@@ -37,6 +37,29 @@ let nextIndividualId = 0
 let nextEggRecordId = 0
 let nextReplacementRecordId = 0
 
+/** 从现有 store 数据推算自增 ID */
+function recalcNextIds(): void {
+  nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
+  nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
+  nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
+  nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
+  nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
+  nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
+}
+
+/** 从 JSON mock 加载默认数据 */
+function loadDefaults(): void {
+  store.plans = [...(plansJson as unknown as BreedingPlan[])]
+  store.tasks = [...(tasksJson as unknown as MedalTask[])]
+  store.groups = [...(groupsJson as unknown as BreedingGroup[])]
+  store.individuals = [...(individualsJson as unknown as Individual[])]
+  store.eggRecords = [...(eggRecordsJson as unknown as EggRecord[])]
+  store.replacementRecords = [...(replacementRecordsJson as unknown as ReplacementRecord[])]
+  store.growthRecords = [...(growthRecordsJson as unknown as GrowthRecord[])]
+  store.parentPools = [...(parentPoolsJson as unknown as ParentPool[])]
+  recalcNextIds()
+}
+
 /** 是否正在从 IDB 加载（加载期间不触发自动保存） */
 let isLoading = false
 
@@ -67,55 +90,16 @@ export async function initStore(): Promise<void> {
       store.replacementRecords = await getAll<ReplacementRecord>(STORES.replacementRecords)
       store.growthRecords = await getAll<GrowthRecord>(STORES.growthRecords)
       store.parentPools = await getAll<ParentPool>(STORES.parentPools)
-
-      // 从现有数据推算自增 ID（取最大值 + 1）
-      nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
-      nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
-      nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
-      nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
-      nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
-      nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
+      recalcNextIds()
     } else {
       // ── 首次：从 JSON mock 初始化 ──
-      store.plans = [...(plansJson as unknown as BreedingPlan[])]
-      store.tasks = [...(tasksJson as unknown as MedalTask[])]
-      store.groups = [...(groupsJson as unknown as BreedingGroup[])]
-      store.individuals = [...(individualsJson as unknown as Individual[])]
-      store.eggRecords = [...(eggRecordsJson as unknown as EggRecord[])]
-      store.replacementRecords = [...(replacementRecordsJson as unknown as ReplacementRecord[])]
-      store.growthRecords = [...(growthRecordsJson as unknown as GrowthRecord[])]
-      store.parentPools = [...(parentPoolsJson as unknown as ParentPool[])]
-
-      // 从 JSON mock 推算自增 ID
-      nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
-      nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
-      nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
-      nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
-      nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
-      nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
-
-      // 持久化初始数据
+      loadDefaults()
       await persistToIDB()
     }
   } catch (e) {
     console.error('[breedingService] initStore failed, falling back to JSON:', e)
-    // 降级：即使 IDB 不可用，也要加载 JSON mock
     if (store.plans.length === 0) {
-      store.plans = [...(plansJson as unknown as BreedingPlan[])]
-      store.tasks = [...(tasksJson as unknown as MedalTask[])]
-      store.groups = [...(groupsJson as unknown as BreedingGroup[])]
-      store.individuals = [...(individualsJson as unknown as Individual[])]
-      store.eggRecords = [...(eggRecordsJson as unknown as EggRecord[])]
-      store.replacementRecords = [...(replacementRecordsJson as unknown as ReplacementRecord[])]
-      store.growthRecords = [...(growthRecordsJson as unknown as GrowthRecord[])]
-      store.parentPools = [...(parentPoolsJson as unknown as ParentPool[])]
-      nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
-      nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
-      nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
-      nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
-      nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
-      nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
-      // 降级后也要尝试持久化，这样下次刷新至少能恢复 JSON 数据
+      loadDefaults()
       try { await persistToIDB() } catch (_) { /* IDB 完全不可用时忽略 */ }
     }
   } finally {
@@ -188,20 +172,7 @@ watch(
 
 export async function resetToDefaults(): Promise<void> {
   isLoading = true
-  store.plans = [...(plansJson as unknown as BreedingPlan[])]
-  store.tasks = [...(tasksJson as unknown as MedalTask[])]
-  store.groups = [...(groupsJson as unknown as BreedingGroup[])]
-  store.individuals = [...(individualsJson as unknown as Individual[])]
-  store.eggRecords = [...(eggRecordsJson as unknown as EggRecord[])]
-  store.replacementRecords = [...(replacementRecordsJson as unknown as ReplacementRecord[])]
-  store.growthRecords = [...(growthRecordsJson as unknown as GrowthRecord[])]
-  store.parentPools = [...(parentPoolsJson as unknown as ParentPool[])]
-  nextPlanId = Math.max(0, ...store.plans.map(p => p.id)) + 1
-  nextTaskId = Math.max(0, ...store.tasks.map(t => t.id)) + 1
-  nextGroupId = Math.max(0, ...store.groups.map(g => g.id)) + 1
-  nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
-  nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
-  nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
+  loadDefaults()
   isLoading = false
   await persistToIDB()
 }
@@ -259,15 +230,12 @@ export function updatePlan(
   if (data.accountName !== undefined) plan.accountName = data.accountName
 }
 
-/** 删除计划：级联删除其方向、组、蛋记录、关联个体 */
+/** 删除计划：级联删除其方向、组、蛋记录、所有个体 */
 export function deletePlan(id: number): void {
   const taskIds = store.tasks.filter(t => t.planId === id).map(t => t.id)
-  const eggRecordIds = store.eggRecords.filter(e => taskIds.includes(e.taskId)).map(e => e.id)
 
-  // 删除由这些蛋孵化出的个体
-  store.individuals = store.individuals.filter(
-    i => !(i.hatchedFromEggId !== undefined && eggRecordIds.includes(i.hatchedFromEggId)),
-  )
+  // 删除该计划下所有个体（账号隔离）
+  store.individuals = store.individuals.filter(i => i.planId !== id)
   store.eggRecords = store.eggRecords.filter(e => !taskIds.includes(e.taskId))
   store.groups = store.groups.filter(g => g.planId !== id)
   store.tasks = store.tasks.filter(t => t.planId !== id)
@@ -344,9 +312,14 @@ export function removeGroup(id: number): void {
 
 // ── Individual ──
 
-/** 按家族 id 筛选个体 */
-export function getIndividualsByFamilyId(familyId: number): Individual[] {
-  return store.individuals.filter(i => i.familyId === familyId)
+/** 按计划筛选个体（账号隔离） */
+export function getIndividualsByPlanId(planId: number): Individual[] {
+  return store.individuals.filter(i => i.planId === planId)
+}
+
+/** 按家族 id 筛选个体（可选 planId 过滤） */
+export function getIndividualsByFamilyId(familyId: number, planId?: number): Individual[] {
+  return store.individuals.filter(i => i.familyId === familyId && (planId === undefined || i.planId === planId))
 }
 
 /** 个体显示名：由 currentFormId 查静态数据，找不到回退 #id */
@@ -356,13 +329,14 @@ export function getIndividualDisplayName(id: number): string {
   return getFormName(ind.currentFormId) || `#${id}`
 }
 
-/** 手动添加个体（用于设置亲本），默认位置=背包 */
+/** 手动添加个体（需要指定 planId），默认位置=背包 */
 export function addIndividual(data: Omit<Individual, 'id'>): Individual {
   const individual: Individual = { ...data, location: data.location ?? 'bag', id: ++nextIndividualId }
   store.individuals.push(individual)
   return individual
 }
 
+/** 取全部个体（内部使用，如替换推荐需要跨组查） */
 export function getAllIndividuals(): Individual[] {
   return store.individuals
 }
@@ -474,11 +448,16 @@ export function hatchEgg(
   if (!record) return null
   if (record.status !== '孵蛋中') return null // 必须在孵蛋箱中才能孵化
 
+  // 从蛋记录推导 planId（eggRecord → task → planId）
+  const task = getTaskById(record.taskId)
+  const planId = task?.planId ?? individualData.planId
+
   record.status = '已孵化'
   record.hatchStartTime = undefined
 
   const individual: Individual = {
     ...individualData,
+    planId,
     location: 'bag',
     id: ++nextIndividualId,
     hatchedFromEggId: record.id,
