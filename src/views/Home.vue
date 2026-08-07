@@ -59,7 +59,7 @@ const greeting = computed(() => {
 <style scoped>
 .home-hero {
   position: relative;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   background-image: url('/roco-tool/bg.jpg');
   background-size: cover;
@@ -69,7 +69,7 @@ const greeting = computed(() => {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255, 245, 247, 0.45);
+  background: rgba(255, 245, 247, 0);
 }
 
 /* 左上角时间 */

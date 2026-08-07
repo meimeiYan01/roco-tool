@@ -3,12 +3,14 @@ import BottomTabBar from './components/BottomTabBar.vue'
 </script>
 
 <template>
-  <div class="min-h-screen bg-rose-50 pb-16">
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
+  <div class="h-screen overflow-hidden bg-rose-50 flex flex-col">
+    <div class="flex-1 min-h-0">
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </div>
     <BottomTabBar />
   </div>
 </template>
