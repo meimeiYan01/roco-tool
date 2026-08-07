@@ -21,33 +21,29 @@ jobs:
       - name: Install Playwright
         run: |
           pip install playwright
-          playwright install chromium
-          playwright install-deps chromium
+          playwright install --with-deps chromium
 
       - name: Restore browser cookies from secret
         env:
           XHS_COOKIES: ${{ secrets.XHS_COOKIES }}
         run: |
           if [ -n "$XHS_COOKIES" ]; then
+            echo "[*] Restoring cookies..."
             echo "$XHS_COOKIES" | base64 -d > /tmp/cookies.zip
-            # 解压到 scripts/.xhs_browser_data/，保持 Default/Network/ 结构
             mkdir -p scripts/.xhs_browser_data
             unzip -o /tmp/cookies.zip -d scripts/.xhs_browser_data/
-            # 验证 cookies 文件存在
-            if [ -f scripts/.xhs_browser_data/Default/Network/Cookies ]; then
-              echo "[✓] Cookies restored successfully"
-            else
-              echo "[!] Cookies file not found after extraction"
-              find scripts/.xhs_browser_data -name "Cookies" 2>/dev/null
-            fi
+            echo "[*] Directory structure:"
+            find scripts/.xhs_browser_data -type f -name "Cookies*" 2>/dev/null || echo "No Cookies files found"
+            ls -la scripts/.xhs_browser_data/Default/Network/ 2>/dev/null || echo "Default/Network/ not found"
           else
-            echo "[!] XHS_COOKIES secret not set, skipping"
+            echo "[!] XHS_COOKIES secret not set"
+            echo "[!] Please set the XHS_COOKIES secret in GitHub repo settings"
+            exit 1
           fi
 
       - name: Run scraper (headless)
         run: python scripts/xhs_merchant_scraper.py --headless
-        timeout-minutes: 5
-        continue-on-error: true
+        timeout-minutes: 3
 
       - name: Check scraper output
         id: check-output

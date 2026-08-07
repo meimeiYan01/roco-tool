@@ -292,6 +292,8 @@ def scrape_latest_note():
 
         except Exception as e:
             print(f"[!] 失败: {e}")
+            import traceback
+            traceback.print_exc()
             return None
         finally:
             context.close()
@@ -301,8 +303,12 @@ def is_login_page(page):
     try:
         t = page.title()
         c = page.content()
-        return "登录" in t or "手机号登录" in c or "扫码登录" in c
-    except:
+        is_login = "登录" in t or "手机号登录" in c or "扫码登录" in c
+        if is_login:
+            print(f"[DEBUG] Login page detected - title='{t}', has_login_content={'登录' in c}")
+        return is_login
+    except Exception as e:
+        print(f"[DEBUG] Login check failed: {e}")
         return False
 
 
