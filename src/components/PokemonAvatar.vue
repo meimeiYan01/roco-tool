@@ -34,7 +34,7 @@ const s = props.size ?? 56
 <template>
   <div
     v-if="placeholder"
-    class="flex items-center justify-center rounded-full border-2 border-dashed border-slate-600 text-slate-500"
+    class="flex items-center justify-center rounded-full border-2 border-dashed border-slate-600 text-pink-400"
     :style="{ width: s + 'px', height: (egg ? s * 1.25 : s) + 'px', borderRadius: egg ? '50%/42%' : '50%', fontSize: s * 0.4 + 'px' }"
   >
     ?

@@ -155,22 +155,21 @@ export interface Individual {
   hatchedFromEggId?: number
 }
 
-/** 阶段成长记录：个体在不同进化阶段的体重（供大婉蛋培育助手使用） */
-export interface GrowthRecord {
-  individualId: number
-  records: GrowthStageRecord[]
-}
-
-/** 单条阶段记录 */
-export interface GrowthStageRecord {
-  /** 形态 id（PokemonForm.formId） */
+/** 家族体重记录：记录精灵家族各形态的体重数据（独立于培育模块） */
+export interface FamilyWeightRecord {
+  id: number
+  /** 精灵家族 ID */
+  familyId: number
+  /** 进化形态 ID */
   formId: number
-  /** 记录时的等级（可选） */
-  level?: number
-  /** 记录时的身高（m，可选） */
-  height?: number
-  /** 记录时的体重（kg，进化时必填） */
+  /** 个体标识（用户输入，如「个体A」「罗隐1号」） */
+  individualName: string
+  /** 体重 (kg) */
   weight: number
+  /** 来源说明（可选，如「孵化」「野外」） */
+  source?: string
+  /** 记录时间 */
+  recordedAt: string
 }
 
 /** 产蛋时亲本的快照（亲本之后会更换，快照保证历史统计准确） */

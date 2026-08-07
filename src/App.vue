@@ -3,7 +3,7 @@ import BottomTabBar from './components/BottomTabBar.vue'
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-900 pb-16">
+  <div class="min-h-screen bg-rose-50 pb-16">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" />

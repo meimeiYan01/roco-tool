@@ -1,12 +1,11 @@
 import { reactive, watch } from 'vue'
-import type { BreedingPlan, MedalTask, BreedingGroup, Individual, EggRecord, ReplacementRecord, GrowthRecord, GrowthStageRecord, PokemonForm, ParentPool } from '../types'
+import type { BreedingPlan, MedalTask, BreedingGroup, Individual, EggRecord, ReplacementRecord, PokemonForm, ParentPool, FamilyWeightRecord } from '../types'
 import plansJson from '../data/breedingPlans.json'
 import tasksJson from '../data/medalTasks.json'
 import groupsJson from '../data/groups.json'
 import individualsJson from '../data/individuals.json'
 import eggRecordsJson from '../data/eggRecords.json'
 import replacementRecordsJson from '../data/replacementRecords.json'
-import growthRecordsJson from '../data/growthRecords.json'
 import parentPoolsJson from '../data/parentPools.json'
 import { getFormName, getFamilyById } from './pokemonService'
 import { hasData, getAll, saveSnapshot, STORES } from './storage'
@@ -25,7 +24,7 @@ const store = reactive({
   individuals: [] as Individual[],
   eggRecords: [] as EggRecord[],
   replacementRecords: [] as ReplacementRecord[],
-  growthRecords: [] as GrowthRecord[],
+  weightRecords: [] as FamilyWeightRecord[],
   parentPools: [] as ParentPool[],
 })
 
@@ -36,6 +35,7 @@ let nextGroupId = 0
 let nextIndividualId = 0
 let nextEggRecordId = 0
 let nextReplacementRecordId = 0
+let nextWeightRecordId = 0
 
 /** 从现有 store 数据推算自增 ID */
 function recalcNextIds(): void {
@@ -45,6 +45,7 @@ function recalcNextIds(): void {
   nextIndividualId = Math.max(0, ...store.individuals.map(i => i.id)) + 1
   nextEggRecordId = Math.max(0, ...store.eggRecords.map(e => e.id)) + 1
   nextReplacementRecordId = Math.max(0, ...store.replacementRecords.map(r => r.id)) + 1
+  nextWeightRecordId = Math.max(0, ...store.weightRecords.map(r => r.id)) + 1
 }
 
 /** 从 JSON mock 加载默认数据 */
@@ -55,7 +56,6 @@ function loadDefaults(): void {
   store.individuals = [...(individualsJson as unknown as Individual[])]
   store.eggRecords = [...(eggRecordsJson as unknown as EggRecord[])]
   store.replacementRecords = [...(replacementRecordsJson as unknown as ReplacementRecord[])]
-  store.growthRecords = [...(growthRecordsJson as unknown as GrowthRecord[])]
   store.parentPools = [...(parentPoolsJson as unknown as ParentPool[])]
   recalcNextIds()
 }
@@ -88,7 +88,6 @@ export async function initStore(): Promise<void> {
       store.individuals = await getAll<Individual>(STORES.individuals)
       store.eggRecords = await getAll<EggRecord>(STORES.eggRecords)
       store.replacementRecords = await getAll<ReplacementRecord>(STORES.replacementRecords)
-      store.growthRecords = await getAll<GrowthRecord>(STORES.growthRecords)
       store.parentPools = await getAll<ParentPool>(STORES.parentPools)
       recalcNextIds()
     } else {
@@ -123,7 +122,7 @@ async function persistToIDB(): Promise<void> {
       individuals: store.individuals,
       eggRecords: store.eggRecords,
       replacementRecords: store.replacementRecords,
-      growthRecords: store.growthRecords,
+      weightRecords: store.weightRecords,
       parentPools: store.parentPools,
     }))
     await saveSnapshot({
@@ -135,6 +134,7 @@ async function persistToIDB(): Promise<void> {
         nextIndividualId,
         nextEggRecordId,
         nextReplacementRecordId,
+        nextWeightRecordId,
       },
     })
   } catch (e) {
@@ -161,7 +161,7 @@ watch(
     store.individuals,
     store.eggRecords,
     store.replacementRecords,
-    store.growthRecords,
+    store.weightRecords,
     store.parentPools,
   ],
   () => { scheduleSave() },
@@ -529,35 +529,9 @@ export function applyReplacement(
   return record
 }
 
-// ── GrowthRecord（阶段成长记录，供大婉蛋培育助手使用）──
-
-/** 取所有个体的阶段成长记录（统计用） */
-export function getAllGrowthRecords(): GrowthRecord[] {
-  return store.growthRecords.slice()
-}
-
-/** 取个体的阶段成长记录（无则返回空 records） */
-export function getGrowthRecordsByIndividualId(individualId: number): GrowthStageRecord[] {
-  return store.growthRecords.find(g => g.individualId === individualId)?.records ?? []
-}
-
-/** 新增/覆盖一条阶段记录（同形态只保留最新一条） */
-export function addGrowthRecord(individualId: number, record: GrowthStageRecord): void {
-  const group = store.growthRecords.find(g => g.individualId === individualId)
-  if (group) {
-    const idx = group.records.findIndex(r => r.formId === record.formId)
-    if (idx >= 0) group.records[idx] = record
-    else group.records.push(record)
-  } else {
-    store.growthRecords.push({ individualId, records: [record] })
-  }
-}
-
 /**
  * 个体进化：只能进化到下一阶段（不跨阶段），进化可选。
- * 所有个体只要有下一阶段即可进化（手动添加或蛋孵均可）。
- * 进化时记录当前阶段的体重（必填）/身高（可选）/等级（可选），
- * 然后更新个体形态与体重。
+ * 更新个体形态与体重。
  * @returns 进化结果，不可进化时返回 null
  */
 export function evolveIndividual(
@@ -580,12 +554,6 @@ export function evolveIndividual(
   individual.currentFormId = nextForm.formId
   individual.weight = data.weight
 
-  // 记录进化后新阶段的体重（进化前的形态由调用方负责记录）
-  addGrowthRecord(individualId, {
-    formId: nextForm.formId,
-    weight: data.weight,
-  })
-
   return { individual, nextForm }
 }
 
@@ -603,4 +571,38 @@ export function updateParentPool(planId: number, maleParents: number[], femalePa
   } else {
     store.parentPools.push({ planId, maleParents: [...maleParents], femaleParents: [...femaleParents] })
   }
+}
+
+// ── FamilyWeightRecord（家族体重记录）──
+
+export function getAllWeightRecords(): FamilyWeightRecord[] {
+  return store.weightRecords
+}
+
+export function getWeightRecordsByFamilyId(familyId: number): FamilyWeightRecord[] {
+  return store.weightRecords.filter(r => r.familyId === familyId)
+}
+
+export function addWeightRecord(data: {
+  familyId: number
+  formId: number
+  individualName: string
+  weight: number
+  source?: string
+}): FamilyWeightRecord {
+  const record: FamilyWeightRecord = {
+    id: ++nextWeightRecordId,
+    familyId: data.familyId,
+    formId: data.formId,
+    individualName: data.individualName,
+    weight: data.weight,
+    source: data.source,
+    recordedAt: new Date().toISOString(),
+  }
+  store.weightRecords.push(record)
+  return record
+}
+
+export function deleteWeightRecord(id: number): void {
+  store.weightRecords = store.weightRecords.filter(r => r.id !== id)
 }

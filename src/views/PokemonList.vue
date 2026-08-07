@@ -33,7 +33,7 @@ function rarityClass(rarity: string) {
     <PageHeader title="精灵查询" />
 
     <!-- 搜索框 -->
-    <div class="px-4 py-3 sticky top-12 z-30 bg-slate-900">
+    <div class="px-4 py-3 sticky top-12 z-30 bg-rose-50">
       <input
         type="text"
         class="input-field"
@@ -45,7 +45,7 @@ function rarityClass(rarity: string) {
 
     <!-- 结果计数 -->
     <div class="px-4 mb-2">
-      <span class="text-xs text-slate-400">
+      <span class="text-xs text-pink-400">
         {{ keyword ? `搜索："${keyword}"` : '全部精灵' }}（共 {{ list.length }} 只）
       </span>
     </div>
@@ -55,29 +55,29 @@ function rarityClass(rarity: string) {
       <div
         v-for="p in list"
         :key="p.form.formId"
-        class="card flex items-center gap-4 active:bg-slate-700/50 transition-colors cursor-pointer"
+        class="card flex items-center gap-4 active:bg-pink-100/50 transition-colors cursor-pointer"
         @click="router.push(`/detail/${p.form.formId}`)"
       >
         <PokemonAvatar :name="p.form.name" :size="48" />
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mb-1">
-            <span class="font-semibold text-slate-100">{{ p.form.name }}</span>
+            <span class="font-semibold text-pink-900">{{ p.form.name }}</span>
             <span class="badge" :class="rarityClass(p.family.rarity)">{{ p.family.rarity }}</span>
           </div>
-          <div class="text-xs text-slate-400">
+          <div class="text-xs text-pink-400">
             {{ p.family.familyName }} · {{ p.family.types.join('·') }}
           </div>
-          <div class="text-xs text-slate-500 mt-0.5">
+          <div class="text-xs text-pink-400 mt-0.5">
             阶段{{ p.form.stage }}
           </div>
         </div>
-        <svg class="w-4 h-4 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-pink-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </div>
 
       <div v-if="list.length === 0" class="text-center py-12">
-        <p class="text-slate-400">没有找到匹配的精灵</p>
+        <p class="text-pink-400">没有找到匹配的精灵</p>
       </div>
     </div>
   </div>

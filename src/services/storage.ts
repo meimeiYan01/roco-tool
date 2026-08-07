@@ -1,7 +1,7 @@
 /**
  * IndexedDB 持久化层
  *
- * 数据库：roco-breeding-db v1
+ * 数据库：roco-breeding-db v2
  * 对象存储：8 个业务表 + 1 个元数据表（自增计数器）
  *
  * 设计原则：
@@ -11,7 +11,7 @@
  */
 
 const DB_NAME = 'roco-breeding-db'
-const DB_VERSION = 1
+const DB_VERSION = 2
 
 /** 8 个业务对象存储的名称 */
 export const STORES = {
@@ -21,7 +21,7 @@ export const STORES = {
   individuals: 'individuals',
   eggRecords: 'eggRecords',
   replacementRecords: 'replacementRecords',
-  growthRecords: 'growthRecords',
+  weightRecords: 'weightRecords',
   parentPools: 'parentPools',
   meta: 'meta',
 } as const
@@ -50,8 +50,11 @@ function openDB(): Promise<IDBDatabase> {
         db.createObjectStore(STORES.eggRecords, { keyPath: 'id' })
       if (!db.objectStoreNames.contains(STORES.replacementRecords))
         db.createObjectStore(STORES.replacementRecords, { keyPath: 'id' })
-      if (!db.objectStoreNames.contains(STORES.growthRecords))
-        db.createObjectStore(STORES.growthRecords, { keyPath: 'individualId' })
+      // v2: weightRecords 替换 growthRecords
+      if (!db.objectStoreNames.contains(STORES.weightRecords))
+        db.createObjectStore(STORES.weightRecords, { keyPath: 'id' })
+      if (db.objectStoreNames.contains('growthRecords'))
+        db.deleteObjectStore('growthRecords')
       if (!db.objectStoreNames.contains(STORES.parentPools))
         db.createObjectStore(STORES.parentPools, { keyPath: 'planId' })
       // 元数据表 — 存自增计数器等
@@ -145,7 +148,7 @@ export interface StoreSnapshot {
   individuals: unknown[]
   eggRecords: unknown[]
   replacementRecords: unknown[]
-  growthRecords: unknown[]
+  weightRecords: unknown[]
   parentPools: unknown[]
   meta: Record<string, number>
 }

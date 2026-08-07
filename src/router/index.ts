@@ -55,8 +55,20 @@ const routes: RouteRecordRaw[] = [
     meta: { title: '背包' },
   },
   {
+    path: '/weight',
+    name: 'weight-record',
+    component: () => import('@/views/WeightRecord.vue'),
+    meta: { title: '体重记录' },
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/views/Profile.vue'),
+    meta: { title: '我的' },
+  },
+  {
     path: '/:pathMatch(.*)*',
-    redirect: '/',
+    redirect: '/breeding',
   },
 ]
 

@@ -1,35 +1,36 @@
 :root {
-  color-scheme: dark;
-  --el-color-primary: #7c3aed;
-  --el-color-primary-light-1: #7c3aed;
-  --el-color-primary-light-2: #7c3aed;
-  --el-color-primary-light-3: #8b5cf6;
-  --el-color-primary-light-4: #8b5cf6;
-  --el-color-primary-light-5: #a78bfa;
-  --el-color-primary-light-6: #a78bfa;
-  --el-color-primary-light-7: #c4b5fd;
-  --el-color-primary-light-8: #ddd6fe;
-  --el-color-primary-light-9: #ede9fe;
-  --el-color-primary-dark-2: #6d28d9;
-}
-
-html.dark {
-  background-color: var(--el-bg-color-page);
-  --el-color-primary: #7c3aed;
-  --el-color-primary-light-3: #8b5cf6;
-  --el-color-primary-light-5: #a78bfa;
-  --el-color-primary-light-7: #c4b5fd;
-  --el-color-primary-light-8: #ddd6fe;
-  --el-color-primary-light-9: #ede9fe;
-  --el-color-primary-dark-2: #6d28d9;
+  color-scheme: light;
+  --el-color-primary: #F9A8D4;
+  --el-color-primary-light-1: #FBCFE8;
+  --el-color-primary-light-2: #F9A8D4;
+  --el-color-primary-light-3: #F472B6;
+  --el-color-primary-light-4: #EC4899;
+  --el-color-primary-light-5: #DB2777;
+  --el-color-primary-light-6: #BE185D;
+  --el-color-primary-light-7: #9D174D;
+  --el-color-primary-light-8: #831843;
+  --el-color-primary-light-9: #500724;
+  --el-color-primary-dark-2: #F472B6;
+  --el-bg-color: #FFF5F7;
+  --el-bg-color-page: #FFF5F7;
+  --el-bg-color-overlay: #FFFFFF;
+  --el-text-color-primary: #4A3B47;
+  --el-text-color-regular: #6B5B6B;
+  --el-text-color-secondary: #9CA3AF;
+  --el-text-color-placeholder: #D1B3CC;
+  --el-border-color: #FECDD3;
+  --el-border-color-light: #FDE8ED;
+  --el-fill-color: #FFF0F3;
+  --el-fill-color-light: #FFF5F7;
+  --el-fill-color-blank: #FFFFFF;
 }
 
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei',
     Arial, sans-serif;
-  background-color: var(--el-bg-color-page);
-  color: var(--el-text-color-primary);
+  background-color: #FFF5F7;
+  color: #4A3B47;
 }
 
 * {
@@ -37,6 +38,6 @@ body {
 }
 
 a {
-  color: var(--el-color-primary);
+  color: #F472B6;
   text-decoration: none;
 }

@@ -7,7 +7,7 @@ import {
   getIndividualById, getGroupById, getAllEggRecordsByPlanId, getHatchingEggsByPlanId,
   getParentPoolByPlanId, addIndividual, startHatch, hatchEgg, addEggRecord,
   applyReplacement, getReplacementRecordsByPlanId, switchIndividualLocation,
-  getIndividualDisplayName, evolveIndividual, getAllGrowthRecords, updateParentPool, addGrowthRecord,
+  getIndividualDisplayName, evolveIndividual, updateParentPool,
 } from '../services/breedingService'
 import { getAllFormsWithFamily, getFormName, getFamilyOfForm, getInitialFormId, getFamilyById } from '../services/pokemonService'
 import { generateReplacementSuggestions } from '../utils/replacementAdvisor'
@@ -98,7 +98,7 @@ function statusClass(s: string) {
 
 // ── 替换建议 ──
 const suggestions = computed(() =>
-  parentPool.value ? generateReplacementSuggestions(individuals, allGroups.value, parentPool.value, getAllGrowthRecords()) : []
+  parentPool.value ? generateReplacementSuggestions(individuals, allGroups.value, parentPool.value) : []
 )
 const replacementRecords = computed(() =>
   getReplacementRecordsByPlanId(planId).map(r => ({
@@ -160,7 +160,6 @@ function onHatchConfirm() {
     voiceMedal: hatchForm.voiceMedal, personality: hatchForm.personality, specialty: hatchForm.specialty,
   })
   if (!r) { ElMessage.warning('孵化失败'); return }
-  addGrowthRecord(r.individual.id, { formId: r.individual.currentFormId, weight: r.individual.weight })
   if (hatchForm.evolveAfterHatch && hatchForm.evolveWeight > 0) evolveIndividual(r.individual.id, { weight: hatchForm.evolveWeight })
   ElMessage.success('孵化成功！'); hatchDialogVisible.value = false
 }
@@ -184,10 +183,10 @@ function onStartHatch(eggId: number) {
     <!-- 精灵 Tab -->
     <div v-if="activeTab === 'individuals'" class="px-4 space-y-3 pb-4">
       <div class="flex items-center justify-between">
-        <span class="text-xs text-slate-400">共 {{ individuals.length }} 只</span>
+        <span class="text-xs text-pink-400">共 {{ individuals.length }} 只</span>
         <div class="flex gap-2">
           <button @click="onExport" class="text-xs text-emerald-400 px-2 py-1 rounded-lg active:bg-emerald-500/10">导出</button>
-          <button @click="onImportClick" class="text-xs text-violet-400 px-2 py-1 rounded-lg active:bg-violet-500/10">导入</button>
+          <button @click="onImportClick" class="text-xs text-pink-500 px-2 py-1 rounded-lg active:bg-violet-500/10">导入</button>
         </div>
       </div>
       <input ref="fileInputRef" type="file" accept=".xlsx,.xls" class="hidden" @change="onImportFile" />
@@ -201,11 +200,11 @@ function onStartHatch(eggId: number) {
           <PokemonAvatar :name="formNameOf(ind)" :gender="ind.gender" :size="44" />
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2 mb-0.5">
-              <span class="font-medium text-sm text-slate-100">{{ formNameOf(ind) }}</span>
-              <span class="text-xs text-slate-500">#{{ ind.id }}</span>
+              <span class="font-medium text-sm text-pink-900">{{ formNameOf(ind) }}</span>
+              <span class="text-xs text-pink-400">#{{ ind.id }}</span>
               <span class="text-xs">{{ ind.gender === 'male' ? '♂' : '♀' }}</span>
             </div>
-            <div class="text-xs text-slate-400">{{ ind.height }}m · {{ ind.weight }}kg</div>
+            <div class="text-xs text-pink-400">{{ ind.height }}m · {{ ind.weight }}kg</div>
             <div class="flex gap-1.5 mt-1">
               <span v-if="ind.sizeMedal" class="badge badge-info text-[10px]">{{ ind.sizeMedal }}</span>
               <span v-if="ind.voiceMedal" class="badge badge-neutral text-[10px]">{{ ind.voiceMedal }}</span>
@@ -214,13 +213,13 @@ function onStartHatch(eggId: number) {
               </span>
             </div>
           </div>
-          <button @click.stop="onSwitchLocation(ind.id)" class="text-xs text-slate-400 px-2 py-1 rounded-lg active:bg-slate-700">
+          <button @click.stop="onSwitchLocation(ind.id)" class="text-xs text-pink-400 px-2 py-1 rounded-lg active:bg-pink-100">
             {{ (ind.location ?? 'bag') === 'home' ? '收回' : '家园' }}
           </button>
         </div>
       </div>
       <div v-if="individuals.length === 0" class="text-center py-12">
-        <p class="text-slate-400">还没有精灵</p>
+        <p class="text-pink-400">还没有精灵</p>
       </div>
     </div>
 
@@ -231,11 +230,11 @@ function onStartHatch(eggId: number) {
           <PokemonAvatar :name="getEggName(egg)" :egg="true" :size="44" />
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2 mb-0.5">
-              <span class="font-medium text-sm text-slate-100">{{ getEggName(egg) || '未知精灵' }}</span>
-              <span class="text-xs text-slate-500">蛋#{{ egg.id }}</span>
+              <span class="font-medium text-sm text-pink-900">{{ getEggName(egg) || '未知精灵' }}</span>
+              <span class="text-xs text-pink-400">蛋#{{ egg.id }}</span>
               <span class="badge text-[10px]" :class="statusClass(egg.status)">{{ egg.status }}</span>
             </div>
-            <div class="text-xs text-slate-400">{{ egg.taskName }} · 第{{ egg.groupNo }}组 · {{ egg.height }}m/{{ egg.weight }}kg</div>
+            <div class="text-xs text-pink-400">{{ egg.taskName }} · 第{{ egg.groupNo }}组 · {{ egg.height }}m/{{ egg.weight }}kg</div>
           </div>
           <button
             v-if="egg.status === '未处理'"
@@ -247,14 +246,14 @@ function onStartHatch(eggId: number) {
           <button
             v-else-if="egg.status === '孵蛋中'"
             @click="openHatch(egg)"
-            class="text-xs text-violet-400 px-2 py-1 rounded-lg active:bg-violet-500/10"
+            class="text-xs text-pink-500 px-2 py-1 rounded-lg active:bg-violet-500/10"
           >
             孵化
           </button>
         </div>
       </div>
       <div v-if="backpackEggs.length === 0" class="text-center py-12">
-        <p class="text-slate-400">还没有蛋</p>
+        <p class="text-pink-400">还没有蛋</p>
       </div>
     </div>
 
@@ -263,18 +262,18 @@ function onStartHatch(eggId: number) {
       <!-- 建议列表 -->
       <div v-if="suggestions.length > 0" class="space-y-3">
         <div v-for="(s, i) in suggestions" :key="i" class="card">
-          <div class="text-xs text-slate-400 mb-2">
+          <div class="text-xs text-pink-400 mb-2">
             第{{ s.groupNo ?? '?' }}组{{ s.role === 'father' ? '父本' : '母本' }}
           </div>
           <div class="flex items-center gap-3">
             <div class="flex-1 text-center">
-              <div class="text-xs text-slate-500 mb-1">旧</div>
+              <div class="text-xs text-pink-400 mb-1">旧</div>
               <PokemonAvatar v-if="s.oldIndividual" :name="formNameOf(s.oldIndividual)" :gender="s.oldIndividual.gender" :size="36" />
-              <div class="text-xs text-slate-400 mt-1">{{ s.oldWeight }}kg</div>
+              <div class="text-xs text-pink-400 mt-1">{{ s.oldWeight }}kg</div>
             </div>
-            <span class="text-violet-400 text-lg">→</span>
+            <span class="text-pink-500 text-lg">→</span>
             <div class="flex-1 text-center">
-              <div class="text-xs text-slate-500 mb-1">新</div>
+              <div class="text-xs text-pink-400 mb-1">新</div>
               <PokemonAvatar :name="formNameOf(s.newIndividual)" :gender="s.newIndividual.gender" :size="36" />
               <div class="text-xs text-emerald-400 mt-1">{{ s.newWeight }}kg</div>
             </div>
@@ -283,7 +282,7 @@ function onStartHatch(eggId: number) {
         </div>
       </div>
       <div v-else class="text-center py-8">
-        <p class="text-slate-400 text-sm">当前无需替换</p>
+        <p class="text-pink-400 text-sm">当前无需替换</p>
       </div>
 
       <!-- 替换记录 -->
@@ -292,12 +291,12 @@ function onStartHatch(eggId: number) {
         <div class="space-y-2">
           <div v-for="r in replacementRecords" :key="r.id" class="card py-3">
             <div class="flex items-center justify-between text-xs">
-              <span class="text-slate-400">{{ r.taskName }} · 第{{ r.groupNo }}组{{ r.role === 'father' ? '父本' : '母本' }}</span>
-              <span class="text-slate-500">{{ r.replacedAt?.slice(0, 10) }}</span>
+              <span class="text-pink-400">{{ r.taskName }} · 第{{ r.groupNo }}组{{ r.role === 'father' ? '父本' : '母本' }}</span>
+              <span class="text-pink-400">{{ r.replacedAt?.slice(0, 10) }}</span>
             </div>
             <div class="flex items-center gap-2 mt-1 text-sm">
-              <span class="text-slate-400">{{ r.oldName }}</span>
-              <span class="text-violet-400">→</span>
+              <span class="text-pink-400">{{ r.oldName }}</span>
+              <span class="text-pink-500">→</span>
               <span class="text-emerald-400">{{ r.newName }}</span>
             </div>
           </div>
@@ -310,14 +309,14 @@ function onStartHatch(eggId: number) {
       <div class="space-y-4">
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="text-sm text-slate-400 mb-1.5 block">性别</label>
+            <label class="text-sm text-pink-400 mb-1.5 block">性别</label>
             <div class="flex gap-2">
-              <button @click="hatchForm.gender = 'male'" :class="hatchForm.gender === 'male' ? 'bg-violet-600 text-white' : 'bg-slate-700 text-slate-300'" class="flex-1 py-2 rounded-lg text-sm">♂</button>
-              <button @click="hatchForm.gender = 'female'" :class="hatchForm.gender === 'female' ? 'bg-violet-600 text-white' : 'bg-slate-700 text-slate-300'" class="flex-1 py-2 rounded-lg text-sm">♀</button>
+              <button @click="hatchForm.gender = 'male'" :class="hatchForm.gender === 'male' ? 'bg-pink-400 text-white' : 'bg-pink-100 text-pink-700'" class="flex-1 py-2 rounded-lg text-sm">♂</button>
+              <button @click="hatchForm.gender = 'female'" :class="hatchForm.gender === 'female' ? 'bg-pink-400 text-white' : 'bg-pink-100 text-pink-700'" class="flex-1 py-2 rounded-lg text-sm">♀</button>
             </div>
           </div>
           <div>
-            <label class="text-sm text-slate-400 mb-1.5 block">体型奖牌</label>
+            <label class="text-sm text-pink-400 mb-1.5 block">体型奖牌</label>
             <select v-model="hatchForm.sizeMedal" class="input-field">
               <option value="" disabled>选择</option>
               <option value="大块头">大块头</option>
@@ -327,11 +326,11 @@ function onStartHatch(eggId: number) {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3">
-          <div><label class="text-sm text-slate-400 mb-1.5 block">身高 (m)</label><input v-model.number="hatchForm.height" type="number" step="0.01" class="input-field" /></div>
-          <div><label class="text-sm text-slate-400 mb-1.5 block">体重 (kg)</label><input v-model.number="hatchForm.weight" type="number" step="0.1" class="input-field" /></div>
+          <div><label class="text-sm text-pink-400 mb-1.5 block">身高 (m)</label><input v-model.number="hatchForm.height" type="number" step="0.01" class="input-field" /></div>
+          <div><label class="text-sm text-pink-400 mb-1.5 block">体重 (kg)</label><input v-model.number="hatchForm.weight" type="number" step="0.1" class="input-field" /></div>
         </div>
         <div>
-          <label class="text-sm text-slate-400 mb-1.5 block">声音奖牌</label>
+          <label class="text-sm text-pink-400 mb-1.5 block">声音奖牌</label>
           <select v-model="hatchForm.voiceMedal" class="input-field">
             <option value="" disabled>选择</option>
             <option value="婉转声">婉转声</option>
@@ -339,10 +338,10 @@ function onStartHatch(eggId: number) {
           </select>
         </div>
         <div class="grid grid-cols-2 gap-3">
-          <div><label class="text-sm text-slate-400 mb-1.5 block">性格</label><input v-model="hatchForm.personality" class="input-field" placeholder="可选" /></div>
-          <div><label class="text-sm text-slate-400 mb-1.5 block">特长</label><input v-model="hatchForm.specialty" class="input-field" placeholder="可选" /></div>
+          <div><label class="text-sm text-pink-400 mb-1.5 block">性格</label><input v-model="hatchForm.personality" class="input-field" placeholder="可选" /></div>
+          <div><label class="text-sm text-pink-400 mb-1.5 block">特长</label><input v-model="hatchForm.specialty" class="input-field" placeholder="可选" /></div>
         </div>
-        <label class="flex items-center gap-2 text-sm text-slate-300">
+        <label class="flex items-center gap-2 text-sm text-pink-700">
           <input type="checkbox" v-model="hatchForm.evolveAfterHatch" class="rounded" />
           孵化后立即进化
         </label>

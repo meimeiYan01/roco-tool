@@ -1,4 +1,4 @@
-import type { Individual, BreedingGroup, ParentPool, GrowthRecord } from '../types'
+import type { Individual, BreedingGroup, ParentPool } from '../types'
 import { insertIntoPool } from './individualEvaluator'
 
 /** 单条自动替换建议 */
@@ -28,7 +28,6 @@ export function generateReplacementSuggestions(
   individuals: Individual[],
   groups: BreedingGroup[],
   pool: ParentPool,
-  growthRecords: readonly GrowthRecord[],
 ): ReplacementSuggestion[] {
   const parentIds = new Set<number>()
   for (const g of groups) {

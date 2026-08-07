@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getAllPlans } from '../services/breedingService'
 
 const route = useRoute()
 const router = useRouter()
@@ -13,18 +12,11 @@ interface Tab {
   matchPaths: string[]
 }
 
-const currentPlanId = computed(() => {
-  const id = route.params.id
-  if (id) return Number(id)
-  const plans = getAllPlans()
-  return plans[0]?.id ?? 1
-})
-
 const tabs = computed<Tab[]>(() => [
   { path: '/', label: '首页', icon: '🏠', matchPaths: ['/'] },
-  { path: '/list', label: '查询', icon: '🔍', matchPaths: ['/list', '/detail', '/check'] },
   { path: '/breeding', label: '培育', icon: '🥚', matchPaths: ['/breeding'] },
-  { path: `/breeding/${currentPlanId.value}/stats`, label: '统计', icon: '📊', matchPaths: ['/breeding/'] },
+  { path: '/list', label: '查询', icon: '🔍', matchPaths: ['/list', '/detail', '/check'] },
+  { path: '/profile', label: '我的', icon: '👤', matchPaths: ['/profile', '/weight'] },
 ])
 
 const activeTab = computed(() => {
@@ -43,14 +35,14 @@ function navigate(path: string) {
 </script>
 
 <template>
-  <nav class="fixed bottom-0 left-0 right-0 bg-slate-800/95 backdrop-blur-lg border-t border-slate-700 z-50 safe-bottom">
+  <nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-pink-200 z-50 safe-bottom">
     <div class="flex justify-around items-center h-14 max-w-lg mx-auto">
       <button
         v-for="tab in tabs"
         :key="tab.path"
         @click="navigate(tab.path)"
         class="flex flex-col items-center justify-center flex-1 h-full transition-colors"
-        :class="activeTab === tab.path ? 'text-violet-400' : 'text-slate-400'"
+        :class="activeTab === tab.path ? 'text-pink-500' : 'text-pink-400'"
       >
         <span class="text-lg leading-none">{{ tab.icon }}</span>
         <span class="text-[10px] mt-0.5 font-medium">{{ tab.label }}</span>

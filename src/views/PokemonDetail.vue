@@ -37,7 +37,7 @@ function stageText(stage: number) {
         <button
           v-if="form"
           @click="router.push(`/check?formId=${form.formId}`)"
-          class="text-xs text-violet-400 font-medium"
+          class="text-xs text-pink-500 font-medium"
         >
           去检测
         </button>
@@ -45,10 +45,9 @@ function stageText(stage: number) {
     </PageHeader>
 
     <div v-if="form && family" class="px-4 py-6 space-y-6">
-      <!-- 精灵头像+基本信息 -->
       <div class="flex flex-col items-center">
         <PokemonAvatar :name="form.name" :size="72" />
-        <h2 class="text-xl font-bold text-slate-100 mt-3">{{ form.name }}</h2>
+        <h2 class="text-xl font-bold text-pink-900 mt-3">{{ form.name }}</h2>
         <div class="flex items-center gap-2 mt-1">
           <span class="badge" :class="rarityClass(family.rarity)">{{ family.rarity }}</span>
           <span class="badge badge-info">{{ stageText(form.stage) }}</span>
@@ -58,7 +57,6 @@ function stageText(stage: number) {
         </div>
       </div>
 
-      <!-- 进化链 -->
       <div v-if="family.forms.length > 1">
         <h3 class="section-title">进化链</h3>
         <div class="card">
@@ -70,26 +68,25 @@ function stageText(stage: number) {
             >
               <div
                 class="rounded-full p-0.5"
-                :class="f.formId === formId ? 'ring-2 ring-violet-500' : ''"
+                :class="f.formId === formId ? 'ring-2 ring-pink-400' : ''"
                 @click="router.push(`/detail/${f.formId}`)"
               >
                 <PokemonAvatar :name="f.name" :size="48" />
               </div>
-              <span class="text-xs mt-1" :class="f.formId === formId ? 'text-violet-400 font-medium' : 'text-slate-400'">
+              <span class="text-xs mt-1" :class="f.formId === formId ? 'text-pink-500 font-medium' : 'text-pink-400'">
                 {{ f.name }}
               </span>
-              <span v-if="i < family.forms.length - 1" class="text-slate-600 text-xs mt-0.5">↓</span>
+              <span v-if="i < family.forms.length - 1" class="text-pink-300 text-xs mt-0.5">↓</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 蛋体型规则 -->
       <div v-if="rule">
         <h3 class="section-title">蛋体型规则</h3>
         <div class="card space-y-3">
-          <div class="border-b border-slate-700 pb-3">
-            <div class="text-xs font-medium text-emerald-400 mb-2">大块头蛋</div>
+          <div class="border-b border-pink-200 pb-3">
+            <div class="text-xs font-medium text-emerald-500 mb-2">大块头蛋</div>
             <div class="data-row">
               <span class="data-label">极限身高</span>
               <span class="data-value">{{ rule.bigSize.maxHeight }}m</span>
@@ -100,11 +97,11 @@ function stageText(stage: number) {
             </div>
             <div class="data-row">
               <span class="data-label">体重准入线</span>
-              <span class="data-value text-emerald-400">≥ {{ rule.bigSize.weightMin }}kg</span>
+              <span class="data-value text-emerald-500">≥ {{ rule.bigSize.weightMin }}kg</span>
             </div>
           </div>
           <div>
-            <div class="text-xs font-medium text-amber-400 mb-2">小不点蛋</div>
+            <div class="text-xs font-medium text-amber-500 mb-2">小不点蛋</div>
             <div class="data-row">
               <span class="data-label">极限身高</span>
               <span class="data-value">{{ rule.smallSize.maxHeight }}m</span>
@@ -115,23 +112,22 @@ function stageText(stage: number) {
             </div>
             <div class="data-row">
               <span class="data-label">体重准入线</span>
-              <span class="data-value text-amber-400">≤ {{ rule.smallSize.weightMax }}kg</span>
+              <span class="data-value text-amber-500">≤ {{ rule.smallSize.weightMax }}kg</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 描述 -->
       <div v-if="family.description">
         <h3 class="section-title">精灵描述</h3>
         <div class="card">
-          <p class="text-sm text-slate-300 leading-relaxed">{{ family.description }}</p>
+          <p class="text-sm text-pink-700 leading-relaxed">{{ family.description }}</p>
         </div>
       </div>
     </div>
 
     <div v-else class="flex items-center justify-center h-64">
-      <p class="text-slate-400">未找到该精灵</p>
+      <p class="text-pink-400">未找到该精灵</p>
     </div>
   </div>
 </template>

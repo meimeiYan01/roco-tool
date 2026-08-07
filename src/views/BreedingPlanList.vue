@@ -40,7 +40,7 @@ function onDelete(plan: BreedingPlan) {
   <div>
     <PageHeader title="培育计划">
       <template #actions>
-        <button @click="openCreate" class="text-xs text-violet-400 font-medium">＋ 新建</button>
+        <button @click="openCreate" class="text-xs text-pink-500 font-medium">＋ 新建</button>
       </template>
     </PageHeader>
 
@@ -48,13 +48,13 @@ function onDelete(plan: BreedingPlan) {
       <div
         v-for="plan in plans"
         :key="plan.id"
-        class="card active:bg-slate-700/50 transition-colors cursor-pointer"
+        class="card active:bg-pink-100/50 transition-colors cursor-pointer"
         @click="router.push(`/breeding/${plan.id}`)"
       >
         <div class="flex items-center justify-between">
           <div>
-            <div class="font-semibold text-slate-100">{{ plan.name }}</div>
-            <div class="text-xs text-slate-400 mt-0.5">{{ plan.accountName }}</div>
+            <div class="font-semibold text-pink-900">{{ plan.name }}</div>
+            <div class="text-xs text-pink-400 mt-0.5">{{ plan.accountName }}</div>
           </div>
           <button
             @click.stop="onDelete(plan)"
@@ -66,7 +66,7 @@ function onDelete(plan: BreedingPlan) {
       </div>
 
       <div v-if="plans.length === 0" class="text-center py-16">
-        <p class="text-slate-400 mb-4">还没有培育计划</p>
+        <p class="text-pink-400 mb-4">还没有培育计划</p>
         <button class="btn btn-primary w-auto px-8" @click="openCreate">创建计划</button>
       </div>
     </div>
@@ -75,11 +75,11 @@ function onDelete(plan: BreedingPlan) {
     <el-dialog v-model="dialogVisible" title="新建培育计划" width="90%" :close-on-click-modal="false">
       <div class="space-y-4">
         <div>
-          <label class="text-sm text-slate-400 mb-1.5 block">计划名</label>
+          <label class="text-sm text-pink-400 mb-1.5 block">计划名</label>
           <input v-model="form.name" class="input-field" placeholder="如：罗隐奖牌培育计划" />
         </div>
         <div>
-          <label class="text-sm text-slate-400 mb-1.5 block">账号</label>
+          <label class="text-sm text-pink-400 mb-1.5 block">账号</label>
           <input v-model="form.accountName" class="input-field" placeholder="如：账号1" />
         </div>
       </div>

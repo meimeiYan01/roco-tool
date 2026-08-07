@@ -27,16 +27,16 @@ function stageText(stage: number) {
 
 <template>
   <div
-    class="card flex items-center gap-3 active:bg-slate-700/50 transition-colors cursor-pointer"
+    class="card flex items-center gap-3 active:bg-pink-100/50 transition-colors cursor-pointer"
     @click="router.push(`/detail/${props.item.form.formId}`)"
   >
     <PokemonAvatar :name="props.item.form.name" :size="44" />
     <div class="flex-1 min-w-0">
       <div class="flex items-center gap-2 mb-0.5">
-        <span class="font-medium text-sm text-slate-100 truncate">{{ props.item.form.name }}</span>
+        <span class="font-medium text-sm text-pink-900 truncate">{{ props.item.form.name }}</span>
         <span class="badge text-[10px]" :class="rarityClass(props.item.family.rarity)">{{ props.item.family.rarity }}</span>
       </div>
-      <div class="text-xs text-slate-400">
+      <div class="text-xs text-pink-400">
         {{ props.item.family.familyName }} · {{ stageText(props.item.form.stage) }}
       </div>
       <div class="flex gap-1 mt-1">
