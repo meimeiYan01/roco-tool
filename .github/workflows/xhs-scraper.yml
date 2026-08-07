@@ -27,17 +27,18 @@ jobs:
         env:
           XHS_COOKIES: ${{ secrets.XHS_COOKIES }}
         run: |
+          set +e
           if [ -n "$XHS_COOKIES" ]; then
             echo "[*] Restoring cookies..."
             echo "$XHS_COOKIES" | base64 -d > /tmp/cookies.zip
             mkdir -p scripts/.xhs_browser_data
-            unzip -o /tmp/cookies.zip -d scripts/.xhs_browser_data/
-            echo "[*] Directory structure:"
-            find scripts/.xhs_browser_data -type f -name "Cookies*" 2>/dev/null || echo "No Cookies files found"
-            ls -la scripts/.xhs_browser_data/Default/Network/ 2>/dev/null || echo "Default/Network/ not found"
+            unzip -o /tmp/cookies.zip -d scripts/.xhs_browser_data/ 2>&1
+            echo "[*] Verifying cookies..."
+            find scripts/.xhs_browser_data -type f -name "Cookies*" 2>/dev/null
+            ls -la scripts/.xhs_browser_data/Default/Network/ 2>/dev/null
+            echo "[✓] Done"
           else
             echo "[!] XHS_COOKIES secret not set"
-            echo "[!] Please set the XHS_COOKIES secret in GitHub repo settings"
             exit 1
           fi
 
