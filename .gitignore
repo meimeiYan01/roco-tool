@@ -38,3 +38,4 @@ docs/
 scripts/.xhs_browser_data/
 scripts/xhs_latest_note.json
 scripts/xhs_debug.png
+scripts/__pycache__/
