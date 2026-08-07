@@ -76,6 +76,10 @@ def scrape_latest_note():
 
             # 2. 登录检查
             if is_login_page(page):
+                if HEADLESS:
+                    print("[!] 需要登录但运行在 headless 模式，cookies 可能已过期")
+                    print("[!] 请本地运行 `python scripts/xhs_merchant_scraper.py` 重新登录后更新 Secret")
+                    return None
                 print("[!] 需要登录，请在浏览器中扫码...")
                 for i in range(300):
                     time.sleep(1)

@@ -22,6 +22,7 @@ jobs:
         run: |
           pip install playwright
           playwright install chromium
+          playwright install-deps chromium
 
       - name: Restore browser cookies from secret
         env:
@@ -29,9 +30,16 @@ jobs:
         run: |
           if [ -n "$XHS_COOKIES" ]; then
             echo "$XHS_COOKIES" | base64 -d > /tmp/cookies.zip
-            mkdir -p scripts/.xhs_browser_data/Default/Network
+            # 解压到 scripts/.xhs_browser_data/，保持 Default/Network/ 结构
+            mkdir -p scripts/.xhs_browser_data
             unzip -o /tmp/cookies.zip -d scripts/.xhs_browser_data/
-            echo "[✓] Cookies restored"
+            # 验证 cookies 文件存在
+            if [ -f scripts/.xhs_browser_data/Default/Network/Cookies ]; then
+              echo "[✓] Cookies restored successfully"
+            else
+              echo "[!] Cookies file not found after extraction"
+              find scripts/.xhs_browser_data -name "Cookies" 2>/dev/null
+            fi
           else
             echo "[!] XHS_COOKIES secret not set, skipping"
           fi
@@ -39,15 +47,23 @@ jobs:
       - name: Run scraper (headless)
         run: python scripts/xhs_merchant_scraper.py --headless
         timeout-minutes: 5
+        continue-on-error: true
 
-      - name: Copy result to public/
+      - name: Check scraper output
+        id: check-output
         run: |
           if [ -f scripts/xhs_latest_note.json ]; then
-            cp scripts/xhs_latest_note.json public/xhs_latest_note.json
-            echo "[✓] Copied to public/"
+            echo "has_output=true" >> $GITHUB_OUTPUT
+            echo "[✓] Scraper produced output"
+            cat scripts/xhs_latest_note.json | head -5
           else
+            echo "has_output=false" >> $GITHUB_OUTPUT
             echo "[!] No output file found"
           fi
+
+      - name: Copy result to public/
+        if: steps.check-output.outputs.has_output == 'true'
+        run: cp scripts/xhs_latest_note.json public/xhs_latest_note.json
 
       - name: Commit and push if changed
         run: |
