@@ -61,7 +61,7 @@ function updateAll() {
           <div>
             <div class="text-xs text-pink-400 mb-1">当前轮次</div>
             <div class="text-lg font-bold text-pink-900">
-              {{ currentRound > 0 ? `第${currentRound}轮` : '未开市' }}
+              {{ currentRound > 0 ? `第${currentRound}轮` : '打烊中' }}
             </div>
           </div>
           <div>
@@ -80,21 +80,30 @@ function updateAll() {
 
     <!-- 商品展示区域 -->
     <div class="px-4 pb-4">
-      <h2 class="section-title">本轮出售商品</h2>
-      <div class="grid grid-cols-3 gap-2">
-        <div
-          v-for="product in products"
-          :key="product!.id"
-          class="card text-center"
-        >
-          <div class="aspect-square bg-pink-50 rounded-lg mb-2 flex items-center justify-center overflow-hidden">
-            <img v-if="product!.image" :src="product!.image" :alt="product!.name" class="w-full h-full object-contain" />
-            <span v-else class="text-2xl">🎁</span>
+      <template v-if="currentRound > 0">
+        <h2 class="section-title">本轮出售商品</h2>
+        <div class="grid grid-cols-3 gap-2">
+          <div
+            v-for="product in products"
+            :key="product!.id"
+            class="card text-center"
+          >
+            <div class="aspect-square bg-pink-50 rounded-lg mb-2 flex items-center justify-center overflow-hidden">
+              <img v-if="product!.image" :src="product!.image" :alt="product!.name" class="w-full h-full object-contain" />
+              <span v-else class="text-2xl">🎁</span>
+            </div>
+            <div class="font-medium text-sm text-pink-900 truncate">{{ product!.name }}</div>
+            <div class="text-xs text-pink-500 mt-1">{{ product!.price > 0 ? product!.price + '金币' : 'xx' }}</div>
           </div>
-          <div class="font-medium text-sm text-pink-900 truncate">{{ product!.name }}</div>
-          <div class="text-xs text-pink-500 mt-1">{{ product!.price > 0 ? product!.price + '金币' : 'xx' }}</div>
         </div>
-      </div>
+      </template>
+      <template v-else>
+        <div class="card text-center py-12">
+          <div class="text-4xl mb-3">🌙</div>
+          <div class="text-lg font-bold text-pink-400 mb-1">打烊中</div>
+          <div class="text-xs text-pink-300">商人休息中，下一轮开市后刷新查看</div>
+        </div>
+      </template>
     </div>
   </div>
 </template>
