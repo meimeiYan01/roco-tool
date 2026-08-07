@@ -36,6 +36,10 @@ docs/
 
 # Scraper artifacts
 scripts/.xhs_browser_data/
+scripts/.xhs_browser_data.zip
 scripts/xhs_latest_note.json
+scripts/xhs_cookies_b64.txt
+scripts/xhs_cookies_minimal.zip
+scripts/xhs_cookies_minimal/
 scripts/xhs_debug.png
 scripts/__pycache__/
