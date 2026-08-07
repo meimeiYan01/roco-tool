@@ -23,16 +23,17 @@ jobs:
           pip install playwright
           playwright install chromium
 
-      - name: Restore browser data from secret
+      - name: Restore browser cookies from secret
         env:
-          XHS_BROWSER_DATA: ${{ secrets.XHS_BROWSER_DATA }}
+          XHS_COOKIES: ${{ secrets.XHS_COOKIES }}
         run: |
-          if [ -n "$XHS_BROWSER_DATA" ]; then
-            mkdir -p scripts/.xhs_browser_data
-            echo "$XHS_BROWSER_DATA" | base64 -d | tar -xzf - -C scripts/
-            echo "[✓] Browser data restored"
+          if [ -n "$XHS_COOKIES" ]; then
+            echo "$XHS_COOKIES" | base64 -d > /tmp/cookies.zip
+            mkdir -p scripts/.xhs_browser_data/Default/Network
+            unzip -o /tmp/cookies.zip -d scripts/.xhs_browser_data/
+            echo "[✓] Cookies restored"
           else
-            echo "[!] XHS_BROWSER_DATA secret not set, skipping"
+            echo "[!] XHS_COOKIES secret not set, skipping"
           fi
 
       - name: Run scraper (headless)
