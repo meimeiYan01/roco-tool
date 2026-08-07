@@ -1,16 +1,19 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 import BottomTabBar from './components/BottomTabBar.vue'
+
+const route = useRoute()
+const isHome = computed(() => route.path === '/')
 </script>
 
 <template>
-  <div class="h-screen overflow-hidden bg-rose-50 flex flex-col">
-    <div class="flex-1 min-h-0">
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </router-view>
-    </div>
+  <div class="min-h-screen bg-rose-50" :class="isHome ? '' : 'pb-16'">
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
     <BottomTabBar />
   </div>
 </template>

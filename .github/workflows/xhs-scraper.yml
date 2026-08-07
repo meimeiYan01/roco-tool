@@ -1,0 +1,62 @@
+name: XHS Merchant Scraper
+
+on:
+  schedule:
+    - cron: '30 23,3,7,11 * * *'  # UTC, 对应北京时间 07:30/11:30/15:30/19:30
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install chromium
+
+      - name: Restore browser data from secret
+        env:
+          XHS_BROWSER_DATA: ${{ secrets.XHS_BROWSER_DATA }}
+        run: |
+          if [ -n "$XHS_BROWSER_DATA" ]; then
+            mkdir -p scripts/.xhs_browser_data
+            echo "$XHS_BROWSER_DATA" | base64 -d | tar -xzf - -C scripts/
+            echo "[✓] Browser data restored"
+          else
+            echo "[!] XHS_BROWSER_DATA secret not set, skipping"
+          fi
+
+      - name: Run scraper (headless)
+        run: python scripts/xhs_merchant_scraper.py --headless
+        timeout-minutes: 5
+
+      - name: Copy result to public/
+        run: |
+          if [ -f scripts/xhs_latest_note.json ]; then
+            cp scripts/xhs_latest_note.json public/xhs_latest_note.json
+            echo "[✓] Copied to public/"
+          else
+            echo "[!] No output file found"
+          fi
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/xhs_latest_note.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update merchant data from XHS scraper [$(date -u +%Y-%m-%d)]"
+            git push
+            echo "[✓] Changes pushed"
+          fi

@@ -15,6 +15,7 @@ interface Tab {
 const tabs = computed<Tab[]>(() => [
   { path: '/', label: '首页', icon: '🏠', matchPaths: ['/'] },
   { path: '/breeding', label: '培育', icon: '🥚', matchPaths: ['/breeding'] },
+  { path: '/merchant', label: '商人', icon: '🧑‍💼', matchPaths: ['/merchant'] },
   { path: '/list', label: '查询', icon: '🔍', matchPaths: ['/list', '/detail', '/check'] },
   { path: '/profile', label: '我的', icon: '👤', matchPaths: ['/profile', '/weight'] },
 ])

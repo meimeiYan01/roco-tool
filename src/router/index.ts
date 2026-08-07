@@ -67,6 +67,18 @@ const routes: RouteRecordRaw[] = [
     meta: { title: '我的' },
   },
   {
+    path: '/merchant',
+    name: 'travel-merchant',
+    component: () => import('@/views/TravelMerchant.vue'),
+    meta: { title: '远行商人' },
+  },
+  {
+    path: '/merchant/parse',
+    name: 'merchant-parse',
+    component: () => import('@/views/MerchantParserTest.vue'),
+    meta: { title: '文本解析' },
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/breeding',
   },
