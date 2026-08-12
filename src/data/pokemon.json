@@ -3844,5 +3844,44 @@
         "avatar": ""
       }
     ]
+  },
+  {
+    "familyId": 151,
+    "familyName": "领结鸭",
+    "types": ["普通系"],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "领结鸭蛋",
+    "hasVariant": false,
+    "forms": [
+      { "formId": 1511, "name": "领结鸭", "stage": 1, "avatar": "" }
+    ]
+  },
+  {
+    "familyId": 152,
+    "familyName": "沙漏鸭",
+    "types": ["普通系"],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "沙漏鸭蛋",
+    "hasVariant": false,
+    "forms": [
+      { "formId": 1521, "name": "沙漏鸭", "stage": 1, "avatar": "" }
+    ]
+  },
+  {
+    "familyId": 153,
+    "familyName": "睡帽鸭",
+    "types": ["普通系"],
+    "rarity": "普通",
+    "eggImage": "",
+    "description": "",
+    "eggShell": "睡帽鸭蛋",
+    "hasVariant": false,
+    "forms": [
+      { "formId": 1531, "name": "睡帽鸭", "stage": 1, "avatar": "" }
+    ]
   }
 ]

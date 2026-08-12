@@ -50,9 +50,9 @@ export interface BigSizeData {
 /** 小不点蛋数据 */
 export interface SmallSizeData {
   /** 小不点蛋极限身高（m），参考值 */
-  maxHeight: number
+  minHeight: number
   /** 小不点蛋极限体重（kg），参考值 */
-  maxWeight: number
+  minWeight: number
   /** 小不点体重准入线（kg），蛋体重 <= 此值即为小不点 */
   weightMax: number
 }

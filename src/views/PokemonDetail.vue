@@ -104,11 +104,11 @@ function stageText(stage: number) {
             <div class="text-xs font-medium text-amber-500 mb-2">小不点蛋</div>
             <div class="data-row">
               <span class="data-label">极限身高</span>
-              <span class="data-value">{{ rule.smallSize.maxHeight }}m</span>
+              <span class="data-value">{{ rule.smallSize.minHeight }}m</span>
             </div>
             <div class="data-row">
               <span class="data-label">极限体重</span>
-              <span class="data-value">{{ rule.smallSize.maxWeight }}kg</span>
+              <span class="data-value">{{ rule.smallSize.minWeight }}kg</span>
             </div>
             <div class="data-row">
               <span class="data-label">体重准入线</span>

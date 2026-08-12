@@ -5,7 +5,7 @@ import type { EggSizeRule, EggSizeResult, EggVerdict } from '@/types'
  *
  * 判定语义：
  *   - 大块头：蛋体重 >= bigSize.weightMin（只看体重）
- *   - 小不点：蛋体重 <= smallSize.weightMax（只看体重）
+ *   - 小不点：蛋体重 <= smallSize.weightMax（只看体重，minHeight/minWeight 为参考值）
  *   - 普通：既不满足大块头也不满足小不点
  *
  * 大块头与小不点互斥，优先判大块头。
